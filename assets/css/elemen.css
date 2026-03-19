@@ -1,0 +1,184 @@
+.halaman {
+  padding: 48px 0;          
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;      
+  padding-right: 24px;
+}
+
+.judul {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.subjudul {
+  color: var(--teks-redup);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border-radius: 20px;
+  padding: 32px 28px;
+  border: 1.5px solid var(--hijau-border);
+  text-decoration: none;
+  display: block;
+  color: var(--teks-utama);
+  height: 100%;           
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, opacity 0.5s;
+}
+
+.card.muncul {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  color: var(--teks-utama);
+}
+
+.card.air:hover   { border-color: var(--warna-air); }
+.card.udara:hover { border-color: var(--warna-udara); }
+.card.tanah:hover { border-color: var(--warna-tanah); }
+
+
+.ikon {
+  font-size: 1.6rem;         
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+
+.air   .ikon i { color: var(--warna-air); }
+.udara .ikon i { color: var(--warna-udara); }
+.tanah .ikon i { color: var(--warna-tanah); }
+
+.card:hover .ikon {
+  transform: rotate(-10deg) scale(1.15);
+}
+
+.air   .ikon { background-color: rgba(58, 159, 255, 0.15); }
+.udara .ikon { background-color: rgba(77, 217, 240, 0.15); }
+.tanah .ikon { background-color: rgba(200, 135, 74,  0.15); }
+
+
+.nomor {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.air   .nomor { color: var(--warna-air); }
+.udara .nomor { color: var(--warna-udara); }
+.tanah .nomor { color: var(--warna-tanah); }
+
+
+.nama {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+
+.deskripsi {
+  color: var(--teks-redup);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+
+.bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--teks-redup);
+  margin-bottom: 6px;
+}
+
+.bar-bg {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  height: 5px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.bar-isi {
+  height: 100%;
+  border-radius: 100px;
+  width: 0;                 
+  transition: width 1.2s ease;
+}
+
+.air   .bar-isi { background-color: var(--warna-air); }
+.udara .bar-isi { background-color: var(--warna-udara); }
+.tanah .bar-isi { background-color: var(--warna-tanah); }
+
+
+.tombol {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1.5px solid;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.card:hover .tombol {
+  transform: translateX(4px);
+}
+
+.air   .tombol { color: var(--warna-air);   border-color: var(--warna-air); }
+.udara .tombol { color: var(--warna-udara); border-color: var(--warna-udara); }
+.tanah .tombol { color: var(--warna-tanah); border-color: var(--warna-tanah); }
+
+.air:hover   .tombol { background-color: rgba(58, 159, 255, 0.15); }
+.udara:hover .tombol { background-color: rgba(77, 217, 240, 0.15); }
+.tanah:hover .tombol { background-color: rgba(200, 135, 74,  0.15); }
+
+
+@media (max-width: 768px) {
+  .halaman {
+    padding: 32px 16px;
+  }
+
+  .judul {
+    font-size: 1.5rem;
+  }
+  .card {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .halaman {
+    padding: 32px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 24px 20px;    
+  }
+
+  .nama {
+    font-size: 1.3rem;
+  }
+}
