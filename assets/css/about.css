@@ -5,7 +5,7 @@
 }
 
 .input-custom {
-    background-color: #1a3d20 !important; /* Senada dengan border */
+    background-color: #1a3d20 !important;
     border: none !important;
     color: var(--teks-utama) !important;
     padding: 12px;
@@ -17,7 +17,7 @@
 }
 
 .btn-kirim-custom {
-    background-color: #68b590; /* Warna hijau pucat di gambar */
+    background-color: #68b590;
     color: var(--bg-utama);
     border: none;
     padding: 10px 50px;
