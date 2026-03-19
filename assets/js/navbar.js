@@ -11,7 +11,7 @@ function loadNavbar() {
   const fiturAktif = ["calculator.html", "ecochallenge.html"].includes(halamanSekarang) ? "active" : "";
 
   const menus = [
-    { label: "Beranda", href: prefix + "home.html" },
+    { label: "Beranda", href: prefix + "beranda.html" },
     { label: "Tentang", href: prefix + "about.html" },
     { label: "Elemen",  href: prefix + "elemen.html" },
   ];

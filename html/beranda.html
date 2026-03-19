@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +8,8 @@
     <title>Beranda</title>
 </head>
 <body>
-
-    <nav>
-        <div class="nav-logo"></div>
-        <div class="nav-links">
-            <a href="#" class="nav-link active">Beranda</a>
-            <a href="#" class="nav-link">Tentang</a>
-            <a href="#" class="nav-link">Elemen</a>
-            <a href="#" class="nav-link">Fitur</a>
-        </div>
-        <div class="nav-search">🔍</div>
-        <div class="nav-hamburger">
-            <span></span><span></span><span></span>
-        </div>
-    </nav>
+      <!-- navbar -->
+  <div id="navbar"></div>
 
     <section class="hero-section">
         <div class="hero-card">
@@ -35,20 +23,22 @@
                 <div class="element-grid mt-sedang">
                     <div class="element-box">
                         <img src="../assets/img/elemen-air.png" alt="Elemen Air">
-                        <a href="#"></a>
+            
                     </div>
                     <div class="element-box">
                         <img src="../assets/img/elemen-tanah.png" alt="Elemen Tanah">
-                        <a href="contact.html"></a>
+
                     </div>
                     <div class="element-box">
                         <img src="../assets/img/elemen-udara.png" alt="Elemen Udara">
-                        <a href="#"></a>
+
                     </div>
                 </div>
-
-                <button class="btn-hijau mt-sedang">Ayo Mulai</button>
-            </div>
+                <div style="width:88%; display:flex; justify-content:center">
+               <a href="elemen.html" class="btn-hijau mt-sedang" style="text-decoration: none; display: inline-block;">
+                   Ayo Mulai
+               </a></div>
+           </div>
 
             <div class="hero-image">
                 <video autoplay muted loop playsinline class="hero-video">
@@ -59,14 +49,9 @@
         </div>
     </section>
 
-    <script>
-        // Script sederhana untuk hamburger menu
-        const burger = document.querySelector('.nav-hamburger');
-        const links = document.querySelector('.nav-links');
-        burger.addEventListener('click', () => {
-            burger.classList.toggle('terbuka');
-            links.classList.toggle('terbuka');
-        });
-    </script>
+     <!-- navbar -->
+  <script src="../assets/js/navbar.js"></script>
+  <script> loadNavbar("elemen"); </script>
+
 </body>
 </html>
