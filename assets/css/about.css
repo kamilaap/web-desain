@@ -1,0 +1,67 @@
+.card-kontak {
+    background-color: var(--bg-card);
+    border-radius: 20px;
+    border: 1px solid var(--hijau-border);
+}
+
+.input-custom {
+    background-color: #1a3d20 !important; /* Senada dengan border */
+    border: none !important;
+    color: var(--teks-utama) !important;
+    padding: 12px;
+}
+
+.input-custom::placeholder {
+    color: var(--teks-redup);
+    opacity: 0.5;
+}
+
+.btn-kirim-custom {
+    background-color: #68b590; /* Warna hijau pucat di gambar */
+    color: var(--bg-utama);
+    border: none;
+    padding: 10px 50px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-kirim-custom:hover {
+    background-color: #22c55e;
+    transform: scale(1.05);
+}
+
+.social-item {
+    background-color: white;
+    color: black;
+    padding: 12px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.avatar-placeholder {
+    width: 32px;
+    height: 32px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+.faq-row {
+    border-bottom: 1px solid var(--hijau-border);
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.grey-box {
+    background-color: #d1d5db;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 4px;
+}
