@@ -12,8 +12,8 @@ function loadNavbar() {
 
   const menus = [
     { label: "Beranda", href: prefix + "beranda.html" },
-    { label: "Tentang", href: prefix + "about.html" },
-    { label: "Elemen",  href: prefix + "elemen.html" },
+    { label: "Tentang", href: prefix + "tentang.html" },
+    { label: "Elemen", href: prefix + "elemen.html" },
   ];
 
   const links = menus.map(menu => {
@@ -51,8 +51,8 @@ function loadNavbar() {
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2a10 10 0 1 0 10 10"/>
-            <path d="M12 6v6l4 2"/>
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
           </svg>
           Eco Challenge
         </a>
@@ -62,13 +62,15 @@ function loadNavbar() {
 
   document.getElementById("navbar").innerHTML = `
     <nav>
-      <div class="nav-logo"></div>
-
+      <a href="${prefix}beranda.html" class="nav-brand">
+        <img src="${prefix}assets/img/logo.png" alt="Logo" class="nav-logo">
+        <span class="nav-brand-nama">Bumi Berbicara</span>
+      </a>
       <div class="nav-links" id="navMenu">
         ${links}
         ${dropdown}
+        <a href="${prefix}kontak.html" class="nav-link ${halamanSekarang === 'kontak.html' ? 'active' : ''}">Kontak</a>
       </div>
-
       <div class="nav-search" title="Cari">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2"
@@ -77,7 +79,6 @@ function loadNavbar() {
           <line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
       </div>
-
       <div class="nav-hamburger" id="navHamburger">
         <span></span>
         <span></span>
@@ -87,26 +88,23 @@ function loadNavbar() {
   `;
 
   const hamburger = document.getElementById("navHamburger");
-  const menu      = document.getElementById("navMenu");
-  const toggle    = document.getElementById("dropdownToggle");
-  const dropMenu  = document.getElementById("dropdownMenu");
+  const menu = document.getElementById("navMenu");
+  const toggle = document.getElementById("dropdownToggle");
+  const dropMenu = document.getElementById("dropdownMenu");
 
-  // Hamburger
-  hamburger.addEventListener("click", function() {
+  hamburger.addEventListener("click", function () {
     hamburger.classList.toggle("terbuka");
     menu.classList.toggle("terbuka");
   });
 
-  // Dropdown toggle
-  toggle.addEventListener("click", function(e) {
+  toggle.addEventListener("click", function (e) {
     e.stopPropagation();
     const sudahTerbuka = dropMenu.classList.contains("terbuka");
     dropMenu.classList.toggle("terbuka", !sudahTerbuka);
     toggle.classList.toggle("dropdown-open", !sudahTerbuka);
   });
 
-  // Tutup semua kalau klik di luar nav
-  document.addEventListener("click", function(e) {
+  document.addEventListener("click", function (e) {
     if (!e.target.closest("nav")) {
       hamburger.classList.remove("terbuka");
       menu.classList.remove("terbuka");
@@ -114,4 +112,53 @@ function loadNavbar() {
       toggle.classList.remove("dropdown-open");
     }
   });
+}
+
+// ── Footer ──
+// Cara pakai: taruh <div id="footer"></div> di setiap halaman
+// Panggil loadFooter() sebelum </body>
+function loadFooter() {
+  const path = window.location.pathname;
+  const diSubfolder = path.includes("/elemen/") || path.includes("/fitur/");
+  const prefix = diSubfolder ? "../" : "";
+
+  document.getElementById("footer").innerHTML = `
+    <footer class="footer">
+      <div class="footer-inner">
+
+        <div class="footer-atas">
+          <div class="footer-brand">
+            <div class="footer-logo"></div>
+            <div>
+              <div class="footer-nama">Bumi Berbicara</div>
+              <div class="footer-tagline">Sadar lingkungan, mulai dari kita.</div>
+            </div>
+          </div>
+
+          <div class="footer-nav">
+            <div class="footer-nav-col">
+              <div class="footer-nav-judul">Halaman</div>
+              <a href="${prefix}home.html" class="footer-nav-link">Beranda</a>
+              <a href="${prefix}about.html" class="footer-nav-link">Tentang</a>
+              <a href="${prefix}elemen.html" class="footer-nav-link">Elemen</a>
+            </div>
+            <div class="footer-nav-col">
+              <div class="footer-nav-judul">Fitur</div>
+              <a href="${prefix}fitur/calculator.html" class="footer-nav-link">Carbon Calculator</a>
+              <a href="${prefix}fitur/ecochallenge.html" class="footer-nav-link">Eco Challenge</a>
+            </div>
+            <div class="footer-nav-col">
+              <div class="footer-nav-judul">Lainnya</div>
+              <a href="${prefix}tim.html" class="footer-nav-link footer-tim">Tim Pengembang →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bawah">
+          <div class="footer-copy">© 2025 Bumi Berbicara. Dibuat dengan ❤️ untuk bumi.</div>
+        </div>
+
+      </div>
+    </footer>
+  `;
 }
