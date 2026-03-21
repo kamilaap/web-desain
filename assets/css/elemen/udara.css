@@ -1,0 +1,408 @@
+/* --- Layout Utama --- */
+.halaman {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+/* --- Hero Section --- */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 8px;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    height: 110%;
+    min-width: calc(100vh * 16 / 9);
+    min-height: calc(100vw * 9 / 16);
+    opacity: 0.3;
+    z-index: 0;
+    pointer-events: none;
+    border: none;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10, 31, 14, 0.4) 0%, rgba(10, 31, 14, 0.7) 100%);
+    z-index: 1;
+}
+
+.hero-ikon, .hero-nomor, .hero-judul, .hero-sub {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-ikon {
+    font-size: 2.4rem;
+    color: var(--warna-udara);
+    margin-bottom: 20px;
+}
+
+.hero-nomor {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warna-udara);
+    margin-bottom: 12px;
+}
+
+.hero-judul {
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff 40%, var(--warna-udara));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-sub {
+    color: var(--teks-redup);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* --- Statistik Section --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+}
+
+.stat-card {
+    background: rgba(15, 39, 20, 0.4); 
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--hijau-border);
+    border-radius: 12px;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.stat-card:hover {
+    border-color: var(--hijau-medium);
+    transform: translateY(-5px);
+    background: rgba(46, 107, 56, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stat-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--warna-udara);
+}
+
+/* --- Info Zig-Zag Section (Tahukah Kamu?) --- */
+.info-section {
+    padding: 40px 0;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 40px;
+    padding: 20px;
+    border-radius: 40px;
+}
+
+/* Baris Industri dengan Latar Terang */
+.info-row.row-light {
+    background-color: #e0e0e0;
+    flex-direction: row-reverse;
+    border-radius: 60px;
+    padding: 40px;
+}
+
+.info-img {
+    position: relative;
+    flex: 1;
+    height: 350px;
+    border-radius: 60px; /* Sesuai desain kamu */
+    overflow: hidden; /* Ini kunci untuk memotong logo */
+    border: 1px solid var(--hijau-border);
+}
+
+.video-clean-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Kita perbesar video agar elemen UI YouTube terdorong keluar frame */
+    transform: scale(1.35); 
+    pointer-events: none; /* Agar user tidak bisa klik logo/judul */
+}
+
+.video-clean-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Placeholder Video YouTube */
+.video-placeholder-link {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://img.youtube.com/vi/BchDmzVKcaQ/maxresdefault.jpg');
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.video-overlay-text {
+    color: #ff4d4d;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.video-lokal {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan video memenuhi kotak tanpa gepeng */
+    display: block;
+}
+
+.info-text {
+    flex: 1.2;
+}
+
+.teks-gelap {
+    color: #1a1a1a !important;
+}
+
+.teks-hijau-cerah {
+    color: var(--warna-udara);
+}
+
+/* --- Animasi --- */
+.info-row, .stat-card {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Delay Animasi */
+.stat-card:nth-child(1) { animation-delay: 0.2s; }
+.stat-card:nth-child(2) { animation-delay: 0.4s; }
+.stat-card:nth-child(3) { animation-delay: 0.6s; }
+.info-row:nth-of-type(1) { animation-delay: 0.8s; }
+.info-row:nth-of-type(2) { animation-delay: 1s; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .info-row, .info-row.row-light {
+        flex-direction: column !important;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .info-img {
+        width: 100%;
+        height: 250px;
+    }
+}
+
+/* --- Dampak Section --- */
+.dampak-section {
+    padding: 20px 0 80px;
+}
+
+.dampak-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ini akan membuat kartu baris bawah otomatis ke tengah */
+    gap: 25px;
+}
+
+/* Hapus aturan margin-left 50% yang lama karena sudah diganti justify-content */
+.dampak-card:nth-child(4), 
+.dampak-card:nth-child(5) { 
+    margin-left: 0;
+}
+
+.dampak-card {
+    background: var(--bg-card);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--hijau-border);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    
+    /* Tentukan lebar pasti kartu agar sama atas & bawah */
+    width: calc(33.333% - 20px); 
+    min-width: 300px; /* Agar tidak terlalu kecil di layar tanggung */
+    display: flex;
+    flex-direction: column;
+}
+
+.dampak-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--warna-udara);
+}
+
+/* Pastikan tinggi area gambar konsisten */
+.dampak-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Samakan tinggi semua gambar */
+    overflow: hidden;
+}
+
+.dampak-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.dampak-card:hover .dampak-img-wrapper img {
+    transform: scale(1.1);
+}
+
+.dampak-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 31, 14, 0.9), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+}
+
+.dampak-overlay h3 {
+    font-size: 1rem;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.dampak-konten {
+    padding: 20px;
+}
+
+.dampak-konten p {
+    font-size: 0.9rem;
+    color: var(--teks-redup);
+    line-height: 1.6;
+}
+
+/* Responsif Mobile */
+@media (max-width: 992px) {
+    .dampak-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .dampak-card:nth-child(4), .dampak-card:nth-child(5) {
+        grid-column: auto;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .dampak-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Solusi Section --- */
+.solusi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding-bottom: 50px;
+}
+
+.solusi-card {
+    background: #ffffff; /* Warna putih sesuai gambar */
+    border-radius: 30px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Efek Glow Hijau untuk kartu yang aktif/highlight */
+.card-highlight {
+    box-shadow: 0 0 25px rgba(46, 160, 67, 0.4);
+    transform: translateY(-5px);
+}
+
+.solusi-icon-wrapper {
+    height: 80px;      /* Mengunci tinggi area ikon */
+    width: 100%;       /* Memenuhi lebar kartu */
+    display: flex;     /* Menggunakan flexbox agar ikon di tengah */
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+/* Pastikan semua ikon Font Awesome berwarna hijau */
+.solusi-icon-wrapper i{
+    font-size: 3rem;
+    color: #2ea043;
+}
+/* Mengatur ukuran gambar PNG agar sama besarnya dengan ikon Font Awesome */
+.solusi-img-file {
+    height: 100px;      /* <--- Atur besar kecilnya gambar di sini */
+    width: auto;       /* Menjaga proporsi agar tidak gepeng */
+    
+    object-fit: contain;
+}
+
+.solusi-card h3 {
+text-align: center; /* Meratakan teks ke tengah */
+    width: 100%;        /* Memastikan elemen mengambil lebar penuh */
+    margin-bottom: 35px;
+
+    color: #1a1a1a;
+}
+
+.solusi-card p {
+    color: #4a4a4a; /* Teks deskripsi abu gelap */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Hover Effect */
+.solusi-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Penyesuaian Responsif */
+@media (max-width: 480px) {
+    .solusi-card {
+        padding: 30px 20px;
+    }
+}
