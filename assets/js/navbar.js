@@ -138,7 +138,7 @@ function loadFooter() {
           <div class="footer-nav">
             <div class="footer-nav-col">
               <div class="footer-nav-judul">Halaman</div>
-              <a href="${prefix}home.html" class="footer-nav-link">Beranda</a>
+              <a href="${prefix}beranda.html" class="footer-nav-link">Beranda</a>
               <a href="${prefix}tentang.html" class="footer-nav-link">Tentang</a>
               <a href="${prefix}elemen.html" class="footer-nav-link">Elemen</a>
             </div>
