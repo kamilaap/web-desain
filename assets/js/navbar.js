@@ -156,7 +156,7 @@ function loadFooter() {
         </div>
 
         <div class="footer-bawah">
-          <div class="footer-copy">© 2025 Bumi Berbicara. Dibuat dengan ❤️ untuk bumi.</div>
+          <div class="footer-copy">© 2026 Bumi Berbicara. Dibuat dengan ❤️ untuk bumi.</div>
         </div>
 
       </div>
