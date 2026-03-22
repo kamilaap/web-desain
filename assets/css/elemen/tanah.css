@@ -162,10 +162,103 @@ html, body {
     border-top: 1px solid #eeeeee !important;
 }
 
+
+/*card data*/
+.stat-card-v2 {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
+    border: 1px solid rgba(34, 197, 94, 0.1);
+    border-radius: 20px;
+    padding: 40px 20px;
+    height: 100%;
+    transition: 0.3s ease;
+}
+
+.stat-card-v2:hover {
+    border-color: var(--warna-tanah);
+    background: rgba(34, 197, 94, 0.05);
+}
+
+.active-stat {
+    border-color: rgba(34, 197, 94, 0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.stat-icon-small {
+    color: var(--warna-tanah);
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/*portal box*/
+.portal-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.btn-outline-hijau {
+    color: var(--warna-tanah);
+    border-color: var(--warna-tanah);
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: 500;
+}
+
+.btn-outline-hijau:hover {
+    background-color: var(--warna-tanah);
+    color: #fff;
+}
+
+.btn-outline-light {
+    border-radius: 30px;
+    padding: 8px 20px;
+    opacity: 0.8;
+}
+
 /*dampak*/
 .dampak-item {
     border-left: 2px solid var(--warna-tanah);
     padding-left: 20px;
+}
+/* Container Section */
+.section-kecil {
+    background-color: var(--bg-gelap);
+}
+
+/* Kartu Dampak Modern */
+.dampak-card {
+    background: rgba(255, 255, 255, 0.05); /* Efek transparan */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px 20px;
+    height: 100%;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.dampak-card:hover {
+    transform: translateY(-10px);
+    background: rgba(34, 197, 94, 0.1); /* Warna hijau tipis saat hover */
+    border-color: var(--warna-tanah);
+}
+
+/* Icon Styling */
+.dampak-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(34, 197, 94, 0.2);
+    color: var(--warna-tanah);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.5rem;
+}
+
+.text-teks-redup {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
 }
 
 /*solusi*/
@@ -218,4 +311,73 @@ html, body {
 
 .section-kecil {
     background-color: var(--bg-gelap);
+}
+
+/*tentang tanah*/
+/* Container Utama */
+.section-tentang {
+    background-color: #051408; /* Tema Hijau Sangat Gelap */
+}
+
+.text-hijau {
+    color: #22c55e;
+}
+
+/* Card Styling */
+.about-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px 25px;
+    height: 100%;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/*efek*/
+.about-card:hover {
+    background: rgba(34, 197, 94, 0.05);
+    border-color: #22c55e;
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+}
+
+.about-card:hover {
+    box-shadow: inset 0 0 15px rgba(34, 197, 94, 0.1), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.about-card:active {
+    transform: scale(0.95) translateY(-5px);
+    background: rgba(34, 197, 94, 0.15);
+    transition: 0.1s;
+}
+
+/*box*/
+.about-icon-box {
+    width: 50px;
+    height: 50px;
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.4rem;
+    transition: 0.3s;
+}
+
+.about-card:hover .about-icon-box {
+    background: #22c55e;
+    color: #fff;
+    transform: rotate(-10deg);
+}
+
+/*teks*/
+.text-teks-redup {
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
 }
