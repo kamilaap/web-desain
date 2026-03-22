@@ -63,7 +63,7 @@ function loadNavbar() {
   document.getElementById("navbar").innerHTML = `
     <nav>
       <a href="${prefix}beranda.html" class="nav-brand">
-        <img src="${prefix}assets/img/logo.png" alt="Logo" class="nav-logo">
+        <img src="${prefix}../../assets/img/logo.png" alt="Logo" class="nav-logo">
         <span class="nav-brand-nama">Bumi Berbicara</span>
       </a>
       <div class="nav-links" id="navMenu">

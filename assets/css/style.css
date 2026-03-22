@@ -56,8 +56,8 @@ nav {
 }
 
 .nav-logo {
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -65,8 +65,12 @@ nav {
 
 .nav-brand {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  /* MENGUBAH ARAH MENJADI KE BAWAH */
+  flex-direction: column; 
+  /* MENYIMPAN SEMUANYA DI TENGAH */
+  align-items: center;    
+  /* JARAK ANTARA LOGO DAN TEKS */
+  gap: 5px;               
   text-decoration: none;
   flex-shrink: 0;
 }
@@ -79,6 +83,8 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  /* OPSIONAL: AGAR TEKS PAS DI TENGAH LOGO */
+  text-align: center;
 }
 
 .nav-links {
