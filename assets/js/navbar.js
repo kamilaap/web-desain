@@ -123,7 +123,6 @@ function loadFooter() {
   const prefix = diSubfolder ? "../" : "";
 
   document.getElementById("footer").innerHTML = `
-// Bagian Footer di dalam navbar.js
  <footer class="footer">
       <div class="footer-inner">
 
