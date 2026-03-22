@@ -3,10 +3,10 @@
 // Panggil loadNavbar() sebelum </body>
 function loadNavbar() {
   const path = window.location.pathname;
-  const diSubfolder = path.includes("/elemen/") || path.includes("/fitur/");
+  const diSubfolder = path.includes("/elemen/") || path.includes("/fitur/") || path.includes("/halaman");
   const prefix = diSubfolder ? "../" : "";
 
-  const halamanSekarang = window.location.pathname.split("/").pop();
+  const halamanSekarang = window.location.pathname.split("/").pop() || "beranda.html";
 
   const fiturAktif = ["calculator.html", "ecochallenge.html"].includes(halamanSekarang) ? "active" : "";
 
@@ -139,7 +139,7 @@ function loadFooter() {
             <div class="footer-nav-col">
               <div class="footer-nav-judul">Halaman</div>
               <a href="${prefix}home.html" class="footer-nav-link">Beranda</a>
-              <a href="${prefix}about.html" class="footer-nav-link">Tentang</a>
+              <a href="${prefix}tentang.html" class="footer-nav-link">Tentang</a>
               <a href="${prefix}elemen.html" class="footer-nav-link">Elemen</a>
             </div>
             <div class="footer-nav-col">
