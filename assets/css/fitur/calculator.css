@@ -1,0 +1,412 @@
+/* carbon.css — Carbon Calculator styles */
+/* Bergantung pada global.css untuk variabel warna dan base styles */
+
+/* ── Layout Utama ── */
+.cc-halaman {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* ── Header ── */
+.cc-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.cc-judul {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--warna-udara);
+  letter-spacing: -1px;
+}
+
+.cc-subjudul {
+  color: var(--teks-utama);
+  font-size: 1rem;
+  margin-top: 1rem;
+  line-height: 1.7;
+}
+
+/* ── Tab ── */
+.cc-tab-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.cc-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--hijau-border);
+  border-radius: 14px;
+  padding: 6px;
+  flex-wrap: wrap;
+}
+
+.cc-tab {
+  background: none;
+  border: 1px solid transparent;
+  color: var(--teks-redup);
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cc-tab:hover {
+  color: var(--teks-utama);
+  background-color: var(--hijau-border);
+}
+
+.cc-tab.aktif {
+  background-color: var(--hijau-medium);
+  border-color: var(--hijau-medium);
+  color: white;
+  font-weight: 600;
+}
+
+/* ── Main Grid (Input + Hasil) ── */
+.cc-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Panel Kiri ── */
+.cc-panel-kiri {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Tab konten */
+.cc-konten {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cc-konten.aktif {
+  display: flex;
+}
+
+/* Input Card */
+.cc-input-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--hijau-border);
+  border-radius: 14px;
+  padding: 1.2rem 1.4rem;
+}
+
+.cc-input-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--teks-utama);
+  margin-bottom: 4px;
+}
+
+.cc-input-sub {
+  font-size: 0.82rem;
+  color: var(--teks-redup);
+  margin-bottom: 0.8rem;
+}
+
+.cc-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cc-input {
+  width: 80px;
+  padding: 6px 10px;
+  background-color: var(--teks-utama);
+  color: var(--bg-utama);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.cc-input:focus {
+  outline: 2px solid var(--hijau-medium);
+}
+
+.cc-unit {
+  color: var(--teks-redup);
+  font-size: 0.9rem;
+}
+
+.cc-emisi-hint {
+  font-size: 0.78rem;
+  color: var(--teks-redup);
+  margin-top: 6px;
+}
+
+/* Total Bar */
+.cc-total-bar {
+  background-color: var(--bg-card);
+  border: 1px solid var(--hijau-border);
+  border-radius: 12px;
+  padding: 0.9rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--teks-redup);
+}
+
+.cc-total-angka {
+  color: var(--warna-tanah);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+/* Reset */
+.cc-reset-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+/* ── Panel Kanan ── */
+.cc-panel-kanan {
+  display: flex;
+  flex-direction: column;
+}
+
+.cc-card-hasil {
+  background-color: var(--bg-card);
+  border: 1px solid var(--hijau-border);
+  border-radius: 16px;
+  padding: 1.8rem 1.6rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cc-hasil-judul {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--teks-utama);
+  text-align: center;
+}
+
+/* Lingkaran emisi */
+.cc-lingkaran-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.cc-lingkaran {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background-color: var(--hijau-medium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid var(--hijau-border);
+  transition: background-color 0.4s;
+}
+
+.cc-lingkaran.tinggi  { background-color: #7a2020; border-color: #a03030; }
+.cc-lingkaran.sedang  { background-color: #7a5a10; border-color: #a07820; }
+.cc-lingkaran.rendah  { background-color: var(--hijau-medium); }
+
+.cc-angka-besar {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--warna-tanah);
+  line-height: 1;
+}
+
+.cc-angka-satuan {
+  font-size: 0.65rem;
+  color: var(--teks-utama);
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* Badge */
+.cc-badge {
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: var(--hijau-medium);
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.cc-badge.tinggi { background-color: #a03030; }
+.cc-badge.sedang { background-color: #a07820; }
+
+/* Setara dengan */
+.cc-setara {
+  width: 100%;
+  background-color: var(--bg-utama);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+}
+
+.cc-setara-judul {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--teks-utama);
+  margin-bottom: 0.6rem;
+}
+
+.cc-setara-item {
+  font-size: 0.8rem;
+  color: var(--teks-redup);
+  padding: 4px 0;
+  border-bottom: 1px solid var(--hijau-border);
+}
+
+.cc-setara-item:last-child {
+  border-bottom: none;
+}
+
+/* ── Bawah: Rincian + Tips ── */
+.cc-bawah {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Rincian */
+.cc-card-rincian,
+.cc-card-tips {
+  background-color: var(--bg-card);
+  border: 1px solid var(--hijau-border);
+  border-radius: 16px;
+  padding: 1.6rem;
+}
+
+.cc-rincian-judul,
+.cc-tips-judul {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--teks-utama);
+  margin-bottom: 1.2rem;
+}
+
+.cc-rincian-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.cc-rincian-item {
+  display: grid;
+  grid-template-columns: 20px 90px 1fr 60px;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--teks-redup);
+}
+
+.cc-rincian-item i {
+  color: var(--teks-redup);
+  font-size: 0.9rem;
+}
+
+.cc-bar-bg {
+  height: 6px;
+  background-color: var(--hijau-border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.cc-bar-isi {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+.cc-rincian-angka {
+  text-align: right;
+  color: var(--teks-utama);
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+/* Tips */
+.cc-tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cc-tips-item {
+  font-size: 0.85rem;
+  color: var(--teks-redup);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--hijau-border);
+  line-height: 1.6;
+}
+
+.cc-tips-item:last-child {
+  border-bottom: none;
+}
+
+.cc-tips-item strong {
+  color: var(--teks-utama);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .cc-main {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-bawah {
+    grid-template-columns: 1fr;
+  }
+
+  .cc-judul {
+    font-size: 2.2rem;
+  }
+
+  .cc-tabs {
+    justify-content: center;
+  }
+
+  .cc-tab {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+
+  .cc-rincian-item {
+    grid-template-columns: 20px 80px 1fr 55px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cc-halaman {
+    padding: 2rem 1rem 4rem;
+  }
+
+  .cc-judul {
+    font-size: 1.8rem;
+  }
+
+  .cc-tab {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+  }
+}

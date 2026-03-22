@@ -38,7 +38,186 @@
       </div>
     </div>
 
-    
+    <!-- Main Grid -->
+    <div class="cc-main">
+
+      <!-- Panel Kiri: Input -->
+      <div class="cc-panel-kiri">
+
+        <!-- TRANSPORTASI -->
+        <div class="cc-konten aktif" id="tab-transportasi">
+          <div class="cc-input-card">
+            <div class="cc-input-label">Jarak Kendaraan Motor</div>
+            <div class="cc-input-sub">Estimasi jarak tempuh hari ini</div>
+            <div class="cc-input-row">
+              <input type="number" class="cc-input" id="motor" value="1" min="0">
+              <span class="cc-unit">km</span>
+            </div>
+            <div class="cc-emisi-hint" id="hint-motor">= 0.12 kg CO₂</div>
+          </div>
+          <div class="cc-input-card">
+            <div class="cc-input-label">Jarak Kendaraan Mobil</div>
+            <div class="cc-input-sub">Estimasi jarak tempuh hari ini</div>
+            <div class="cc-input-row">
+              <input type="number" class="cc-input" id="mobil" value="1" min="0">
+              <span class="cc-unit">km</span>
+            </div>
+            <div class="cc-emisi-hint" id="hint-mobil">= 0.21 kg CO₂</div>
+          </div>
+          <div class="cc-total-bar">
+            <span>Total Transportasi</span>
+            <span class="cc-total-angka" id="total-transportasi">0.33 kg CO₂</span>
+          </div>
+        </div>
+
+        <!-- ENERGI -->
+        <div class="cc-konten" id="tab-energi">
+          <div class="cc-input-card">
+            <div class="cc-input-label">Penggunaan Listrik</div>
+            <div class="cc-input-sub">Estimasi pemakaian listrik hari ini</div>
+            <div class="cc-input-row">
+              <input type="number" class="cc-input" id="listrik" value="0" min="0">
+              <span class="cc-unit">kWh</span>
+            </div>
+            <div class="cc-emisi-hint" id="hint-listrik">= 0.00 kg CO₂</div>
+          </div>
+          <div class="cc-input-card">
+            <div class="cc-input-label">Penggunaan Gas LPG</div>
+            <div class="cc-input-sub">Estimasi pemakaian gas hari ini</div>
+            <div class="cc-input-row">
+              <input type="number" class="cc-input" id="gas" value="0" min="0">
+              <span class="cc-unit">kg</span>
+            </div>
+            <div class="cc-emisi-hint" id="hint-gas">= 0.00 kg CO₂</div>
+          </div>
+          <div class="cc-total-bar">
+            <span>Total Energi</span>
+            <span class="cc-total-angka" id="total-energi">0.00 kg CO₂</span>
+          </div>
+        </div>
+
+        <!-- MAKANAN -->
+        <div class="cc-konten" id="tab-makanan">
+          <div class="cc-input-card">
+            <div class="cc-input-label">Konsumsi Daging Sapi</div>
+            <div class="cc-input-sub">Estimasi konsumsi hari ini</div>
+            <div class="cc-input-row">
+              <input type="number" class="cc-input" id="daging" value="0" min="0">
+              <span class="cc-unit">gr</span>
+            </div>
+            <div class="cc-emisi-hint" id="hint-daging">= 0.00 kg CO₂</div>
+          </div>
+          <div class="cc-input-card">
+            <div class="cc-input-label">Konsumsi Ayam / Telur</div>
+            <div class="cc-input-sub">Estimasi konsumsi hari ini</div>
+            <div class="cc-input-row">
+              <input type="number" class="cc-input" id="ayam" value="0" min="0">
+              <span class="cc-unit">gr</span>
+            </div>
+            <div class="cc-emisi-hint" id="hint-ayam">= 0.00 kg CO₂</div>
+          </div>
+          <div class="cc-total-bar">
+            <span>Total Makanan</span>
+            <span class="cc-total-angka" id="total-makanan">0.00 kg CO₂</span>
+          </div>
+        </div>
+
+        <!-- SAMPAH -->
+        <div class="cc-konten" id="tab-sampah">
+          <div class="cc-input-card">
+            <div class="cc-input-label">Sampah Organik</div>
+            <div class="cc-input-sub">Estimasi sampah organik hari ini</div>
+            <div class="cc-input-row">
+              <input type="number" class="cc-input" id="organik" value="0" min="0">
+              <span class="cc-unit">kg</span>
+            </div>
+            <div class="cc-emisi-hint" id="hint-organik">= 0.00 kg CO₂</div>
+          </div>
+          <div class="cc-input-card">
+            <div class="cc-input-label">Sampah Plastik</div>
+            <div class="cc-input-sub">Estimasi sampah plastik hari ini</div>
+            <div class="cc-input-row">
+              <input type="number" class="cc-input" id="plastik" value="0" min="0">
+              <span class="cc-unit">kg</span>
+            </div>
+            <div class="cc-emisi-hint" id="hint-plastik">= 0.00 kg CO₂</div>
+          </div>
+          <div class="cc-total-bar">
+            <span>Total Sampah</span>
+            <span class="cc-total-angka" id="total-sampah">0.00 kg CO₂</span>
+          </div>
+        </div>
+
+        <!-- Reset -->
+        <div class="cc-reset-wrapper">
+          <button class="btn-hijau" id="btnReset">Reset</button>
+        </div>
+
+      </div>
+
+      <!-- Panel Kanan: Hasil -->
+      <div class="cc-panel-kanan">
+
+        <!-- Total Emisi -->
+        <div class="cc-card-hasil">
+          <div class="cc-hasil-judul">Total Emisi Harianmu</div>
+          <div class="cc-lingkaran-wrapper">
+            <div class="cc-lingkaran" id="lingkaran">
+              <span class="cc-angka-besar" id="totalAngka">0.3</span>
+              <span class="cc-angka-satuan">kg CO₂ / hari</span>
+            </div>
+          </div>
+          <div class="cc-badge" id="emisiLabel">Emisi Rendah</div>
+
+          <div class="cc-setara">
+            <div class="cc-setara-judul">Setara Dengan</div>
+            <div class="cc-setara-item" id="setara1">—</div>
+            <div class="cc-setara-item" id="setara2">—</div>
+            <div class="cc-setara-item" id="setara3">—</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bawah: Rincian + Tips -->
+    <div class="cc-bawah">
+
+      <!-- Rincian -->
+      <div class="cc-card-rincian">
+        <div class="cc-rincian-judul">Rincian Per Kategori</div>
+        <div class="cc-rincian-list">
+
+          <div class="cc-rincian-item">
+            <i class="fa-solid fa-car"></i>
+            <span>Transportasi</span>
+            <div class="cc-bar-bg"><div class="cc-bar-isi" id="bar-transportasi" style="width:0%; background: var(--warna-tanah)"></div></div>
+            <span class="cc-rincian-angka" id="label-transportasi">0 kg</span>
+          </div>
+
+          <div class="cc-rincian-item">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Energi</span>
+            <div class="cc-bar-bg"><div class="cc-bar-isi" id="bar-energi" style="width:0%; background: var(--warna-air)"></div></div>
+            <span class="cc-rincian-angka" id="label-energi">0 kg</span>
+          </div>
+
+          <div class="cc-rincian-item">
+            <i class="fa-solid fa-utensils"></i>
+            <span>Makanan</span>
+            <div class="cc-bar-bg"><div class="cc-bar-isi" id="bar-makanan" style="width:0%; background: var(--hijau-medium)"></div></div>
+            <span class="cc-rincian-angka" id="label-makanan">0 kg</span>
+          </div>
+
+          <div class="cc-rincian-item">
+            <i class="fa-solid fa-trash"></i>
+            <span>Sampah</span>
+            <div class="cc-bar-bg"><div class="cc-bar-isi" id="bar-sampah" style="width:0%; background: var(--teks-redup)"></div></div>
+            <span class="cc-rincian-angka" id="label-sampah">0 kg</span>
+          </div>
+
+        </div>
+      </div>
 
       <!-- Tips -->
       <div class="cc-card-tips">
@@ -59,9 +238,9 @@
     </div>
 
   </div>
-
+  <div id="footer"></div>
   <script src="../../assets/js/navbar.js"></script>
-  <script>loadNavbar("fitur");</script>
+  <script>loadNavbar("fitur"); loadFooter();</script>
   <script src="../../assets/js/fitur/calculator.js"></script>
 </body>
 </html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Hari Eco Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/fitur/ecochallenge.css">
+</head>
+
+<body>
+    <!--navbar-->
+    <div id="navbar"></div>
+
+    
+    <div class="main-wrapper py-5">
+        <div class="container">
+
+            <header class="text-center mb-5">
+                <span class="badge-mini">#ECOCHALLENGE</span>
+                <h1 class="display-4 fw-bold mt-3">Tantangan <span class="text-green">7 Hari</span></h1>
+                <p class="text-hijau mx-auto" style="max-width: 600px;">
+                    Setiap tindakan kecil yang kamu lakukan hari ini adalah investasi besar untuk kesehatan
+                    bumi di masa depan.
+                </p>
+                <button id="btnStart" class="btn btn-start mt-3">Ayo Mulai</button>
+            </header>
+
+
+            <!--challange-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <div class="glass-card mb-4">
+                        <div class="banner-image">
+                            <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=80"
+                                alt="Forest View">
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-end mb-3">
+                            <div>
+                                <h6 class="text-uppercase fw-bold opacity-50 mb-1" style="letter-spacing: 1px;">Status
+                                    Progres</h6>
+                                <h3 class="fw-bold mb-0" id="statusText">Belum Dimulai</h3>
+                            </div>
+                            <div class="text-end">
+                                <h2 class="fw-bold text-green mb-0" id="progressPercent">0%</h2>
+                                <p class="small text mb-0"><span id="taskCount">0</span> dari 7 tantangan</p>
+                            </div>
+                        </div>
+
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="progressBar"></div>
+                        </div>
+
+                        <div class="impact-grid mt-4">
+                            <div class="impact-card">
+                                <span class="impact-label">Aksi Selesai</span>
+                                <strong id="impactActions">0 aksi</strong>
+                            </div>
+                            <div class="impact-card">
+                                <span class="impact-label">Plastik Dihindari</span>
+                                <strong id="impactPlastic">0 item</strong>
+                            </div>
+                            <div class="impact-card">
+                                <span class="impact-label">Energi Dihemat</span>
+                                <strong id="impactEnergy">0 kebiasaan</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-0 overflow-hidden">
+                        <div class="list-group list-group-flush" id="challengeList">
+                            <div class="list-item d-flex align-items-center p-4">
+                                <div class="step-number me-4">1</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="fw-bold mb-1">Matikan Lampu Tak Terpakai</h6>
+                                    <p class="small text-hijau mb-0">Hemat energi untuk bumi yang lebih sejuk.</p>
+                                </div>
+                                <div class="check-action">
+                                    <input type="checkbox" class="task-check" data-index="0">
+                                </div>
+                            </div>
+
+                            <div class="list-item d-flex align-items-center p-4">
+                                <div class="step-number me-4">2</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="fw-bold mb-1">Gunakan Transportasi Umum</h6>
+                                    <p class="small text-hijau mb-0">Kurangi emisi karbon harianmu.</p>
+                                </div>
+                                <div class="check-action">
+                                    <input type="checkbox" class="task-check" data-index="1">
+                                </div>
+                            </div>
+
+                            <div class="list-item d-flex align-items-center p-4">
+                                <div class="step-number me-4">3</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="fw-bold mb-1">Kurangi Penggunaan Air</h6>
+                                    <p class="small text-hijau mb-0">Setiap tetes air sangat berharga bagi tanah.</p>
+                                </div>
+                                <div class="check-action">
+                                    <input type="checkbox" class="task-check" data-index="2">
+                                </div>
+                            </div>
+
+                            <div class="list-item d-flex align-items-center p-4">
+                                <div class="step-number me-4">4</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="fw-bold mb-1">Kurangi Kantong Plastik</h6>
+                                    <p class="small text-hijau mb-0">Tolak plastik sekali pakai saat berbelanja.</p>
+                                </div>
+                                <div class="check-action">
+                                    <input type="checkbox" class="task-check" data-index="3">
+                                </div>
+                            </div>
+
+                            <div class="list-item d-flex align-items-center p-4">
+                                <div class="step-number me-4">5</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="fw-bold mb-1">Bawa Botol Minum Sendiri</h6>
+                                    <p class="small text-hijau mb-0">Gunakan tumbler untuk mengurangi sampah botol.</p>
+                                </div>
+                                <div class="check-action">
+                                    <input type="checkbox" class="task-check" data-index="4">
+                                </div>
+                            </div>
+
+                            <div class="list-item d-flex align-items-center p-4">
+                                <div class="step-number me-4">6</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="fw-bold mb-1">Kompos Sisa Makanan</h6>
+                                    <p class="small text-hijau mb-0">Ubah sampah organik menjadi nutrisi tanah.</p>
+                                </div>
+                                <div class="check-action">
+                                    <input type="checkbox" class="task-check" data-index="5">
+                                </div>
+                            </div>
+
+                            <div class="list-item d-flex align-items-center p-4">
+                                <div class="step-number me-4">7</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="fw-bold mb-1">Gunakan Tas Kain</h6>
+                                    <p class="small text-hijau mb-0">Ganti tas belanja plastik dengan bahan kain.</p>
+                                </div>
+                                <div class="check-action">
+                                    <input type="checkbox" class="task-check" data-index="6">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button id="btnReset" class="btn-reset">
+                            <i class="fa-solid fa-rotate-right me-2"></i> Reset Progres
+                        </button>
+                    </div>
+
+                    <section class="glass-card mt-4 completion-card" id="completionCard" hidden>
+                        <div class="completion-icon">
+                            <i class="fa-solid fa-seedling"></i>
+                        </div>
+                        <h3 class="fw-bold mb-2">Challenge Selesai</h3>
+                        <p class="text-hijau mb-3">
+                            Keren, kamu berhasil menuntaskan 7 aksi kecil yang berdampak besar untuk bumi.
+                        </p>
+                        <div class="completion-badges">
+                            <span class="completion-pill">7/7 tantangan</span>
+                            <span class="completion-pill">Sukses berkontribusi</span>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+      <div id="footer"></div>
+  <script src="../../assets/js/navbar.js"></script>
+  <script>loadNavbar("fitur"); loadFooter();</script>
+    <script src="../../assets/js/fitur/ecochallenge.js"></script>
+</body>
+
+</html>

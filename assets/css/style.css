@@ -466,3 +466,166 @@ nav {
     gap: 2rem;
   }
 }
+
+
+/* ══════════════════════════════════════
+   HALAMAN TIM
+   ══════════════════════════════════════ */
+
+.tim-halaman {
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.tim-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.tim-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--hijau-medium);
+  margin-bottom: 12px;
+}
+
+.tim-judul {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--teks-utama);
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+.tim-sub {
+  font-size: 1rem;
+  color: var(--teks-redup);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.tim-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.tim-card {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--hijau-border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.tim-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--hijau-medium);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.tim-foto-wrap {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 24px auto 0;
+  overflow: hidden;
+  background-color: var(--hijau-border);
+}
+
+.tim-foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.tim-card:hover .tim-foto {
+  transform: scale(1.05);
+}
+
+.tim-foto-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--hijau-medium);
+  background-color: var(--hijau-border);
+}
+
+.tim-info {
+  padding: 24px;
+}
+
+.tim-nama {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--teks-utama);
+  margin-bottom: 4px;
+}
+
+.tim-peran {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hijau-medium);
+  margin-bottom: 14px;
+}
+
+.tim-quote {
+  font-size: 0.87rem;
+  color: var(--teks-redup);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 20px;
+  padding-left: 12px;
+  border-left: 2px solid var(--hijau-border);
+}
+
+.tim-sosial {
+  display: flex;
+  gap: 10px;
+}
+
+.tim-sosial-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--hijau-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--teks-redup);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.tim-sosial-link:hover {
+  background-color: var(--hijau-medium);
+  border-color: var(--hijau-medium);
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .tim-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .tim-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tim-judul {
+    font-size: 2rem;
+  }
+}

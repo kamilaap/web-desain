@@ -1,9 +1,12 @@
 /*variabel global*/
 :root {
-    --warna-tanah: #22c55e;
-    --bg-gelap: #0a1f0e;
-    --bg-card-dark: #142116;
-    --bg-card-light: #ffffff;
+    --warna-tanah: #c8874a;
+    --warna-tanah-soft: rgba(200, 135, 74, 0.14);
+    --warna-tanah-glow: rgba(200, 135, 74, 0.22);
+    --warna-tanah-border: rgba(200, 135, 74, 0.32);
+    --bg-gelap: #1b120c;
+    --bg-card-dark: #2a1b12;
+    --bg-card-light: #f6efe7;
     --teks-redup: rgba(255, 255, 255, 0.6);
 }
 
@@ -73,7 +76,7 @@ html, body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10,31,14,0.4) 0%, rgba(10,31,14,0.8) 100%);
+    background: linear-gradient(180deg, rgba(27, 18, 12, 0.35) 0%, rgba(27, 18, 12, 0.82) 100%);
     z-index: 1;
 }
 
@@ -91,7 +94,7 @@ html, body {
 .hero-circle {
     width: 80px;
     height: 80px;
-    background: rgba(34, 197, 94, 0.15);
+    background: var(--warna-tanah-soft);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -127,12 +130,21 @@ html, body {
     border-radius: 15px;
     overflow: hidden;
     height: 100%;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    border: 1px solid rgba(200, 135, 74, 0.14);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .cause-card:hover {
     transform: translateY(-8px);
+    border-color: rgba(200, 135, 74, 0.32);
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+}
+
+.cause-card .badge {
+    background-color: rgba(200, 135, 74, 0.12) !important;
+    color: #8a5528 !important;
+    border: 1px solid rgba(200, 135, 74, 0.24);
 }
 
 .cause-img {
@@ -166,7 +178,7 @@ html, body {
 /*card data*/
 .stat-card-v2 {
     background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
-    border: 1px solid rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(200, 135, 74, 0.16);
     border-radius: 20px;
     padding: 40px 20px;
     height: 100%;
@@ -175,12 +187,12 @@ html, body {
 
 .stat-card-v2:hover {
     border-color: var(--warna-tanah);
-    background: rgba(34, 197, 94, 0.05);
+    background: rgba(200, 135, 74, 0.08);
 }
 
 .active-stat {
-    border-color: rgba(34, 197, 94, 0.4);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-color: var(--warna-tanah-border);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
 }
 
 .stat-icon-small {
@@ -194,6 +206,30 @@ html, body {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 50px;
     border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.source-note {
+    max-width: 760px;
+    padding: 16px 18px;
+    border-radius: 18px;
+    background: rgba(200, 135, 74, 0.08);
+    border: 1px solid rgba(200, 135, 74, 0.18);
+    text-align: left;
+}
+
+.source-note-title {
+    display: block;
+    color: var(--warna-tanah);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.source-note-text {
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.6;
+    font-size: 0.92rem;
 }
 
 .btn-outline-hijau {
@@ -220,11 +256,6 @@ html, body {
     border-left: 2px solid var(--warna-tanah);
     padding-left: 20px;
 }
-/* Container Section */
-.section-kecil {
-    background-color: var(--bg-gelap);
-}
-
 /* Kartu Dampak Modern */
 .dampak-card {
     background: rgba(255, 255, 255, 0.05); /* Efek transparan */
@@ -238,7 +269,7 @@ html, body {
 
 .dampak-card:hover {
     transform: translateY(-10px);
-    background: rgba(34, 197, 94, 0.1); /* Warna hijau tipis saat hover */
+    background: rgba(200, 135, 74, 0.1);
     border-color: var(--warna-tanah);
 }
 
@@ -246,7 +277,7 @@ html, body {
 .dampak-icon-wrapper {
     width: 50px;
     height: 50px;
-    background-color: rgba(34, 197, 94, 0.2);
+    background-color: var(--warna-tanah-glow);
     color: var(--warna-tanah);
     border-radius: 12px;
     display: flex;
@@ -294,7 +325,7 @@ html, body {
 
 .small-action-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgba(34, 197, 94, 0.2);
+    box-shadow: 0 10px 25px rgba(200, 135, 74, 0.2);
 }
 
 .icon-box {
@@ -309,18 +340,10 @@ html, body {
     line-height: 1.5;
 }
 
-.section-kecil {
-    background-color: var(--bg-gelap);
-}
-
 /*tentang tanah*/
 /* Container Utama */
 .section-tentang {
-    background-color: #051408; /* Tema Hijau Sangat Gelap */
-}
-
-.text-hijau {
-    color: #22c55e;
+    background-color: #1b120c;
 }
 
 /* Card Styling */
@@ -337,21 +360,16 @@ html, body {
     overflow: hidden;
 }
 
-/*efek*/
 .about-card:hover {
-    background: rgba(34, 197, 94, 0.05);
-    border-color: #22c55e;
+    background: rgba(200, 135, 74, 0.06);
+    border-color: var(--warna-tanah);
     transform: translateY(-10px);
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
-}
-
-.about-card:hover {
-    box-shadow: inset 0 0 15px rgba(34, 197, 94, 0.1), 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 15px rgba(200, 135, 74, 0.12), 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .about-card:active {
     transform: scale(0.95) translateY(-5px);
-    background: rgba(34, 197, 94, 0.15);
+    background: rgba(200, 135, 74, 0.14);
     transition: 0.1s;
 }
 
@@ -359,8 +377,8 @@ html, body {
 .about-icon-box {
     width: 50px;
     height: 50px;
-    background: rgba(34, 197, 94, 0.1);
-    color: #22c55e;
+    background: var(--warna-tanah-soft);
+    color: var(--warna-tanah);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -371,13 +389,8 @@ html, body {
 }
 
 .about-card:hover .about-icon-box {
-    background: #22c55e;
+    background: var(--warna-tanah);
     color: #fff;
     transform: rotate(-10deg);
 }
 
-/*teks*/
-.text-teks-redup {
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.6;
-}
