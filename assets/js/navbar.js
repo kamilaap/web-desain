@@ -63,21 +63,13 @@ function loadNavbar() {
   document.getElementById("navbar").innerHTML = `
     <nav>
       <a href="${prefix}beranda.html" class="nav-brand">
-        <img src="${prefix}../../assets/img/logo.png" alt="Logo" class="nav-logo">
+        <img src="/assets/img/logo.png" alt="Logo" class="nav-logo">
         <span class="nav-brand-nama">Bumi Berbicara</span>
       </a>
       <div class="nav-links" id="navMenu">
         ${links}
         ${dropdown}
         <a href="${prefix}kontak.html" class="nav-link ${halamanSekarang === 'kontak.html' ? 'active' : ''}">Kontak</a>
-      </div>
-      <div class="nav-search" title="Cari">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
       </div>
       <div class="nav-hamburger" id="navHamburger">
         <span></span>
@@ -155,7 +147,7 @@ function loadFooter() {
         </div>
 
         <div class="footer-bawah">
-          <div class="footer-copy">© 2025 Bumi Berbicara. Dibuat dengan ❤️ untuk bumi.</div>
+          <div class="footer-copy">© 2026 Bumi Berbicara. Dibuat dengan ❤️ untuk bumi.</div>
         </div>
 
       </div>
