@@ -71,10 +71,6 @@ nav {
 
 .nav-brand {
   display: flex;
-<<<<<<< HEAD
-  flex-direction: row;   
-=======
->>>>>>> 6beaec6012dc7f26f81ebc5ccd370d1fd9ef4d1b
   align-items: center;
   gap: 10px;
   text-decoration: none;
