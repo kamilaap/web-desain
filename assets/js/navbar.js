@@ -115,13 +115,14 @@ function loadFooter() {
   const prefix = diSubfolder ? "../" : "";
 
   document.getElementById("footer").innerHTML = `
-    <footer class="footer">
+ <footer class="footer">
       <div class="footer-inner">
 
         <div class="footer-atas">
           <div class="footer-brand">
-            <div class="footer-logo"></div>
-            <div>
+            <img src="${prefix}../../assets/img/logo.png" alt="Logo" class="footer-logo">
+            
+            <div class="footer-brand-text">
               <div class="footer-nama">Bumi Berbicara</div>
               <div class="footer-tagline">Sadar lingkungan, mulai dari kita.</div>
             </div>

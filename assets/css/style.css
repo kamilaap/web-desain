@@ -71,7 +71,10 @@ nav {
 
 .nav-brand {
   display: flex;
+<<<<<<< HEAD
   flex-direction: row;   
+=======
+>>>>>>> 6beaec6012dc7f26f81ebc5ccd370d1fd9ef4d1b
   align-items: center;
   gap: 10px;
   text-decoration: none;
@@ -366,6 +369,7 @@ nav {
 .footer-atas {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start; /* Menjaga logo tetap di atas jika menu sangat panjang */
   gap: 2rem;
   margin-bottom: 40px;
   flex-wrap: wrap;
@@ -374,32 +378,39 @@ nav {
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px; /* Jarak antara logo dan blok teks */
 }
 
 .footer-logo {
-  width: 44px;
-  height: 44px;
+  width: 50px;       /* Ukuran sedikit diperbesar agar lebih terlihat */
+  height: 50px;
   border-radius: 50%;
-  background-color: var(--hijau-border);
   border: 2px solid var(--hijau-medium);
+  object-fit: cover; /* Penting agar gambar tidak penyok */
   flex-shrink: 0;
 }
 
 .footer-nama {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
   background: linear-gradient(135deg, var(--hijau-medium), var(--warna-udara));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
+.footer-brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .footer-tagline {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   color: var(--teks-redup);
-  margin-top: 2px;
+  margin-top: 4px; /* Memberi jarak agar tidak menempel ke nama */
+  white-space: nowrap; /* Mencegah teks turun baris jika ruang cukup */
 }
 
 .footer-nav {
