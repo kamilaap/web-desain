@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const impactPlastic = document.getElementById('impactPlastic');
     const impactEnergy = document.getElementById('impactEnergy');
     const completionCard = document.getElementById('completionCard');
+    const resetModalBackdrop = document.getElementById('resetModalBackdrop');
+    const btnCancelReset = document.getElementById('btnCancelReset');
+    const btnConfirmReset = document.getElementById('btnConfirmReset');
 
     const impactLookup = [
         { plastic: 0, energy: 1 },
@@ -96,14 +99,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    btnReset.addEventListener('click', () => {
-        if (confirm('Apakah kamu yakin ingin mengulang tantangan dari awal?')) {
-            checkboxes.forEach((checkbox) => {
-                checkbox.checked = false;
-                applyTaskState(checkbox);
-            });
-            localStorage.removeItem(storageKey);
-            updateProgress();
+    function openResetModal() {
+        resetModalBackdrop.hidden = false;
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeResetModal() {
+        resetModalBackdrop.hidden = true;
+        document.body.style.overflow = '';
+    }
+
+    function resetProgress() {
+        checkboxes.forEach((checkbox) => {
+            checkbox.checked = false;
+            applyTaskState(checkbox);
+        });
+        localStorage.removeItem(storageKey);
+        updateProgress();
+        closeResetModal();
+    }
+
+    btnReset.addEventListener('click', openResetModal);
+    btnCancelReset.addEventListener('click', closeResetModal);
+    btnConfirmReset.addEventListener('click', resetProgress);
+    resetModalBackdrop.addEventListener('click', (event) => {
+        if (event.target === resetModalBackdrop) {
+            closeResetModal();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !resetModalBackdrop.hidden) {
+            closeResetModal();
         }
     });
 
