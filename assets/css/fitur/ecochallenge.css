@@ -1,173 +1,362 @@
-/* ============================================
-   LIGHT THEME OVERRIDES - ecochallenge.css
-   Tambahkan di bagian bawah file ecochallenge.css
-   ============================================ */
+/* hapus --bg-dark dan --text-muted lokal, pakai dari global.css */
+:root {
+    --hijau-glow: #22c55e;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
 
 [data-theme="light"] {
-    --bg-dark: #f0faf4;
     --hijau-glow: #16a34a;
-    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-bg: rgba(0, 0, 0, 0.02);
     --glass-border: rgba(0, 0, 0, 0.08);
-    --text-muted: rgba(0, 0, 0, 0.5);
 }
 
-/* Body & background */
-[data-theme="light"] body {
-    background-color: #f0faf4;
-    color: #1a2e1a;
+/* JANGAN override body background/color di sini — biar global.css yang handle */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* Badge header */
+.main-wrapper {
+    background-color: var(--bg-utama);
+    min-height: 100vh;
+    transition: background-color 0.3s;
+}
+
+/* header */
+.badge-mini {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--hijau-glow);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
 [data-theme="light"] .badge-mini {
-    background: rgba(22, 163, 74, 0.12);
-    color: #16a34a;
+    background: rgba(22, 163, 74, 0.08);
     border-color: rgba(22, 163, 74, 0.25);
 }
 
-/* Judul hijau */
-[data-theme="light"] .text-green {
-    color: #16a34a;
-    text-shadow: none;
+.text-green {
+    color: var(--hijau-glow);
 }
 
-/* Teks hijau deskripsi */
-[data-theme="light"] .text-hijau {
-    color: #15803d;
+:root:not([data-theme="light"]) .text-green {
+    text-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
 }
 
-/* Glass card */
-[data-theme="light"] .glass-card {
-    background: rgba(255, 255, 255, 0.85);
-    border-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+.text-hijau {
+    color: var(--hijau-glow);
 }
 
-/* Teks status progres */
-[data-theme="light"] h3,
-[data-theme="light"] h6,
-[data-theme="light"] p,
-[data-theme="light"] strong {
-    color: #1a2e1a;
+h1, h2, h3, h4, h5, h6 {
+    color: var(--teks-utama);
 }
 
-/* Opacity text (label "Status Progres") */
-[data-theme="light"] .opacity-50 {
-    color: rgba(0, 0, 0, 0.45) !important;
+p, .small {
+    color: var(--teks-redup);
 }
 
-/* Persentase progres */
-[data-theme="light"] .text-green.fw-bold {
-    color: #16a34a;
+.btn-start {
+    background: var(--hijau-glow);
+    color: white;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 12px 35px;
+    transition: 0.3s;
+    border: none;
 }
 
-/* Small text "0 dari 7 tantangan" */
-[data-theme="light"] .small {
-    color: rgba(0, 0, 0, 0.55);
+.btn-start:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.4);
+    color: white;
 }
 
-/* Progress bar background */
-[data-theme="light"] .progress-bar-container {
-    background: rgba(0, 0, 0, 0.08);
+/* glass card */
+.glass-card {
+    background: var(--bg-card);
+    border: 1px solid var(--hijau-border);
+    border-radius: 25px;
+    padding: 30px;
+    overflow: hidden;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 
-[data-theme="light"] .progress-bar-fill {
-    background: #16a34a;
-    box-shadow: 0 0 10px rgba(22, 163, 74, 0.3);
+:root:not([data-theme="light"]) .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-color: var(--glass-border);
 }
 
-/* Impact cards */
-[data-theme="light"] .impact-card {
-    background: rgba(22, 163, 74, 0.06);
-    border-color: rgba(22, 163, 74, 0.15);
+/* banner image */
+.banner-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 25px;
+    border: 1px solid var(--hijau-border);
 }
 
-[data-theme="light"] .impact-label {
-    color: rgba(0, 0, 0, 0.45);
+.banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-[data-theme="light"] .impact-card strong {
-    color: #1a2e1a;
+/* progress bar */
+.progress-bar-container {
+    width: 100%;
+    height: 12px;
+    background: var(--hijau-border);
+    border-radius: 50px;
+    overflow: hidden;
 }
 
-/* List tantangan */
-[data-theme="light"] .list-item {
-    border-bottom-color: rgba(0, 0, 0, 0.07);
+:root:not([data-theme="light"]) .progress-bar-container {
+    background: rgba(255, 255, 255, 0.05);
 }
 
-[data-theme="light"] .list-item:hover {
-    background: rgba(22, 163, 74, 0.04);
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--hijau-glow);
+    transition: width 0.5s ease-in-out;
 }
 
-[data-theme="light"] .list-item.is-complete {
-    background: rgba(22, 163, 74, 0.08);
+:root:not([data-theme="light"]) .progress-bar-fill {
+    box-shadow: 0 0 15px var(--hijau-glow);
 }
 
-/* Step number circle */
-[data-theme="light"] .step-number {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 0.4);
+/* impact grid */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
 }
 
-[data-theme="light"] .step-number.num-active {
-    background: rgba(22, 163, 74, 0.15);
-    color: #15803d;
-    border-color: rgba(22, 163, 74, 0.4);
-    box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.07);
+.impact-card {
+    background: var(--bg-utama);
+    border: 1px solid var(--hijau-border);
+    border-radius: 18px;
+    padding: 16px 18px;
+    transition: background-color 0.3s;
 }
 
-/* Task title & description */
-[data-theme="light"] .list-item h6.fw-bold {
-    color: #1a2e1a;
+:root:not([data-theme="light"]) .impact-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--glass-border);
 }
 
-[data-theme="light"] .list-item p.small {
-    color: #15803d;
+.impact-label {
+    display: block;
+    color: var(--teks-redup);
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
-/* Tombol reset */
-[data-theme="light"] .btn-reset {
-    color: #dc2626;
-    border-color: rgba(220, 38, 38, 0.25);
+.impact-card strong {
+    color: var(--teks-utama);
 }
 
-[data-theme="light"] .btn-reset:hover {
-    background: rgba(220, 38, 38, 0.07);
-    border-color: #dc2626;
+/* list tantangan */
+.list-item {
+    border-bottom: 1px solid var(--hijau-border);
+    transition: 0.3s;
 }
 
-/* Completion card */
-[data-theme="light"] .completion-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-color: rgba(22, 163, 74, 0.2);
+:root:not([data-theme="light"]) .list-item {
+    border-color: var(--glass-border);
 }
 
-[data-theme="light"] .completion-card h3 {
-    color: #1a2e1a;
+.list-item.is-complete {
+    background: rgba(34, 197, 94, 0.08);
 }
 
-[data-theme="light"] .completion-card p {
-    color: #15803d;
+.list-item:last-child {
+    border-bottom: none;
 }
 
-[data-theme="light"] .completion-icon {
-    background: rgba(22, 163, 74, 0.12);
-    color: #16a34a;
-    box-shadow: 0 0 20px rgba(22, 163, 74, 0.12);
+.list-item:hover {
+    background: rgba(46, 107, 56, 0.06);
 }
 
-[data-theme="light"] .completion-pill {
-    background: rgba(0, 0, 0, 0.04);
-    border-color: rgba(0, 0, 0, 0.08);
-    color: #1a2e1a;
+.list-item h6 {
+    color: var(--teks-utama);
 }
 
-/* Btn start */
-[data-theme="light"] .btn-start {
-    background: #16a34a;
-    color: #ffffff;
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--bg-utama);
+    border: 1px solid var(--hijau-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--teks-redup);
+    flex-shrink: 0;
 }
 
-[data-theme="light"] .btn-start:hover {
-    box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);
+:root:not([data-theme="light"]) .step-number {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--glass-border);
+}
+
+.step-number.num-active {
+    background: rgba(34, 197, 94, 0.18);
+    color: var(--teks-utama);
+    border-color: rgba(34, 197, 94, 0.45);
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.08);
+}
+
+/* checkbox */
+.task-check {
+    width: 25px;
+    height: 25px;
+    accent-color: var(--hijau-glow);
+    cursor: pointer;
+}
+
+/* tombol reset */
+.btn-reset {
+    background: transparent;
+    color: #e05555;
+    border: 1px solid rgba(224, 85, 85, 0.3);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-reset:hover {
+    background: rgba(224, 85, 85, 0.1);
+    border-color: #e05555;
+}
+
+/* completion card */
+.completion-card {
+    text-align: center;
+    border-color: rgba(34, 197, 94, 0.25) !important;
+}
+
+.completion-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(34, 197, 94, 0.14);
+    color: var(--hijau-glow);
+    font-size: 1.8rem;
+}
+
+:root:not([data-theme="light"]) .completion-icon {
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.18);
+}
+
+.completion-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.completion-pill {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--bg-utama);
+    border: 1px solid var(--hijau-border);
+    font-size: 0.85rem;
+    color: var(--teks-redup);
+}
+
+/* reset modal */
+.reset-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.reset-modal {
+    background: var(--bg-card);
+    border: 1px solid var(--hijau-border);
+    border-radius: 24px;
+    padding: 40px 32px;
+    max-width: 380px;
+    width: 90%;
+    text-align: center;
+}
+
+.reset-modal-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: rgba(224, 85, 85, 0.12);
+    color: #e05555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.reset-modal-text {
+    color: var(--teks-redup);
+}
+
+.reset-modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn-reset-secondary {
+    background: var(--bg-utama);
+    border: 1px solid var(--hijau-border);
+    color: var(--teks-utama);
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-reset-secondary:hover {
+    border-color: var(--hijau-medium);
+}
+
+.btn-reset-danger {
+    background: #e05555;
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-reset-danger:hover {
+    background: #c94444;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
 }

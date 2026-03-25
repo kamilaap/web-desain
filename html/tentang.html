@@ -39,44 +39,50 @@
                 </div>
             </div>
 
-            <div class="tentang-stats">
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <h2 style="color: var(--warna-air);">2,2 M</h2>
-                        <p class="teks-redup">Orang tanpa akses air minum yang aman</p>
-                    </div>
-                    <div class="stat-icon icon-air">
-                        <i class="fa-solid fa-droplet"></i>
-                    </div>
-                </div>
+<div class="tentang-stats">
+    <div class="stat-card">
+        <div class="stat-info">
+            <h2 style="color: var(--warna-air);">
+                <span class="counter" data-target="2.2">0</span> M
+            </h2>
+            <p class="teks-redup">Orang tanpa akses air minum yang aman</p>
+        </div>
+        <div class="stat-icon icon-air">
+            <i class="fa-solid fa-droplet"></i>
+        </div>
+    </div>
 
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <h2 style="color: #ff4d4d;">99 %</h2>
-                        <p class="teks-redup">Populasi dunia menghirup udara melampaui batas aman WHO</p>
-                    </div>
-                    <div class="stat-icon icon-udara">
-                        <i class="fa-solid fa-wind"></i>
-                    </div>
-                </div>
+    <div class="stat-card">
+        <div class="stat-info">
+            <h2 style="color: #ff4d4d;">
+                <span class="counter" data-target="99">0</span> %
+            </h2>
+            <p class="teks-redup">Populasi dunia menghirup udara melampaui batas aman WHO</p>
+        </div>
+        <div class="stat-icon icon-udara">
+            <i class="fa-solid fa-wind"></i>
+        </div>
+    </div>
 
-                <div class="stat-card">
-                    <div class="stat-info">
-                        <h2 style="color: #4ade80;">33%</h2>
-                        <p class="teks-redup">Tanah dunia mengalami degradasi parah</p>
-                    </div>
-                    <div class="stat-icon icon-tanah">
-                        <i class="fa-solid fa-tree"></i>
-                    </div>
-                </div>
-            </div>
+    <div class="stat-card">
+        <div class="stat-info">
+            <h2 style="color: #4ade80;">
+                <span class="counter" data-target="33">0</span> %
+            </h2>
+            <p class="teks-redup">Tanah dunia mengalami degradasi parah</p>
+        </div>
+        <div class="stat-icon icon-tanah">
+            <i class="fa-solid fa-tree"></i>
+        </div>
+    </div>
+</div>
         </section>
     </main>
 
     <div id="footer"></div>
 
     <script src="../assets/js/navbar.js"></script>
-    
+    <script src="../assets/js/tentang.js"></script>
     <script> 
         document.addEventListener("DOMContentLoaded", function() {
             if (typeof loadNavbar === "function") loadNavbar(); 

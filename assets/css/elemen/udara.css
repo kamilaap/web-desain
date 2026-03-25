@@ -251,16 +251,6 @@
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 .stat-card:nth-child(1) { animation-delay: 0.2s; }
 .stat-card:nth-child(2) { animation-delay: 0.4s; }
@@ -389,15 +379,17 @@
 }
 
 .solusi-card {
-    background: var(--bg-card);
-    border: 1px solid var(--hijau-border);
+background: #ffffff;
     border-radius: 30px;
     padding: 40px 30px;
-    text-align: center;
-    transition: all 0.3s ease;
+    text-align: justify;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.3s ease, 
+                border 0.3s ease; /* Transisi lebih responsif */
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid transparent; /* Mencegah layout shifting */
 }
 
 [data-theme="light"] .solusi-card {
@@ -431,10 +423,16 @@
 }
 
 .solusi-card h3 {
-    text-align: center;
+text-align: center;
     width: 100%;
-    margin-bottom: 35px;
-    color: var(--teks-utama);
+    margin-bottom: 20px; /* Kurangi sedikit margin agar tidak terlalu jauh */
+    color: #1a1a1a;
+    
+    /* Tambahkan ini */
+    display: flex;
+    align-items: center;    /* Agar teks tetap di tengah secara vertikal */
+    justify-content: center;
+    min-height: 80px;       /* Tinggi minimal untuk menampung teks yang panjang */
 }
 
 .solusi-card p {
@@ -444,17 +442,122 @@
 }
 
 .solusi-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    border-color: var(--hijau-medium);
+/* Mengangkat kartu sedikit lebih tinggi */
+    transform: translateY(-15px) scale(1.05); 
+    
+    /* Menambahkan efek glow hijau (diambil dari card-highlight) */
+    box-shadow: 0 15px 35px rgba(46, 160, 67, 0.4);
+    
+    /* Opsional: Jika ingin border ikut berubah warna */
+    border: 1px solid rgba(46, 160, 67, 0.2);
+    
+    cursor: pointer;
 }
 
-[data-theme="light"] .solusi-card:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+.solusi-card:hover .solusi-img-file {
+    transform: scale(1.1) rotate(5deg);
+    transition: transform 0.3s ease;
+}
+/* Navigasi Elemen */
+.nav-elemen {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  border-radius: 20px;
+  border: 1.5px solid var(--hijau-border);
+  background: var(--bg-card);
+  text-decoration: none;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s, box-shadow 0.3s;
+  height: 100%;
 }
 
+.nav-elemen:hover { transform: translateY(-6px); }
+
+.nav-elemen-air:hover {
+  border-color: var(--warna-air);
+  box-shadow: 0 20px 48px rgba(58, 159, 255, 0.12);
+}
+
+.nav-elemen-udara:hover {
+  border-color: var(--warna-udara);
+  box-shadow: 0 20px 48px rgba(77, 217, 240, 0.12);
+}
+
+.nav-elemen-tanah:hover {
+  border-color: var(--warna-tanah);
+  box-shadow: 0 20px 48px rgba(200, 135, 74, 0.12);
+}
+
+.nav-elemen-ikon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.nav-elemen-air .nav-elemen-ikon { background: rgba(58, 159, 255, 0.1); color: var(--warna-air); }
+.nav-elemen-udara .nav-elemen-ikon { background: rgba(77, 217, 240, 0.1); color: var(--warna-udara); }
+.nav-elemen-tanah .nav-elemen-ikon { background: rgba(200, 135, 74, 0.1); color: var(--warna-tanah); }
+
+.nav-elemen:hover .nav-elemen-ikon { transform: scale(1.1) rotate(-5deg); }
+
+.nav-elemen-info { flex: 1; }
+
+.nav-elemen-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teks-redup);
+  margin-bottom: 4px;
+}
+
+.nav-elemen-judul {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--teks-utama);
+  margin: 0 0 4px;
+}
+
+.nav-elemen-sub {
+  font-size: 0.82rem;
+  color: var(--teks-redup);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.nav-elemen-arrow {
+  color: var(--teks-redup);
+  font-size: 1rem;
+  transition: transform 0.3s, color 0.3s;
+  flex-shrink: 0;
+}
+
+.nav-elemen-air:hover .nav-elemen-arrow { color: var(--warna-air); transform: translateX(4px); }
+.nav-elemen-udara:hover .nav-elemen-arrow { color: var(--warna-udara); transform: translateX(4px); }
+.nav-elemen-tanah:hover .nav-elemen-arrow { color: var(--warna-tanah); transform: translateX(4px); }
 @media (max-width: 480px) {
     .solusi-card {
         padding: 30px 20px;
     }
+}
+
+/* Hapus blok @keyframes fadeInUp dan .info-row, .stat-card { opacity: 0; ... } */
+
+/* Tambahkan ini untukA memperhalus transisi AOS */
+[data-aos] {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Tambahkan efek parallax sedikit pada hero-video */
+.hero-video {
+    /* ... properti lama ... */
+    transition: transform 0.5s ease-out;
 }

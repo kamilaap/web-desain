@@ -46,11 +46,11 @@ h1 { font-size: 2.5rem; font-weight: 700; }
 h2 { font-size: 2rem; font-weight: 700; }
 h3 { font-size: 1.5rem; font-weight: 600; }
 
-/* navbar */
+/* ══ NAVBAR ══ */
 nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: space-between;
   padding: 0.8rem 2.5rem;
   height: 64px;
   background-color: rgba(10, 31, 14, 0.9);
@@ -66,7 +66,8 @@ nav {
 }
 
 [data-theme="light"] nav {
-  background-color: rgba(240, 247, 241, 0.92);
+  background-color: rgba(240, 247, 241, 0.97);
+  border-bottom: 1px solid var(--hijau-border);
 }
 
 .nav-logo {
@@ -99,23 +100,28 @@ nav {
   vertical-align: middle;
 }
 
+/* Nav links — selalu di tengah secara absolut */
 .nav-links {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-link {
   color: var(--teks-utama);
   text-decoration: none;
   font-size: 0.95rem;
-  padding: 6px 14px;
+  padding: 7px 14px;
   border-radius: 8px;
   transition: background-color 0.2s, color 0.2s;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   line-height: 1;
+  box-sizing: border-box;
   background: none;
   border: none;
   font-family: inherit;
@@ -129,6 +135,8 @@ nav {
 .nav-link.active {
   background-color: var(--hijau-medium);
   color: white;
+  padding: 7px 14px;
+  border-radius: 8px;
 }
 
 /* ── Tombol tema ── */
@@ -205,6 +213,14 @@ nav {
   transform: translateY(-2px);
 }
 
+/* btn-hijau khusus di navbar — lebih kecil supaya proporsional */
+nav .btn-hijau {
+  padding: 7px 16px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
 /* utilitas */
 .teks-redup  { color: var(--teks-redup); }
 .teks-tengah { text-align: center; }
@@ -215,11 +231,28 @@ nav {
 .mb-sedang { margin-bottom: 24px; }
 .mb-besar  { margin-bottom: 48px; }
 
-/* dropdown */
+/* ══ DROPDOWN ══ */
 .nav-dropdown {
   position: relative;
   display: inline-flex;
   align-items: center;
+}
+
+.nav-dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--teks-utama);
+  padding: 7px 14px;
+  line-height: 1.2;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .dropdown-chevron {
@@ -278,13 +311,14 @@ nav {
   color: white;
 }
 
-/* responsive navbar + typography */
+/* ══ RESPONSIVE ══ */
 @media (max-width: 768px) {
   nav {
     flex-wrap: wrap;
     padding: 1rem 1.2rem;
-    gap: 0;
     height: auto;
+    justify-content: flex-start;
+    gap: 0;
   }
 
   .nav-hamburger {
@@ -298,7 +332,10 @@ nav {
 
   .nav-search { display: none; }
 
+  /* Reset posisi tengah — mobile pakai dropdown vertikal */
   .nav-links {
+    position: static;
+    transform: none;
     display: none;
     flex-direction: column;
     align-items: flex-start;
@@ -343,7 +380,7 @@ nav {
   .btn-hijau { width: 100%; text-align: center; }
 }
 
-/* footer */
+/* ══ FOOTER ══ */
 .footer {
   border-top: 1px solid var(--hijau-border);
   margin-top: 80px;
@@ -459,7 +496,6 @@ nav {
   .footer-atas { flex-direction: column; gap: 2rem; }
   .footer-nav  { gap: 2rem; }
 }
-
 
 /* ══════════════════════════════════════
    HALAMAN TIM
