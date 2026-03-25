@@ -1,216 +1,173 @@
-:root {
-    --bg-dark: #051408;
-    --hijau-glow: #22c55e;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --text-muted: rgba(255, 255, 255, 0.6);
+/* ============================================
+   LIGHT THEME OVERRIDES - ecochallenge.css
+   Tambahkan di bagian bawah file ecochallenge.css
+   ============================================ */
+
+[data-theme="light"] {
+    --bg-dark: #f0faf4;
+    --hijau-glow: #16a34a;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --text-muted: rgba(0, 0, 0, 0.5);
 }
 
-body {
-    background-color: var(--bg-dark);
+/* Body & background */
+[data-theme="light"] body {
+    background-color: #f0faf4;
+    color: #1a2e1a;
+}
+
+/* Badge header */
+[data-theme="light"] .badge-mini {
+    background: rgba(22, 163, 74, 0.12);
+    color: #16a34a;
+    border-color: rgba(22, 163, 74, 0.25);
+}
+
+/* Judul hijau */
+[data-theme="light"] .text-green {
+    color: #16a34a;
+    text-shadow: none;
+}
+
+/* Teks hijau deskripsi */
+[data-theme="light"] .text-hijau {
+    color: #15803d;
+}
+
+/* Glass card */
+[data-theme="light"] .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Teks status progres */
+[data-theme="light"] h3,
+[data-theme="light"] h6,
+[data-theme="light"] p,
+[data-theme="light"] strong {
+    color: #1a2e1a;
+}
+
+/* Opacity text (label "Status Progres") */
+[data-theme="light"] .opacity-50 {
+    color: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Persentase progres */
+[data-theme="light"] .text-green.fw-bold {
+    color: #16a34a;
+}
+
+/* Small text "0 dari 7 tantangan" */
+[data-theme="light"] .small {
+    color: rgba(0, 0, 0, 0.55);
+}
+
+/* Progress bar background */
+[data-theme="light"] .progress-bar-container {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .progress-bar-fill {
+    background: #16a34a;
+    box-shadow: 0 0 10px rgba(22, 163, 74, 0.3);
+}
+
+/* Impact cards */
+[data-theme="light"] .impact-card {
+    background: rgba(22, 163, 74, 0.06);
+    border-color: rgba(22, 163, 74, 0.15);
+}
+
+[data-theme="light"] .impact-label {
+    color: rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .impact-card strong {
+    color: #1a2e1a;
+}
+
+/* List tantangan */
+[data-theme="light"] .list-item {
+    border-bottom-color: rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="light"] .list-item:hover {
+    background: rgba(22, 163, 74, 0.04);
+}
+
+[data-theme="light"] .list-item.is-complete {
+    background: rgba(22, 163, 74, 0.08);
+}
+
+/* Step number circle */
+[data-theme="light"] .step-number {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="light"] .step-number.num-active {
+    background: rgba(22, 163, 74, 0.15);
+    color: #15803d;
+    border-color: rgba(22, 163, 74, 0.4);
+    box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.07);
+}
+
+/* Task title & description */
+[data-theme="light"] .list-item h6.fw-bold {
+    color: #1a2e1a;
+}
+
+[data-theme="light"] .list-item p.small {
+    color: #15803d;
+}
+
+/* Tombol reset */
+[data-theme="light"] .btn-reset {
+    color: #dc2626;
+    border-color: rgba(220, 38, 38, 0.25);
+}
+
+[data-theme="light"] .btn-reset:hover {
+    background: rgba(220, 38, 38, 0.07);
+    border-color: #dc2626;
+}
+
+/* Completion card */
+[data-theme="light"] .completion-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(22, 163, 74, 0.2);
+}
+
+[data-theme="light"] .completion-card h3 {
+    color: #1a2e1a;
+}
+
+[data-theme="light"] .completion-card p {
+    color: #15803d;
+}
+
+[data-theme="light"] .completion-icon {
+    background: rgba(22, 163, 74, 0.12);
+    color: #16a34a;
+    box-shadow: 0 0 20px rgba(22, 163, 74, 0.12);
+}
+
+[data-theme="light"] .completion-pill {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.08);
+    color: #1a2e1a;
+}
+
+/* Btn start */
+[data-theme="light"] .btn-start {
+    background: #16a34a;
     color: #ffffff;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    margin: 0;
 }
 
-/*header*/
-.badge-mini {
-    background: rgba(34, 197, 94, 0.1);
-    color: var(--hijau-glow);
-    padding: 6px 16px;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    border: 1px solid rgba(34, 197, 94, 0.2);
-}
-
-.text-green {
-    color: var(--hijau-glow);
-    text-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
-}
-
-.btn-start {
-    background: var(--hijau-glow);
-    color: white;
-    font-weight: 700;
-    border-radius: 50px;
-    padding: 12px 35px;
-    transition: 0.3s;
-    border: none;
-}
-
-.btn-start:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.4);
-    color: white;
-}
-/*card*/
-.glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 25px;
-    padding: 30px;
-    overflow: hidden;
-}
-
-/*banner image progress*/
-.banner-image {
-    width: 100%;
-    height: 200px;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 25px;
-    border: 1px solid var(--glass-border);
-}
-
-.banner-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/*progress bar*/
-.progress-bar-container {
-    width: 100%;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50px;
-    overflow: hidden;
-}
-
-.progress-bar-fill {
-    height: 100%;
-    width: 0%;
-    background: var(--hijau-glow);
-    box-shadow: 0 0 15px var(--hijau-glow);
-    transition: width 0.5s ease-in-out;
-}
-
-.impact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-}
-
-.impact-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--glass-border);
-    border-radius: 18px;
-    padding: 16px 18px;
-}
-
-.impact-label {
-    display: block;
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-/*list tantangan*/
-.list-item {
-    border-bottom: 1px solid var(--glass-border);
-    transition: 0.3s;
-}
-
-.list-item.is-complete {
-    background: rgba(34, 197, 94, 0.08);
-}
-
-.list-item:last-child {
-    border-bottom: none;
-}
-
-.list-item:hover {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.step-number {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    color: var(--text-muted);
-}
-
-.step-number.num-active {
-    background: rgba(34, 197, 94, 0.18);
-    color: #ffffff;
-    border-color: rgba(34, 197, 94, 0.45);
-    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.08);
-}
-
-/*checkbox*/
-.task-check {
-    width: 25px;
-    height: 25px;
-    accent-color: var(--hijau-glow);
-    cursor: pointer;
-}
-
-/*tombol reset*/
-.btn-reset {
-    background: transparent;
-    color: #ff4d4d;
-    border: 1px solid rgba(255, 77, 77, 0.2);
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    transition: 0.3s;
-}
-
-.btn-reset:hover {
-    background: rgba(255, 77, 77, 0.1);
-    border-color: #ff4d4d;
-}
-
-.text-hijau {
-    color: #22c55e;
-}
-
-.completion-card {
-    text-align: center;
-    border-color: rgba(34, 197, 94, 0.25);
-}
-
-.completion-icon {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(34, 197, 94, 0.14);
-    color: var(--hijau-glow);
-    font-size: 1.8rem;
-    box-shadow: 0 0 30px rgba(34, 197, 94, 0.18);
-}
-
-.completion-badges {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.completion-pill {
-    padding: 8px 14px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    font-size: 0.85rem;
-}
-
-@media (max-width: 768px) {
-    .impact-grid {
-        grid-template-columns: 1fr;
-    }
+[data-theme="light"] .btn-start:hover {
+    box-shadow: 0 10px 20px rgba(22, 163, 74, 0.3);
 }

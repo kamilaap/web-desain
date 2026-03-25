@@ -7,7 +7,6 @@ function loadNavbar() {
   const prefix = diSubfolder ? "../" : "";
 
   const halamanSekarang = window.location.pathname.split("/").pop() || "beranda.html";
-
   const fiturAktif = ["calculator.html", "ecochallenge.html"].includes(halamanSekarang) ? "active" : "";
 
   const menus = [
@@ -24,13 +23,13 @@ function loadNavbar() {
 
   const dropdown = `
     <div class="nav-dropdown" id="navDropdown">
-      <button class="nav-link nav-dropdown-toggle ${fiturAktif}" id="dropdownToggle">
+      <a href="#" class="nav-link nav-dropdown-toggle ${fiturAktif}" id="dropdownToggle" role="button">
         Fitur <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" stroke-width="2.5"
           stroke-linecap="round" stroke-linejoin="round" class="dropdown-chevron">
           <polyline points="6 9 12 15 18 9"/>
         </svg>
-      </button>
+      </a>
       <div class="nav-dropdown-menu" id="dropdownMenu">
         <a href="${prefix}fitur/calculator.html" class="nav-dropdown-item ${halamanSekarang === 'calculator.html' ? 'active' : ''}">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
@@ -60,6 +59,31 @@ function loadNavbar() {
     </div>
   `;
 
+  // Ikon matahari (untuk switch ke mode terang) & bulan (untuk switch ke mode gelap)
+  const ikonTerang = `
+    <svg class="nav-tema-terang" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"/>
+      <line x1="12" y1="1" x2="12" y2="3"/>
+      <line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/>
+      <line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </svg>
+  `;
+
+  const ikonGelap = `
+    <svg class="nav-tema-gelap" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  `;
+
   document.getElementById("navbar").innerHTML = `
     <nav>
       <a href="${prefix}beranda.html" class="nav-brand">
@@ -71,6 +95,10 @@ function loadNavbar() {
         ${dropdown}
         <a href="${prefix}kontak.html" class="nav-link ${halamanSekarang === 'kontak.html' ? 'active' : ''}">Kontak</a>
       </div>
+      <button class="nav-tema" id="temaToggle" title="Ganti tema">
+        ${ikonTerang}
+        ${ikonGelap}
+      </button>
       <div class="nav-hamburger" id="navHamburger">
         <span></span>
         <span></span>
@@ -79,17 +107,38 @@ function loadNavbar() {
     </nav>
   `;
 
+  // ── Tema: init dari localStorage ──
+  const temaTersimpan = localStorage.getItem("tema");
+  if (temaTersimpan === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+
+  const temaToggle = document.getElementById("temaToggle");
+  temaToggle.addEventListener("click", function () {
+    const isLight = document.documentElement.getAttribute("data-theme") === "light";
+    if (isLight) {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("tema", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+      localStorage.setItem("tema", "light");
+    }
+  });
+
+  // ── Hamburger ──
   const hamburger = document.getElementById("navHamburger");
   const menu = document.getElementById("navMenu");
-  const toggle = document.getElementById("dropdownToggle");
-  const dropMenu = document.getElementById("dropdownMenu");
-
   hamburger.addEventListener("click", function () {
     hamburger.classList.toggle("terbuka");
     menu.classList.toggle("terbuka");
   });
 
+  // ── Dropdown Fitur ──
+  const toggle = document.getElementById("dropdownToggle");
+  const dropMenu = document.getElementById("dropdownMenu");
+
   toggle.addEventListener("click", function (e) {
+    e.preventDefault();
     e.stopPropagation();
     const sudahTerbuka = dropMenu.classList.contains("terbuka");
     dropMenu.classList.toggle("terbuka", !sudahTerbuka);
@@ -115,19 +164,16 @@ function loadFooter() {
   const prefix = diSubfolder ? "../" : "";
 
   document.getElementById("footer").innerHTML = `
- <footer class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-
         <div class="footer-atas">
           <div class="footer-brand">
             <img src="${prefix}../../assets/img/logo.png" alt="Logo" class="footer-logo">
-            
             <div class="footer-brand-text">
               <div class="footer-nama">Bumi Berbicara</div>
               <div class="footer-tagline">Sadar lingkungan, mulai dari kita.</div>
             </div>
           </div>
-
           <div class="footer-nav">
             <div class="footer-nav-col">
               <div class="footer-nav-judul">Halaman</div>
@@ -146,11 +192,9 @@ function loadFooter() {
             </div>
           </div>
         </div>
-
         <div class="footer-bawah">
           <div class="footer-copy">© 2026 Bumi Berbicara. Dibuat dengan ❤️ untuk bumi.</div>
         </div>
-
       </div>
     </footer>
   `;

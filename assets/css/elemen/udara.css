@@ -37,6 +37,10 @@
     z-index: 1;
 }
 
+[data-theme="light"] .hero-overlay {
+    background: linear-gradient(to bottom, rgba(240, 247, 241, 0.5) 0%, rgba(240, 247, 241, 0.75) 100%);
+}
+
 .hero-ikon, .hero-nomor, .hero-judul, .hero-sub {
     position: relative;
     z-index: 2;
@@ -67,6 +71,12 @@
     background-clip: text;
 }
 
+[data-theme="light"] .hero-judul {
+    background: linear-gradient(135deg, var(--teks-utama) 40%, var(--warna-udara));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
 .hero-sub {
     color: var(--teks-redup);
     font-size: 0.95rem;
@@ -84,8 +94,7 @@
 }
 
 .stat-card {
-    background: rgba(15, 39, 20, 0.4); 
-    backdrop-filter: blur(5px);
+    background: var(--bg-card);
     border: 1px solid var(--hijau-border);
     border-radius: 12px;
     padding: 25px 20px;
@@ -96,17 +105,45 @@
     text-align: center;
 }
 
+/* Glassmorphism hanya di dark mode */
+:root:not([data-theme="light"]) .stat-card {
+    background: rgba(15, 39, 20, 0.4);
+    backdrop-filter: blur(5px);
+}
+
 .stat-card:hover {
     border-color: var(--hijau-medium);
     transform: translateY(-5px);
     background: rgba(46, 107, 56, 0.1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .stat-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .stat-number {
     font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 8px;
+    color: var(--warna-udara);
+}
+
+.stat-card p {
+    color: var(--teks-redup);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.stat-card a {
+    color: var(--teks-redup);
+    font-size: 0.82rem;
+    margin-top: 8px;
+    display: inline-block;
+    transition: color 0.2s;
+}
+
+.stat-card a:hover {
     color: var(--warna-udara);
 }
 
@@ -124,9 +161,10 @@
     border-radius: 40px;
 }
 
-/* Baris Industri dengan Latar Terang */
+/* Baris dengan latar berbeda */
 .info-row.row-light {
-    background-color: #e0e0e0;
+    background-color: var(--bg-card);
+    border: 1px solid var(--hijau-border);
     flex-direction: row-reverse;
     border-radius: 60px;
     padding: 40px;
@@ -136,8 +174,8 @@
     position: relative;
     flex: 1;
     height: 350px;
-    border-radius: 60px; /* Sesuai desain kamu */
-    overflow: hidden; /* Ini kunci untuk memotong logo */
+    border-radius: 60px;
+    overflow: hidden;
     border: 1px solid var(--hijau-border);
 }
 
@@ -147,9 +185,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* Kita perbesar video agar elemen UI YouTube terdorong keluar frame */
-    transform: scale(1.35); 
-    pointer-events: none; /* Agar user tidak bisa klik logo/judul */
+    transform: scale(1.35);
+    pointer-events: none;
 }
 
 .video-clean-wrapper iframe {
@@ -157,12 +194,12 @@
     height: 100%;
     object-fit: cover;
 }
-/* Placeholder Video YouTube */
+
 .video-placeholder-link {
     display: flex;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                 url('https://img.youtube.com/vi/BchDmzVKcaQ/maxresdefault.jpg');
     background-size: cover;
     background-position: center;
@@ -181,7 +218,7 @@
 .video-lokal {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Memastikan video memenuhi kotak tanpa gepeng */
+    object-fit: cover;
     display: block;
 }
 
@@ -189,8 +226,19 @@
     flex: 1.2;
 }
 
+.info-text h3 {
+    color: var(--teks-utama);
+    margin-bottom: 12px;
+}
+
+.info-text p {
+    color: var(--teks-redup);
+    line-height: 1.7;
+}
+
+/* teks-gelap: otomatis ikut tema */
 .teks-gelap {
-    color: #1a1a1a !important;
+    color: var(--teks-utama) !important;
 }
 
 .teks-hijau-cerah {
@@ -214,7 +262,6 @@
     }
 }
 
-/* Delay Animasi */
 .stat-card:nth-child(1) { animation-delay: 0.2s; }
 .stat-card:nth-child(2) { animation-delay: 0.4s; }
 .stat-card:nth-child(3) { animation-delay: 0.6s; }
@@ -243,13 +290,12 @@
 .dampak-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Ini akan membuat kartu baris bawah otomatis ke tengah */
+    justify-content: center;
     gap: 25px;
 }
 
-/* Hapus aturan margin-left 50% yang lama karena sudah diganti justify-content */
-.dampak-card:nth-child(4), 
-.dampak-card:nth-child(5) { 
+.dampak-card:nth-child(4),
+.dampak-card:nth-child(5) {
     margin-left: 0;
 }
 
@@ -258,11 +304,9 @@
     border-radius: 24px;
     overflow: hidden;
     border: 1px solid var(--hijau-border);
-    transition: transform 0.3s ease, border-color 0.3s ease;
-    
-    /* Tentukan lebar pasti kartu agar sama atas & bawah */
-    width: calc(33.333% - 20px); 
-    min-width: 300px; /* Agar tidak terlalu kecil di layar tanggung */
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s;
+    width: calc(33.333% - 20px);
+    min-width: 300px;
     display: flex;
     flex-direction: column;
 }
@@ -272,11 +316,10 @@
     border-color: var(--warna-udara);
 }
 
-/* Pastikan tinggi area gambar konsisten */
 .dampak-img-wrapper {
     position: relative;
     width: 100%;
-    height: 250px; /* Samakan tinggi semua gambar */
+    height: 250px;
     overflow: hidden;
 }
 
@@ -300,6 +343,10 @@
     padding: 20px;
 }
 
+[data-theme="light"] .dampak-overlay {
+    background: linear-gradient(to top, rgba(15, 39, 20, 0.85), transparent);
+}
+
 .dampak-overlay h3 {
     font-size: 1rem;
     color: white;
@@ -317,7 +364,6 @@
     line-height: 1.6;
 }
 
-/* Responsif Mobile */
 @media (max-width: 992px) {
     .dampak-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -343,7 +389,8 @@
 }
 
 .solusi-card {
-    background: #ffffff; /* Warna putih sesuai gambar */
+    background: var(--bg-card);
+    border: 1px solid var(--hijau-border);
     border-radius: 30px;
     padding: 40px 30px;
     text-align: center;
@@ -353,54 +400,59 @@
     align-items: center;
 }
 
-/* Efek Glow Hijau untuk kartu yang aktif/highlight */
+[data-theme="light"] .solusi-card {
+    background: #ffffff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
 .card-highlight {
     box-shadow: 0 0 25px rgba(46, 160, 67, 0.4);
     transform: translateY(-5px);
 }
 
 .solusi-icon-wrapper {
-    height: 80px;      /* Mengunci tinggi area ikon */
-    width: 100%;       /* Memenuhi lebar kartu */
-    display: flex;     /* Menggunakan flexbox agar ikon di tengah */
+    height: 80px;
+    width: 100%;
+    display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
 }
-/* Pastikan semua ikon Font Awesome berwarna hijau */
-.solusi-icon-wrapper i{
+
+.solusi-icon-wrapper i {
     font-size: 3rem;
-    color: #2ea043;
+    color: var(--hijau-medium);
 }
-/* Mengatur ukuran gambar PNG agar sama besarnya dengan ikon Font Awesome */
+
 .solusi-img-file {
-    height: 100px;      /* <--- Atur besar kecilnya gambar di sini */
-    width: auto;       /* Menjaga proporsi agar tidak gepeng */
-    
+    height: 100px;
+    width: auto;
     object-fit: contain;
 }
 
 .solusi-card h3 {
-text-align: center; /* Meratakan teks ke tengah */
-    width: 100%;        /* Memastikan elemen mengambil lebar penuh */
+    text-align: center;
+    width: 100%;
     margin-bottom: 35px;
-
-    color: #1a1a1a;
+    color: var(--teks-utama);
 }
 
 .solusi-card p {
-    color: #4a4a4a; /* Teks deskripsi abu gelap */
+    color: var(--teks-redup);
     font-size: 0.95rem;
     line-height: 1.6;
 }
 
-/* Hover Effect */
 .solusi-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--hijau-medium);
 }
 
-/* Penyesuaian Responsif */
+[data-theme="light"] .solusi-card:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 480px) {
     .solusi-card {
         padding: 30px 20px;
