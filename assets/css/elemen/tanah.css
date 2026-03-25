@@ -36,6 +36,33 @@ html, body {
     letter-spacing: 1px;
 }
 
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(200, 135, 74, 0.42), transparent);
+    margin: 8px 0;
+}
+
+.section-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warna-tanah);
+    margin-bottom: 12px;
+}
+
+.section-kicker::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 99px;
+    background: var(--warna-tanah);
+}
+
 .border-hijau {
     border-color: var(--warna-tanah) !important;
 }
@@ -138,6 +165,7 @@ html, body {
     justify-content: center;
     width: 100%;
     margin-top: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22);
 }
 
 .hero-video {
@@ -169,6 +197,7 @@ html, body {
     position: relative;
     z-index: 2;
     color: white;
+    max-width: 720px;
 }
 
 .hero-content h1, 
@@ -192,12 +221,20 @@ html, body {
     font-size: 0.85rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUpTanah 0.8s ease 0.2s forwards;
 }
 
 .hero-judul {
-    font-size: 5rem;
+    font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 800;
     letter-spacing: -2px;
+    background: linear-gradient(135deg, #ffffff 25%, #f0cfab 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    animation: fadeUpTanah 0.8s ease 0.4s forwards;
 }
 
 .hero-sub {
@@ -205,6 +242,50 @@ html, body {
     margin: 20px auto 0;
     line-height: 1.6;
     color: var(--teks-redup);
+    opacity: 0;
+    animation: fadeUpTanah 0.8s ease 0.6s forwards;
+}
+
+.hero-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 34px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    opacity: 0;
+    animation: fadeUpTanah 0.8s ease 0.9s forwards;
+}
+
+.hero-scroll-line {
+    width: 1px;
+    height: 38px;
+    background: linear-gradient(to bottom, var(--warna-tanah), transparent);
+    animation: scrollPulseTanah 2s ease-in-out infinite;
+}
+
+@keyframes fadeUpTanah {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scrollPulseTanah {
+    0%, 100% {
+        opacity: 0.45;
+        transform: scaleY(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scaleY(1.18);
+    }
 }
 
 /*card*/
@@ -212,24 +293,49 @@ html, body {
 
 .cause-card {
     background-color: var(--bg-card-light);
-    border-radius: 15px;
+    border-radius: 20px;
     overflow: hidden;
     height: 100%;
     border: 1px solid rgba(200, 135, 74, 0.14);
     box-shadow: 0 8px 22px rgba(0,0,0,0.12);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
 }
 
 .cause-card:hover {
     transform: translateY(-8px);
     border-color: rgba(200, 135, 74, 0.32);
-    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.2);
 }
 
 .cause-card .badge {
     background-color: rgba(200, 135, 74, 0.12) !important;
     color: #8a5528 !important;
     border: 1px solid rgba(200, 135, 74, 0.24);
+}
+
+.img-container {
+    position: relative;
+}
+
+.cause-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(20, 11, 5, 0.02), rgba(20, 11, 5, 0.16));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cause-card img {
+    transition: transform 0.45s ease;
+}
+
+.cause-card:hover img {
+    transform: scale(1.05);
+}
+
+.cause-card .card-body {
+    position: relative;
 }
 
 .cause-img {
@@ -314,6 +420,47 @@ html, body {
     color: rgba(255, 255, 255, 0.78);
     line-height: 1.6;
     font-size: 0.92rem;
+}
+
+.highlight-box {
+    background: linear-gradient(135deg, rgba(200, 135, 74, 0.12), rgba(200, 135, 74, 0.04));
+    border: 1px solid rgba(200, 135, 74, 0.22);
+    border-radius: 24px;
+    padding: 34px 36px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-box::before {
+    content: "";
+    position: absolute;
+    inset: auto auto -24px -24px;
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, rgba(200, 135, 74, 0.18), transparent 70%);
+    pointer-events: none;
+}
+
+.highlight-box p {
+    color: var(--teks-utama);
+    font-size: 1.08rem;
+    line-height: 1.8;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-box cite {
+    display: block;
+    margin-top: 14px;
+    color: var(--warna-tanah);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-style: normal;
+    position: relative;
+    z-index: 1;
 }
 
 .btn-outline-hijau {
@@ -512,6 +659,16 @@ html, body {
         color: rgba(27, 18, 12, 0.65);
     }
 
+    .hero-judul {
+        background: linear-gradient(135deg, #4a2812 20%, #a05c1e 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+    }
+
+    .hero-scroll {
+        color: rgba(27, 18, 12, 0.55);
+    }
+
     /* ---- Teks putih Bootstrap → gelap ---- */
     .text-white,
     .text-white-50 {
@@ -534,6 +691,15 @@ html, body {
     /* ---- Source note ---- */
     .source-note-text {
         color: rgba(0, 0, 0, 0.75);
+    }
+
+    .highlight-box {
+        background: linear-gradient(135deg, rgba(200, 135, 74, 0.12), rgba(255, 255, 255, 0.8));
+        border-color: rgba(200, 135, 74, 0.28);
+    }
+
+    .highlight-box p {
+        color: #1b120c;
     }
 
     /* ---- Stat card v2 ---- */
@@ -607,6 +773,10 @@ html, body {
         color: rgba(27, 18, 12, 0.75) !important;
     }
 
+    .cause-image-overlay {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(160, 92, 30, 0.1));
+    }
+
     /* ---- About card ---- */
     .section-tentang {
         background-color: #f5ede3;
@@ -649,6 +819,7 @@ html, body {
         color: rgba(27, 18, 12, 0.55) !important;
     }
 }
+<<<<<<< HEAD
 
 .music-btn {
     position: fixed;
@@ -672,3 +843,5 @@ html, body {
     transform: scale(1.1);
     background: rgba(46, 160, 67, 1);
 }
+=======
+>>>>>>> 327d8fbe8711bea9116cfce407caac0c2bd70b18
