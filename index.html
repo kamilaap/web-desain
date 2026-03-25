@@ -1,43 +1,1099 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bumi Berbicara</title>
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/beranda.css">
-  <link rel="stylesheet" href="assets/css/elemen.css">
-  <link rel="stylesheet" href="assets/css/calculator.css">
-  <link rel="stylesheet" href="assets/css/ecochallenge.css">
-  <link rel="stylesheet" href="assets/css/tentang.css">
-  <link rel="stylesheet" href="assets/css/kontak.css">
+  <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon" />
+  <script>(function(){var t=localStorage.getItem('tema');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+
+  <!-- External libs -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Project CSS -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
   <style>
+    /* ══════════════════════════════════════
+       SMOOTH SCROLL & SECTION BASE
+    ══════════════════════════════════════ */
     html { scroll-behavior: smooth; }
+
+    section[id] {
+      scroll-margin-top: 64px;
+    }
+
+    /* ══════════════════════════════════════
+       SECTION HERO (BERANDA)
+    ══════════════════════════════════════ */
+    .hero-section {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .hero-content { flex: 1; }
+
+    .teks-hijau-cerah {
+      color: #4ade80;
+      line-height: 1;
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .teks-biru-muda {
+      color: var(--warna-udara);
+      line-height: 1;
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+
+    .element-grid {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .element-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+      border: 1.5px solid var(--hijau-border);
+      overflow: hidden;
+      background: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .element-box:hover {
+      transform: translateY(-4px);
+      border-color: var(--hijau-medium);
+    }
+
+    .element-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-video {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 24px;
+      border: 1.5px solid var(--hijau-border);
+      object-fit: cover;
+      aspect-ratio: 9/16;
+    }
+
+    @media (max-width: 768px) {
+      .hero-card { flex-direction: column; gap: 32px; }
+      .teks-hijau-cerah, .teks-biru-muda { font-size: 2.8rem; }
+      .hero-video { max-width: 100%; aspect-ratio: 16/9; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION DIVIDER
+    ══════════════════════════════════════ */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--hijau-border), transparent);
+      margin: 0 auto;
+    }
+
+    /* ══════════════════════════════════════
+       SECTION TENTANG
+    ══════════════════════════════════════ */
+    #tentang {
+      padding: 100px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .tentang-container {
+      position: relative;
+    }
+
+    .light-beam {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--hijau-medium), transparent);
+      opacity: 0.4;
+    }
+
+    .tentang-content {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    .tentang-hero {
+      max-width: 700px;
+    }
+
+    .headline {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--teks-utama);
+    }
+
+    .highlight-green { color: #4ade80; }
+    .highlight-blue  { color: var(--warna-udara); }
+
+    .deskripsi {
+      font-size: 1rem;
+      color: var(--teks-redup);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .brand-text {
+      color: #4ade80;
+      font-weight: 700;
+    }
+
+    .quote-card {
+      border-left: 3px solid var(--hijau-medium);
+      padding: 16px 24px;
+      background: var(--bg-card);
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      color: var(--teks-redup);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* Stats */
+    .tentang-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--hijau-border);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--hijau-medium);
+    }
+
+    .stat-info h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+
+    .stat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .icon-air   { background: rgba(58, 159, 255, 0.15); color: var(--warna-air); }
+    .icon-udara { background: rgba(255, 77, 77, 0.15);  color: #ff4d4d; }
+    .icon-tanah { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+
+    @media (max-width: 900px) {
+      .tentang-stats { grid-template-columns: 1fr; }
+      .headline { font-size: 2.5rem; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION ELEMEN
+    ══════════════════════════════════════ */
+    #elemen {
+      padding: 100px 24px;
+      background: var(--bg-card);
+    }
+
+    .elemen-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--hijau-medium);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      color: var(--teks-redup);
+      font-size: 1rem;
+      margin-bottom: 48px;
+    }
+
+    /* Elemen cards */
+    .halaman { padding: 0; }
+    .judul   { display: none; }
+    .subjudul { display: none; }
+
+    .card {
+      display: block;
+      background: var(--bg-utama);
+      border: 1.5px solid var(--hijau-border) !important;
+      border-radius: 20px !important;
+      padding: 28px;
+      text-decoration: none;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      color: var(--teks-utama);
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .card.air:hover   { border-color: var(--warna-air) !important; }
+    .card.udara:hover { border-color: var(--warna-udara) !important; }
+    .card.tanah:hover { border-color: var(--warna-tanah) !important; }
+
+    .card .ikon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .card.air   .ikon { color: var(--warna-air); }
+    .card.udara .ikon { color: var(--warna-udara); }
+    .card.tanah .ikon { color: var(--warna-tanah); }
+
+    .card .nomor {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teks-redup);
+      margin-bottom: 6px;
+    }
+
+    .card .nama {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card .deskripsi {
+      font-size: 0.88rem;
+      color: var(--teks-redup);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--teks-redup);
+      margin-bottom: 6px;
+    }
+
+    .bar-bg {
+      background: var(--hijau-border);
+      border-radius: 99px;
+      height: 6px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .bar-isi {
+      height: 100%;
+      border-radius: 99px;
+      width: 0;
+      transition: width 1.2s ease;
+    }
+
+    .card.air   .bar-isi { background: var(--warna-air); }
+    .card.udara .bar-isi { background: var(--warna-udara); }
+    .card.tanah .bar-isi { background: var(--warna-tanah); }
+
+    .card .tombol {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--teks-redup);
+      transition: color 0.2s;
+    }
+
+    .card.air:hover   .tombol { color: var(--warna-air); }
+    .card.udara:hover .tombol { color: var(--warna-udara); }
+    .card.tanah:hover .tombol { color: var(--warna-tanah); }
+
+    /* Fitur teaser */
+    .fitur-teaser {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .fitur-card {
+      background: var(--bg-utama);
+      border: 1.5px solid var(--hijau-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+      color: var(--teks-utama);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .fitur-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--hijau-medium);
+      color: var(--teks-utama);
+    }
+
+    .fitur-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(46, 107, 56, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #4ade80;
+      flex-shrink: 0;
+    }
+
+    .fitur-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .fitur-desc {
+      font-size: 0.83rem;
+      color: var(--teks-redup);
+    }
+
+    @media (max-width: 768px) {
+      .fitur-teaser { grid-template-columns: 1fr; }
+      .section-title { font-size: 1.8rem; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION KONTAK
+    ══════════════════════════════════════ */
+    #kontak {
+      padding: 100px 24px;
+    }
+
+    .kontak-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Override Bootstrap untuk dark/light theme */
+    .card-kontak {
+      background-color: var(--bg-card);
+      border: 1.5px solid var(--hijau-border);
+      border-radius: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .custom-input,
+    .input-custom {
+      background-color: var(--bg-utama) !important;
+      border: 1.5px solid var(--hijau-border) !important;
+      color: var(--teks-utama) !important;
+      border-radius: 10px !important;
+      transition: border-color 0.2s;
+    }
+
+    .custom-input:focus,
+    .input-custom:focus {
+      border-color: var(--hijau-medium) !important;
+      box-shadow: none !important;
+      background-color: var(--bg-utama) !important;
+    }
+
+    .custom-input::placeholder,
+    .input-custom::placeholder { color: var(--teks-redup) !important; }
+
+    .social-item span { color: var(--teks-redup); }
+
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(46, 107, 56, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4ade80;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .info-card { background-color: var(--bg-card) !important; }
+
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(46, 107, 56, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #4ade80;
+    }
+
+    .info-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teks-utama);
+      margin-bottom: 8px;
+    }
+
+    .info-list {
+      padding-left: 16px;
+      color: var(--teks-redup);
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    .response-badge {
+      display: inline-block;
+      background: rgba(46, 107, 56, 0.2);
+      color: #4ade80;
+      border-radius: 99px;
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid rgba(46, 107, 56, 0.4);
+    }
+
+    /* FAQ Bootstrap override */
+    .faq-container {
+      border: 1.5px solid var(--hijau-border);
+      border-radius: 16px;
+      padding: 28px;
+      background: var(--bg-card);
+    }
+
+    .accordion-button {
+      color: var(--teks-utama) !important;
+      background: transparent !important;
+      font-size: 0.95rem;
+    }
+
+    .accordion-button::after {
+      filter: invert(1) sepia(1) saturate(2) hue-rotate(90deg);
+    }
+
+    [data-theme="light"] .accordion-button::after { filter: none; }
+
+    .accordion-item { background: transparent !important; }
+    .accordion-body  { color: var(--teks-redup) !important; }
+
+    [data-theme="light"] .accordion-button {
+      color: var(--teks-utama) !important;
+    }
+
+    [data-theme="light"] .text-light { color: var(--teks-utama) !important; }
+    [data-theme="light"] .text-white { color: var(--teks-utama) !important; }
+
+    /* ══════════════════════════════════════
+       SCROLL REVEAL ANIMATION
+    ══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
   </style>
 </head>
+
 <body>
 
-  <!-- Navbar -->
+  <!-- ── NAVBAR ── -->
   <div id="navbar"></div>
 
-  <!-- Semua halaman jadi section -->
-  <section id="beranda"></section>
-  <section id="elemen"></section>
-  <section id="kalkulator"></section>
-  <section id="ecochallenge"></section>
-  <section id="tentang"></section>
-  <section id="kontak"></section>
+  <!-- ══════════════════════════════════════
+       SECTION 1: BERANDA (HERO)
+  ══════════════════════════════════════ -->
+  <section id="beranda">
+    <div class="hero-section">
+      <div class="hero-card">
+        <div class="hero-content reveal">
+          <h1 class="teks-hijau-cerah">BUMI</h1>
+          <h1 class="teks-biru-muda">BERBICARA</h1>
+          <p class="teks-redup mt-kecil" style="max-width: 480px;">
+            Eksplorasi tiga elemen fundamental bumi dan krisis yang mengancam keseimbangannya — sebelum terlambat.
+          </p>
+          <div class="element-grid mt-sedang">
+            <div class="element-box">
+              <img src="assets/img/elemen-air.png" alt="Elemen Air">
+            </div>
+            <div class="element-box">
+              <img src="assets/img/elemen-tanah.png" alt="Elemen Tanah">
+            </div>
+            <div class="element-box">
+              <img src="assets/img/elemen-udara.png" alt="Elemen Udara">
+            </div>
+          </div>
+          <div style="display:flex; gap: 12px; flex-wrap: wrap;" class="mt-sedang">
+            <a href="#elemen" class="btn-hijau" style="text-decoration:none; display:inline-block;">
+              Ayo Mulai
+            </a>
+            <a href="#tentang" class="btn-hijau" style="text-decoration:none; display:inline-block; background: transparent; border: 1.5px solid var(--hijau-medium); color: var(--teks-utama);">
+              Tentang Kami
+            </a>
+          </div>
+        </div>
+        <div class="hero-image reveal reveal-delay-2">
+          <video autoplay muted loop playsinline class="hero-video">
+            <source src="assets/video/video-bumi.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Footer -->
+  <div class="section-divider"></div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 2: TENTANG
+  ══════════════════════════════════════ -->
+  <section id="tentang">
+    <div class="tentang-container">
+      <div class="light-beam"></div>
+      <div class="tentang-content">
+
+        <div class="tentang-hero reveal">
+          <h1 class="headline">
+            KENAPA BUMI <br>
+            <span class="highlight-green">BUTUH</span> <br>
+            <span class="highlight-blue">SUARAMU?</span>
+          </h1>
+          <p class="deskripsi mt-sedang">
+            Bumi punya 3 elemen yang menopang seluruh kehidupan —
+            <strong>air, udara, dan tanah</strong>. Tapi hari demi hari,
+            ketiganya menghadapi ancaman nyata.
+          </p>
+          <p class="deskripsi mt-kecil">
+            <span class="brand-text">Bumi Berbicara</span> hadir bukan sekadar memberi informasi.
+            Kami ingin kamu merasakan urgensinya dan mengambil aksi nyata
+            mulai dari hal kecil di sekitarmu.
+          </p>
+          <div class="quote-card mt-besar">
+            <p>"Satu orang yang peduli lebih berharga dari seribu orang yang tahu tapi diam. Bumi Berbicara adalah langkah pertamamu."</p>
+          </div>
+        </div>
+
+        <div class="tentang-stats">
+          <div class="stat-card reveal reveal-delay-1">
+            <div class="stat-info">
+              <h2 style="color: var(--warna-air);">
+                <span class="counter" data-target="2.2">0</span> M
+              </h2>
+              <p class="teks-redup">Orang tanpa akses air minum yang aman</p>
+            </div>
+            <div class="stat-icon icon-air">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
+          </div>
+
+          <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-info">
+              <h2 style="color: #ff4d4d;">
+                <span class="counter" data-target="99">0</span> %
+              </h2>
+              <p class="teks-redup">Populasi dunia menghirup udara melampaui batas aman WHO</p>
+            </div>
+            <div class="stat-icon icon-udara">
+              <i class="fa-solid fa-wind"></i>
+            </div>
+          </div>
+
+          <div class="stat-card reveal reveal-delay-3">
+            <div class="stat-info">
+              <h2 style="color: #4ade80;">
+                <span class="counter" data-target="33">0</span> %
+              </h2>
+              <p class="teks-redup">Tanah dunia mengalami degradasi parah</p>
+            </div>
+            <div class="stat-icon icon-tanah">
+              <i class="fa-solid fa-tree"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 3: ELEMEN
+  ══════════════════════════════════════ -->
+  <section id="elemen">
+    <div class="elemen-wrapper">
+      <div class="reveal">
+        <p class="section-label">Eksplorasi</p>
+        <h2 class="section-title">Tiga Elemen Bumi</h2>
+        <p class="section-sub">Pilih elemen untuk mulai menjelajah</p>
+      </div>
+
+      <div class="container px-0">
+        <div class="row g-4">
+
+          <!-- Air -->
+          <div class="col-md-4 reveal reveal-delay-1">
+            <a href="pages/elemen/air.html" class="card air" data-progress="38">
+              <div class="ikon"><i class="fa-solid fa-droplet"></i></div>
+              <div class="nomor">Elemen 01</div>
+              <div class="nama">Air</div>
+              <p class="deskripsi">
+                Sumber kehidupan yang menutupi 71% bumi — namun hanya 3% yang bisa diminum.
+                Pelajari krisis air yang mengancam jutaan orang.
+              </p>
+              <div class="bar-label">
+                <span>Kualitas Air Global</span>
+                <span>38%</span>
+              </div>
+              <div class="bar-bg"><div class="bar-isi"></div></div>
+              <span class="tombol">Jelajahi Air →</span>
+            </a>
+          </div>
+
+          <!-- Udara -->
+          <div class="col-md-4 reveal reveal-delay-2">
+            <a href="pages/elemen/udara.html" class="card udara" data-progress="54">
+              <div class="ikon"><i class="fa-solid fa-wind"></i></div>
+              <div class="nomor">Elemen 02</div>
+              <div class="nama">Udara</div>
+              <p class="deskripsi">
+                Setiap tarikan napas membawa udara yang makin tercemar.
+                Temukan bagaimana polusi mengubah langit dan kesehatan kita.
+              </p>
+              <div class="bar-label">
+                <span>Indeks Kualitas Udara</span>
+                <span>54%</span>
+              </div>
+              <div class="bar-bg"><div class="bar-isi"></div></div>
+              <span class="tombol">Jelajahi Udara →</span>
+            </a>
+          </div>
+
+          <!-- Tanah -->
+          <div class="col-md-4 reveal reveal-delay-3">
+            <a href="pages/elemen/tanah.html" class="card tanah" data-progress="29">
+              <div class="ikon"><i class="fa-solid fa-seedling"></i></div>
+              <div class="nomor">Elemen 03</div>
+              <div class="nama">Tanah</div>
+              <p class="deskripsi">
+                Tanah subur butuh ribuan tahun untuk terbentuk, tapi bisa rusak dalam hitungan tahun.
+                Kenali ancaman nyata bagi pondasi kehidupan ini.
+              </p>
+              <div class="bar-label">
+                <span>Kesuburan Tanah Global</span>
+                <span>29%</span>
+              </div>
+              <div class="bar-bg"><div class="bar-isi"></div></div>
+              <span class="tombol">Jelajahi Tanah →</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Fitur Teaser -->
+      <div class="fitur-teaser reveal">
+        <a href="pages/calculator.html" class="fitur-card">
+          <div class="fitur-icon"><i class="fa-solid fa-calculator"></i></div>
+          <div>
+            <div class="fitur-title">Carbon Calculator</div>
+            <div class="fitur-desc">Hitung jejak karbon harianmu dan temukan cara menguranginya.</div>
+          </div>
+          <i class="fa-solid fa-arrow-right ms-auto" style="color: var(--teks-redup);"></i>
+        </a>
+        <a href="pages/ecochallenge.html" class="fitur-card">
+          <div class="fitur-icon"><i class="fa-solid fa-leaf"></i></div>
+          <div>
+            <div class="fitur-title">Eco Challenge</div>
+            <div class="fitur-desc">Tantang dirimu dengan aksi nyata demi bumi yang lebih sehat.</div>
+          </div>
+          <i class="fa-solid fa-arrow-right ms-auto" style="color: var(--teks-redup);"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ══════════════════════════════════════
+       SECTION 4: KONTAK
+  ══════════════════════════════════════ -->
+  <section id="kontak">
+    <div class="kontak-wrapper">
+
+      <div class="reveal mb-sedang">
+        <p class="section-label">Hubungi Kami</p>
+        <h2 class="section-title" style="color: #22c55e;">Ada Ide atau Pertanyaan?</h2>
+        <p class="teks-redup">Apakah itu saran konten, pertanyaan atau keinginan untuk berkontribusi — tulis di sini</p>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-lg-5 reveal">
+          <div class="card-kontak p-4">
+            <h3 class="teks-tengah mb-sedang" style="color: #22c55e;">Form</h3>
+            <form action="https://formspree.io/f/mlgpkqal" method="POST">
+              <div class="mb-3">
+                <label class="form-label fw-bold" style="color: #22c55e;">Nama</label>
+                <input type="text" name="nama" class="form-control custom-input" placeholder="Masukkan nama..">
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-bold" style="color: #22c55e;">Email</label>
+                <input type="email" name="email" class="form-control custom-input" placeholder="Masukkan email..">
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-bold" style="color: #22c55e;">Topik</label>
+                <input type="text" name="topik" class="form-control custom-input" placeholder="Masukkan topik..">
+              </div>
+              <div class="mb-4">
+                <label class="form-label fw-bold" style="color: #22c55e;">Pesan</label>
+                <textarea name="pesan" class="form-control input-custom" rows="4" placeholder="Tuliskan pesan.."></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn-hijau px-5 py-2 fw-bold">Kirim</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="col-lg-7 reveal reveal-delay-1">
+          <div class="row mb-5">
+            <div class="col-md-6">
+              <h3 class="mb-sedang" style="color: #22c55e; font-size: 1.2rem;">Temukan kami di sini!</h3>
+              <div class="social-item d-flex align-items-center mb-3">
+                <div class="icon-circle"><i class="fa-solid fa-envelope"></i></div>
+                <span>mybumi12@gmail.com</span>
+              </div>
+              <div class="social-item d-flex align-items-center mb-3">
+                <div class="icon-circle"><i class="fa-brands fa-instagram"></i></div>
+                <span>@bumiku_26</span>
+              </div>
+              <div class="social-item d-flex align-items-center mb-3">
+                <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+                <span>083862424824</span>
+              </div>
+            </div>
+            <div class="col-md-6 d-none d-md-block">
+              <div class="placeholder-img"
+                style="background-image: url('assets/img/0.jpg'); background-size: cover; background-position: center; height: 100%; min-height: 200px; border-radius: 15px;">
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-7">
+              <div class="card-kontak info-card p-4 h-100">
+                <div class="info-icon mb-3"><i class="fa-solid fa-seedling"></i></div>
+                <h3 class="info-card-title">Kenapa Hubungi Kami?</h3>
+                <p class="teks-redup mb-4">Kami terbuka untuk percakapan yang membantu website ini terus tumbuh dan memberi dampak yang lebih baik.</p>
+                <ul class="info-list mb-0">
+                  <li>Tanyakan informasi tentang website atau fitur yang tersedia.</li>
+                  <li>Kirim masukan untuk pengembangan konten dan pengalaman pengguna.</li>
+                  <li>Ajak kolaborasi atau kampanye kecil untuk isu lingkungan.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="card-kontak info-card p-4 h-100">
+                <div class="info-icon mb-3"><i class="fa-regular fa-clock"></i></div>
+                <h3 class="info-card-title">Jam Respons</h3>
+                <p class="teks-redup mb-3">Kami berusaha membalas pesan secepat mungkin pada hari aktif.</p>
+                <div class="response-badge">Estimasi balasan 1x24 jam</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 reveal">
+          <div class="faq-container mt-sedang">
+            <h3 class="mb-sedang" style="color: #22c55e; font-size: 1.2rem; letter-spacing: 2px;">FAQ</h3>
+            <div class="accordion accordion-flush" id="faqBumi">
+
+              <div class="accordion-item bg-transparent border-bottom border-secondary">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqTanah">
+                    Bagaimana cara mencegah degradasi tanah di lingkungan rumah?
+                  </button>
+                </h2>
+                <div id="faqTanah" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
+                  <div class="accordion-body px-0 pb-3">
+                    Kamu bisa mulai dengan membuat kompos dari sisa dapur untuk menjaga nutrisi tanah alami, menghindari penggunaan pestisida kimia, dan menanam tanaman penutup tanah untuk mencegah erosi.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item bg-transparent border-bottom border-secondary">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqAir">
+                    Apa tindakan nyata untuk menjaga kualitas air tanah?
+                  </button>
+                </h2>
+                <div id="faqAir" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
+                  <div class="accordion-body px-0 pb-3">
+                    Membuat lubang biopori di halaman rumah sangat efektif untuk membantu penyerapan air hujan ke dalam tanah, serta memastikan tidak membuang limbah minyak atau bahan kimia ke saluran air.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item bg-transparent border-bottom border-secondary">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqUdara">
+                    Bagaimana tanaman membantu memperbaiki kualitas udara?
+                  </button>
+                </h2>
+                <div id="faqUdara" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
+                  <div class="accordion-body px-0 pb-3">
+                    Tanaman menyerap karbon dioksida (CO2) dan melepaskan oksigen (O2). Beberapa tanaman juga mampu menyerap polutan berbahaya dari udara, sehingga lingkungan terasa lebih segar dan sehat.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item bg-transparent border-bottom border-secondary">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqKolaborasi">
+                    Apakah Bumi Berbicara terbuka untuk kolaborasi atau kampanye lingkungan?
+                  </button>
+                </h2>
+                <div id="faqKolaborasi" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
+                  <div class="accordion-body px-0 pb-3">
+                    Ya, kami terbuka untuk ide kolaborasi kecil seperti kampanye digital, edukasi lingkungan, atau kerja sama konten yang sejalan dengan tujuan menjaga bumi dan meningkatkan kesadaran publik.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item bg-transparent border-bottom border-secondary">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqKontribusi">
+                    Bagaimana cara ikut berkontribusi pada gerakan kecil yang ada di website ini?
+                  </button>
+                </h2>
+                <div id="faqKontribusi" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
+                  <div class="accordion-body px-0 pb-3">
+                    Kamu bisa mulai dari langkah sederhana seperti membagikan informasi, mencoba tantangan ramah lingkungan, memberi masukan untuk pengembangan website, atau mengajak orang di sekitarmu ikut peduli pada isu lingkungan.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
   <div id="footer"></div>
 
-  <!-- JS -->
+  <!-- Scripts -->
   <script src="assets/js/navbar.js"></script>
-  <script src="assets/js/loader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
-    // Panggil footer setelah semua section selesai di-load
-    window.addEventListener('load', () => {
-      if (typeof loadFooter === 'function') loadFooter();
+    // ── Override navbar: link ke anchor bukan file terpisah ──
+    // Patch setelah loadNavbar() agar link navigasi smooth scroll
+    function patchNavbarAnchors() {
+      const peta = {
+        'beranda.html': '#beranda',
+        'tentang.html': '#tentang',
+        'elemen.html':  '#elemen',
+        'kontak.html':  '#kontak',
+      };
+
+      document.querySelectorAll('nav a').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        const namaFile = href.split('/').pop();
+        if (peta[namaFile]) {
+          a.setAttribute('href', peta[namaFile]);
+          a.classList.remove('active');
+        }
+      });
+
+      // Tandai active berdasarkan scroll
+      highlightNavOnScroll();
+    }
+
+    function highlightNavOnScroll() {
+      const sections = ['beranda', 'tentang', 'elemen', 'kontak'];
+      const navLinks = document.querySelectorAll('nav a.nav-link');
+
+      const peta = {
+        '#beranda': 'beranda.html',
+        '#tentang': 'tentang.html',
+        '#elemen':  'elemen.html',
+        '#kontak':  'kontak.html',
+      };
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(a => {
+              a.classList.remove('active');
+              if (a.getAttribute('href') === '#' + id) {
+                a.classList.add('active');
+              }
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) io.observe(el);
+      });
+    }
+
+    // ── Counter animasi ──
+    function animateCounters() {
+      document.querySelectorAll('.counter').forEach(el => {
+        const target = parseFloat(el.dataset.target);
+        const isDecimal = target % 1 !== 0;
+        let start = 0;
+        const duration = 1800;
+        const startTime = performance.now();
+
+        function update(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const current = start + (target - start) * eased;
+          el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
+          if (progress < 1) requestAnimationFrame(update);
+        }
+
+        requestAnimationFrame(update);
+      });
+    }
+
+    // ── Progress bar animasi ──
+    function animateBars() {
+      document.querySelectorAll('.card[data-progress]').forEach(card => {
+        const val = card.dataset.progress;
+        const bar = card.querySelector('.bar-isi');
+        if (bar) bar.style.width = val + '%';
+      });
+    }
+
+    // ── Scroll reveal ──
+    function setupReveal() {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    }
+
+    // ── Counter observer ──
+    function setupCounterObserver() {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            animateBars();
+            io.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      const statsSection = document.querySelector('.tentang-stats');
+      if (statsSection) io.observe(statsSection);
+    }
+
+    // ── Init ──
+    document.addEventListener('DOMContentLoaded', function () {
+      loadNavbar();
+      loadFooter();
+      patchNavbarAnchors();
+      setupReveal();
+      setupCounterObserver();
+
+      // Trigger reveal untuk elemen yang sudah kelihatan saat load
+      setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) el.classList.add('visible');
+        });
+      }, 100);
     });
   </script>
 

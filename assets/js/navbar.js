@@ -1,19 +1,20 @@
 // navbar.js
 // Cara pakai: taruh <div id="navbar"></div> di setiap halaman
-// Panggil loadNavbar() sebelum </body>
+// Panggil loadNavbar() dan loadFooter() sebelum </body>
 function loadNavbar() {
   const path = window.location.pathname;
-  const diSubfolder = path.includes("/elemen/") || path.includes("/fitur/") || path.includes("/halaman");
+  const diSubfolder = path.includes("/pages/");
   const prefix = diSubfolder ? "../" : "";
+  const prefixFitur = diSubfolder ? "" : "pages/";
 
-  const halamanSekarang = window.location.pathname.split("/").pop() || "beranda.html";
+  const halamanSekarang = window.location.pathname.split("/").pop() || "index.html";
   const fiturAktif = ["calculator.html", "ecochallenge.html"].includes(halamanSekarang) ? "active" : "";
 
-  const menus = [
-    { label: "Beranda", href: prefix + "beranda.html" },
-    { label: "Tentang", href: prefix + "tentang.html" },
-    { label: "Elemen", href: prefix + "elemen.html" },
-  ];
+const menus = [
+  { label: "Beranda", href: prefix + "index.html" },
+  { label: "Tentang", href: prefix + "pages/tentang.html" },
+  { label: "Elemen", href: prefix + "pages/elemen.html" },
+];
 
   const links = menus.map(menu => {
     const namaFile = menu.href.split("/").pop();
@@ -31,7 +32,7 @@ function loadNavbar() {
         </svg>
       </a>
       <div class="nav-dropdown-menu" id="dropdownMenu">
-        <a href="${prefix}fitur/calculator.html" class="nav-dropdown-item ${halamanSekarang === 'calculator.html' ? 'active' : ''}">
+        <a href="${prefixFitur}calculator.html" class="nav-dropdown-item ${halamanSekarang === 'calculator.html' ? 'active' : ''}">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -46,7 +47,7 @@ function loadNavbar() {
           </svg>
           Carbon Calculator
         </a>
-        <a href="${prefix}fitur/ecochallenge.html" class="nav-dropdown-item ${halamanSekarang === 'ecochallenge.html' ? 'active' : ''}">
+        <a href="${prefixFitur}ecochallenge.html" class="nav-dropdown-item ${halamanSekarang === 'ecochallenge.html' ? 'active' : ''}">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -59,7 +60,6 @@ function loadNavbar() {
     </div>
   `;
 
-  // Ikon matahari (untuk switch ke mode terang) & bulan (untuk switch ke mode gelap)
   const ikonTerang = `
     <svg class="nav-tema-terang" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -86,7 +86,7 @@ function loadNavbar() {
 
   document.getElementById("navbar").innerHTML = `
     <nav>
-      <a href="${prefix}beranda.html" class="nav-brand">
+      <a href="${prefix}index.html" class="nav-brand">
         <img src="/assets/img/logo.png" alt="Logo" class="nav-logo">
         <span class="nav-brand-nama">Bumi Berbicara</span>
       </a>
@@ -160,15 +160,16 @@ function loadNavbar() {
 // Panggil loadFooter() sebelum </body>
 function loadFooter() {
   const path = window.location.pathname;
-  const diSubfolder = path.includes("/elemen/") || path.includes("/fitur/");
+  const diSubfolder = path.includes("/pages/");
   const prefix = diSubfolder ? "../" : "";
+  const prefixFitur = diSubfolder ? "" : "pages/";
 
   document.getElementById("footer").innerHTML = `
     <footer class="footer">
       <div class="footer-inner">
         <div class="footer-atas">
           <div class="footer-brand">
-            <img src="${prefix}../../assets/img/logo.png" alt="Logo" class="footer-logo">
+            <img src="/assets/img/logo.png" alt="Logo" class="footer-logo">
             <div class="footer-brand-text">
               <div class="footer-nama">Bumi Berbicara</div>
               <div class="footer-tagline">Sadar lingkungan, mulai dari kita.</div>
@@ -177,14 +178,14 @@ function loadFooter() {
           <div class="footer-nav">
             <div class="footer-nav-col">
               <div class="footer-nav-judul">Halaman</div>
-              <a href="${prefix}beranda.html" class="footer-nav-link">Beranda</a>
+              <a href="${prefix}index.html" class="footer-nav-link">Beranda</a>
               <a href="${prefix}tentang.html" class="footer-nav-link">Tentang</a>
               <a href="${prefix}elemen.html" class="footer-nav-link">Elemen</a>
             </div>
             <div class="footer-nav-col">
               <div class="footer-nav-judul">Fitur</div>
-              <a href="${prefix}fitur/calculator.html" class="footer-nav-link">Carbon Calculator</a>
-              <a href="${prefix}fitur/ecochallenge.html" class="footer-nav-link">Eco Challenge</a>
+              <a href="${prefixFitur}calculator.html" class="footer-nav-link">Carbon Calculator</a>
+              <a href="${prefixFitur}ecochallenge.html" class="footer-nav-link">Eco Challenge</a>
             </div>
             <div class="footer-nav-col">
               <div class="footer-nav-judul">Lainnya</div>
