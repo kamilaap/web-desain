@@ -36,10 +36,21 @@
     letter-spacing: -1px;
 }
 
-.highlight-green { color: #4ade80; }
+.highlight-green { 
+    color: #2e6b38; 
+}
+
+[data-theme="light"] .highlight-green {
+    color: #1e5228;
+}
+
 .highlight-blue { 
     color: var(--warna-air);
     text-shadow: 0 0 20px rgba(58, 159, 255, 0.3);
+}
+
+[data-theme="light"] .highlight-blue {
+    text-shadow: none;
 }
 
 .brand-text {
@@ -56,14 +67,19 @@
 /* Quote Card */
 .quote-card {
     padding: 20px;
-    border-left: 4px solid #4ade80;
+    border-left: 4px solid var(--hijau-medium);
     background: rgba(46, 107, 56, 0.1);
     border-radius: 0 12px 12px 0;
     font-style: italic;
     max-width: 450px;
+    color: var(--teks-utama);
 }
 
-/* Statistik Cards (Glassmorphism) */
+[data-theme="light"] .quote-card {
+    background: rgba(46, 107, 56, 0.08);
+}
+
+/* Statistik Cards */
 .tentang-stats {
     display: flex;
     flex-direction: column;
@@ -71,16 +87,22 @@
 }
 
 .stat-card {
-    background: rgba(15, 39, 20, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-card);
+    border: 1px solid var(--hijau-border);
     padding: 30px;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 0.3s ease, border 0.3s ease;
+    transition: transform 0.3s ease, border 0.3s ease, background-color 0.3s;
+}
+
+/* Glassmorphism hanya di dark mode */
+:root:not([data-theme="light"]) .stat-card {
+    background: rgba(15, 39, 20, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .stat-card:hover {
@@ -91,6 +113,15 @@
 .stat-info h2 {
     font-size: 2.8rem;
     margin-bottom: 5px;
+}
+
+/* Warna angka statistik */
+.stat-air   h2 { color: var(--warna-air); }
+.stat-udara h2 { color: #e05555; }
+.stat-tanah h2 { color: var(--hijau-medium); }
+
+.stat-info p {
+    color: var(--teks-redup);
 }
 
 /* Ikon Styling */
@@ -105,9 +136,13 @@
     background: rgba(255, 255, 255, 0.05);
 }
 
-.icon-air { color: var(--warna-air); box-shadow: 0 0 20px rgba(58, 159, 255, 0.2); }
-.icon-udara { color: #fff; opacity: 0.8; }
-.icon-tanah { color: #4ade80; }
+[data-theme="light"] .stat-icon {
+    background: rgba(46, 107, 56, 0.08);
+}
+
+.icon-air   { color: var(--warna-air); }
+.icon-udara { color: var(--teks-redup); }
+.icon-tanah { color: var(--hijau-medium); }
 
 /* Responsive */
 @media (max-width: 992px) {

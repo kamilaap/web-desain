@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Air — Bumi Berbicara</title>
-
+  <script>(function(){var t=localStorage.getItem('tema');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
@@ -24,13 +24,14 @@
 <body>
   <div id="navbar"></div>
   <div class="halaman">
+
+    <!-- ── HERO ── -->
     <div class="hero muncul">
       <iframe class="hero-video"
         src="https://www.youtube.com/embed/wzOI0spZuHc?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=wzOI0spZuHc"
         frameborder="0" allow="autoplay" allowfullscreen>
       </iframe>
       <div class="hero-overlay"></div>
-
       <div class="hero-ikon"><i class="fa-solid fa-droplet"></i></div>
       <p class="hero-nomor">Elemen 01</p>
       <h1 class="hero-judul">Air</h1>
@@ -38,183 +39,272 @@
         Sumber kehidupan yang menutupi 71% bumi — namun hanya 3% yang bisa diminum.
         Pelajari krisis air yang mengancam jutaan orang.
       </p>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        <span>SCROLL</span>
+      </div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- SECTION: Tentang Air -->
+    <!-- ── TENTANG AIR ── -->
     <section class="sek muncul">
-      <h2 class="sek-judul">Tentang Air</h2>
-      <p class="sek-sub">Kenapa air begitu penting?</p>
+      <div class="sek-header">
+        <div class="sek-label">Pengantar</div>
+        <h2 class="sek-judul">Tentang Air</h2>
+        <p class="sek-sub">Kenapa air begitu penting bagi kehidupan?</p>
+      </div>
       <div class="row g-4">
-
         <div class="col-md-4">
           <div class="kartu">
             <div class="kartu-ikon"><i class="fa-solid fa-earth-asia"></i></div>
             <h4>Fondasi Kehidupan</h4>
-            <p>Tanpa air bersih, tidak ada kesehatan, tidak ada pertanian, tidak ada peradaban. Air adalah elemen yang
-              menghubungkan semua makhluk hidup.</p>
+            <p>Tanpa air bersih, tidak ada kesehatan, tidak ada pertanian, tidak ada peradaban. Air adalah elemen yang menghubungkan semua makhluk hidup.</p>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="kartu">
             <div class="kartu-ikon"><i class="fa-solid fa-droplet"></i></div>
             <h4>Sangat Terbatas</h4>
-            <p>Meski 71% bumi tertutup air, hanya 3% yang merupakan air tawar. Dan dua pertiga dari itu terkunci di es
-              kutub dan gletser.</p>
+            <p>Meski 71% bumi tertutup air, hanya 3% yang merupakan air tawar. Dan dua pertiga dari itu terkunci di es kutub dan gletser.</p>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="kartu">
             <div class="kartu-ikon"><i class="fa-solid fa-arrow-trend-down"></i></div>
             <h4>Makin Terancam</h4>
-            <p>Limbah industri, pertanian intensif, dan sampah plastik mencemari sumber air lebih cepat dari kemampuan
-              alam untuk memulihkannya.</p>
+            <p>Limbah industri, pertanian intensif, dan sampah plastik mencemari sumber air lebih cepat dari kemampuan alam untuk memulihkannya.</p>
           </div>
         </div>
-
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- SECTION: Angka -->
+    <!-- ── ANGKA FAKTA ── -->
     <section class="sek muncul">
-      <h2 class="sek-judul">Angka yang Perlu Kamu Tau</h2>
-      <p class="sek-sub">Fakta di balik krisis air global</p>
-      <div class="row g-4">
+      <div class="sek-header">
+        <div class="sek-label">Data Global</div>
+        <h2 class="sek-judul">Angka yang Perlu Kamu Tau</h2>
+        <p class="sek-sub">Fakta di balik krisis air global</p>
+      </div>
 
+      <!-- Counter cards -->
+      <div class="row g-4 mb-5">
         <div class="col-6 col-md-3">
           <div class="kartu kartu-stat">
-            <div class="stat-angka">71%</div>
+            <span class="stat-angka" data-target="71" data-suffix="%">0%</span>
             <p>Permukaan bumi tertutup air</p>
           </div>
         </div>
-
         <div class="col-6 col-md-3">
           <div class="kartu kartu-stat">
-            <div class="stat-angka">3%</div>
+            <span class="stat-angka" data-target="3" data-suffix="%">0%</span>
             <p>Yang merupakan air tawar</p>
           </div>
         </div>
-
         <div class="col-6 col-md-3">
           <div class="kartu kartu-stat">
-            <div class="stat-angka">2.2M</div>
+            <span class="stat-angka" data-target="2.2" data-suffix="M" data-decimal="1">0M</span>
             <p>Orang tanpa akses air bersih</p>
           </div>
         </div>
-
         <div class="col-6 col-md-3">
           <div class="kartu kartu-stat">
-            <div class="stat-angka">80%</div>
+            <span class="stat-angka" data-target="80" data-suffix="%">0%</span>
             <p>Penyakit terkait air tercemar</p>
           </div>
         </div>
+      </div>
 
+      <!-- Progress bars -->
+      <div class="kartu p-4">
+        <h4 class="mb-4" style="color: var(--teks-utama)">Distribusi Air di Bumi</h4>
+        <div class="fakta-bar">
+          <div class="fakta-bar-label"><span>Air Laut (asin)</span><span>97%</span></div>
+          <div class="fakta-bar-track"><div class="fakta-bar-fill" data-width="97"></div></div>
+        </div>
+        <div class="fakta-bar">
+          <div class="fakta-bar-label"><span>Es & Gletser</span><span>2%</span></div>
+          <div class="fakta-bar-track"><div class="fakta-bar-fill" data-width="2"></div></div>
+        </div>
+        <div class="fakta-bar">
+          <div class="fakta-bar-label"><span>Air Tanah</span><span>0.6%</span></div>
+          <div class="fakta-bar-track"><div class="fakta-bar-fill" data-width="0.6"></div></div>
+        </div>
+        <div class="fakta-bar" style="margin-bottom:0">
+          <div class="fakta-bar-label"><span>Air Permukaan (sungai, danau)</span><span>0.01%</span></div>
+          <div class="fakta-bar-track"><div class="fakta-bar-fill" data-width="0.01"></div></div>
+        </div>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- SECTION: Penyebab -->
+    <!-- ── PENYEBAB ── -->
     <section class="sek muncul">
-      <h2 class="sek-judul">Kenapa Ini Bisa Terjadi?</h2>
-      <p class="sek-sub">Akar permasalahan krisis air dunia</p>
+      <div class="sek-header">
+        <div class="sek-label">Akar Masalah</div>
+        <h2 class="sek-judul">Kenapa Ini Bisa Terjadi?</h2>
+        <p class="sek-sub">Penyebab utama krisis air dunia</p>
+      </div>
       <div class="row g-4">
-
         <div class="col-md-4">
           <div class="kartu">
             <div class="kartu-ikon"><i class="fa-solid fa-industry"></i></div>
             <h4>Limbah Industri</h4>
-            <p>Pabrik membuang limbah kimia langsung ke sungai tanpa pengolahan yang memadai.</p>
+            <p>Pabrik membuang limbah kimia langsung ke sungai tanpa pengolahan yang memadai, meracuni ekosistem air selama bertahun-tahun.</p>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="kartu">
             <div class="kartu-ikon"><i class="fa-solid fa-wheat-awn"></i></div>
             <h4>Pertanian Intensif</h4>
-            <p>Pupuk dan pestisida berlebihan mencemari air tanah yang jadi sumber minum jutaan orang.</p>
+            <p>Pupuk dan pestisida berlebihan mencemari air tanah yang jadi sumber minum jutaan orang di pedesaan.</p>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="kartu">
             <div class="kartu-ikon"><i class="fa-solid fa-temperature-high"></i></div>
             <h4>Perubahan Iklim</h4>
-            <p>Pemanasan global mengubah pola hujan dan mencairkan gletser, cadangan air tawar dunia.</p>
+            <p>Pemanasan global mengubah pola hujan dan mencairkan gletser, cadangan air tawar dunia yang tidak ternilai.</p>
           </div>
         </div>
+      </div>
 
+      <!-- Quote -->
+      <div class="highlight-box mt-4 muncul">
+        <p>Air bukan hanya sumber daya — ia adalah hak asasi manusia. Namun setiap hari, jutaan orang berjalan bermil-mil hanya untuk mendapatkan setetes air bersih.</p>
+        <cite>— UN Water Report, 2023</cite>
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- SECTION: Dampak -->
+    <!-- ── DAMPAK ── -->
     <section class="sek muncul">
-      <h2 class="sek-judul">Dampak Nyata yang Kita Rasakan</h2>
-      <p class="sek-sub">Konsekuensi krisis air terhadap kehidupan</p>
+      <div class="sek-header">
+        <div class="sek-label">Konsekuensi</div>
+        <h2 class="sek-judul">Dampak Nyata yang Kita Rasakan</h2>
+        <p class="sek-sub">Apa yang terjadi ketika air bersih menghilang</p>
+      </div>
       <div class="row g-4">
-
         <div class="col-md-6">
           <div class="kartu kartu-dampak">
             <div class="dampak-nomor">01</div>
             <div>
               <h4>Krisis Kesehatan</h4>
-              <p>Air tercemar menjadi penyebab utama diare, kolera, dan tifus yang merenggut jutaan nyawa setiap tahun.
-              </p>
+              <p>Air tercemar menjadi penyebab utama diare, kolera, dan tifus yang merenggut jutaan nyawa setiap tahun — sebagian besar anak-anak.</p>
             </div>
           </div>
         </div>
-
         <div class="col-md-6">
           <div class="kartu kartu-dampak">
             <div class="dampak-nomor">02</div>
             <div>
               <h4>Ancaman Pangan</h4>
-              <p>Pertanian butuh 70% konsumsi air tawar dunia. Kekeringan yang makin sering mengancam produksi pangan.
-              </p>
+              <p>Pertanian butuh 70% konsumsi air tawar dunia. Kekeringan yang makin sering mengancam ketahanan pangan miliaran manusia.</p>
             </div>
           </div>
         </div>
-
         <div class="col-md-6">
           <div class="kartu kartu-dampak">
             <div class="dampak-nomor">03</div>
             <div>
               <h4>Konflik Sumber Daya</h4>
-              <p>Kelangkaan air memicu ketegangan antar wilayah. Para ahli menyebut perang air sebagai konflik utama
-                abad ini.</p>
+              <p>Kelangkaan air memicu ketegangan antar wilayah. Para ahli menyebut perang air sebagai konflik terbesar abad ini.</p>
             </div>
           </div>
         </div>
-
         <div class="col-md-6">
           <div class="kartu kartu-dampak">
             <div class="dampak-nomor">04</div>
             <div>
               <h4>Kepunahan Ekosistem</h4>
-              <p>Sungai dan danau yang mengering menghancurkan habitat ribuan spesies yang bergantung pada air tawar.
-              </p>
+              <p>Sungai dan danau yang mengering menghancurkan habitat ribuan spesies yang seluruh hidupnya bergantung pada air tawar.</p>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
     <div class="divider"></div>
 
-    <!-- SECTION: Aksi -->
+    <!-- ── TIMELINE ── -->
     <section class="sek muncul">
-      <h2 class="sek-judul">Mulai dari Hal Kecil</h2>
-      <p class="sek-sub">Langkah nyata yang bisa kamu lakukan sekarang</p>
-      <div class="row g-4">
+      <div class="sek-header">
+        <div class="sek-label">Sejarah</div>
+        <h2 class="sek-judul">Timeline Krisis Air Dunia</h2>
+        <p class="sek-sub">Perjalanan panjang manusia menghadapi ancaman air</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item muncul">
+          <div class="timeline-titik"></div>
+          <div class="timeline-tahun">1960</div>
+          <div class="kartu timeline-kartu">
+            <div class="timeline-badge">Awal Mula</div>
+            <h4>Revolusi Hijau & Eksploitasi Air</h4>
+            <p>Pertanian intensif mulai menyedot air tanah secara besar-besaran. Penggunaan pupuk kimia melonjak, mencemari sumber air di seluruh dunia.</p>
+          </div>
+        </div>
+        <div class="timeline-item muncul">
+          <div class="timeline-titik"></div>
+          <div class="timeline-tahun">1977</div>
+          <div class="kartu timeline-kartu">
+            <div class="timeline-badge">Konferensi Global</div>
+            <h4>UN Water Conference Pertama</h4>
+            <p>PBB mengadakan konferensi air pertama di Mar del Plata, Argentina — mengakui krisis air sebagai ancaman global yang perlu ditangani bersama.</p>
+          </div>
+        </div>
+        <div class="timeline-item muncul">
+          <div class="timeline-titik"></div>
+          <div class="timeline-tahun">1992</div>
+          <div class="kartu timeline-kartu">
+            <div class="timeline-badge">Deklarasi</div>
+            <h4>Dublin Principles</h4>
+            <p>Air resmi diakui sebagai sumber daya ekonomi yang terbatas dan rentan. Empat prinsip Dublin menjadi fondasi kebijakan air global hingga kini.</p>
+          </div>
+        </div>
+        <div class="timeline-item muncul">
+          <div class="timeline-titik"></div>
+          <div class="timeline-tahun">2000</div>
+          <div class="kartu timeline-kartu">
+            <div class="timeline-badge">Millennium Goals</div>
+            <h4>Target Air Bersih Global</h4>
+            <p>MDGs menargetkan separuh populasi tanpa akses air bersih terlayani pada 2015. Target ini hampir tercapai — namun 2 miliar orang masih tertinggal.</p>
+          </div>
+        </div>
+        <div class="timeline-item muncul">
+          <div class="timeline-titik"></div>
+          <div class="timeline-tahun">2010</div>
+          <div class="kartu timeline-kartu">
+            <div class="timeline-badge">Hak Asasi</div>
+            <h4>Air Diakui Sebagai Hak Manusia</h4>
+            <p>Majelis Umum PBB secara resmi mengakui akses air bersih dan sanitasi sebagai hak asasi manusia yang mendasar.</p>
+          </div>
+        </div>
+        <div class="timeline-item muncul">
+          <div class="timeline-titik aktif"></div>
+          <div class="timeline-tahun aktif">Kini</div>
+          <div class="kartu timeline-kartu timeline-kartu-aktif">
+            <div class="timeline-badge badge-aktif">Sekarang</div>
+            <h4>2 Miliar Orang Masih Tanpa Air Bersih</h4>
+            <p>Di tengah kemajuan teknologi, krisis air makin parah akibat perubahan iklim. Pada 2050, diperkirakan 5 miliar orang akan menghadapi kelangkaan air.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <div class="divider"></div>
+
+    <!-- ── AKSI ── -->
+    <section class="sek muncul">
+      <div class="sek-header">
+        <div class="sek-label">Langkah Nyata</div>
+        <h2 class="sek-judul">Mulai dari Hal Kecil</h2>
+        <p class="sek-sub">Yang bisa kamu lakukan hari ini</p>
+      </div>
+      <div class="row g-4">
         <div class="col-md-4">
           <div class="kartu">
             <div class="kartu-ikon"><i class="fa-solid fa-faucet-drip"></i></div>
@@ -222,7 +312,6 @@
             <p>Matikan keran saat sikat gigi dan perbaiki kebocoran pipa. Setiap tetes yang kamu hemat berarti.</p>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="kartu">
             <div class="kartu-ikon"><i class="fa-solid fa-bottle-water"></i></div>
@@ -230,7 +319,6 @@
             <p>Bawa botol minum sendiri dan hindari kemasan plastik sekali pakai yang berakhir mencemari sumber air.</p>
           </div>
         </div>
-
         <div class="col-md-4">
           <div class="kartu">
             <div class="kartu-ikon"><i class="fa-solid fa-bullhorn"></i></div>
@@ -240,11 +328,104 @@
         </div>
       </div>
     </section>
+
+    <!-- ── NAVIGASI ELEMEN ── -->
+    <section class="sek muncul">
+      <div class="sek-header text-center">
+        <div class="sek-label" style="justify-content: center;">Jelajahi Lebih</div>
+        <h2 class="sek-judul">Elemen Lainnya</h2>
+        <p class="sek-sub">Bumi punya tiga elemen yang saling terhubung. Pelajari semuanya.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+          <a href="udara.html" class="nav-elemen nav-elemen-udara">
+            <div class="nav-elemen-ikon"><i class="fa-solid fa-wind"></i></div>
+            <div class="nav-elemen-info">
+              <span class="nav-elemen-label">Elemen 02</span>
+              <h3 class="nav-elemen-judul">Udara</h3>
+              <p class="nav-elemen-sub">99% populasi hirup udara melebihi batas WHO</p>
+            </div>
+            <div class="nav-elemen-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+        </div>
+        <div class="col-md-5">
+          <a href="tanah.html" class="nav-elemen nav-elemen-tanah">
+            <div class="nav-elemen-ikon"><i class="fa-solid fa-mountain"></i></div>
+            <div class="nav-elemen-info">
+              <span class="nav-elemen-label">Elemen 03</span>
+              <h3 class="nav-elemen-judul">Tanah</h3>
+              <p class="nav-elemen-sub">33% tanah dunia sudah terdegradasi parah</p>
+            </div>
+            <div class="nav-elemen-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
   </div>
+
   <div id="footer"></div>
   <script src="../../assets/js/navbar.js"></script>
-  <script> loadNavbar(); loadFooter();</script>
-  <script src="../../assets/js/elemen/air.js"></script>
+  <script>loadNavbar(); loadFooter();</script>
+
+  <script>
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('tampil');
+
+          // Trigger counter jika ada
+          entry.target.querySelectorAll('.stat-angka[data-target]').forEach(el => {
+            animateCounter(el);
+          });
+
+          // Trigger progress bars
+          entry.target.querySelectorAll('.fakta-bar-fill[data-width]').forEach(el => {
+            setTimeout(() => {
+              el.style.width = el.dataset.width + '%';
+            }, 200);
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.muncul').forEach(el => observer.observe(el));
+
+    // ── Counter Animation ──
+    function animateCounter(el) {
+      const target = parseFloat(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      const isDecimal = el.dataset.decimal === '1';
+      const duration = 1800;
+      const start = performance.now();
+
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // easeOutExpo
+        const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+        const current = target * ease;
+        el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    // ── Magnetic hover pada kartu (mouse tracking) ──
+    document.querySelectorAll('.kartu').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mx', x + '%');
+        card.style.setProperty('--my', y + '%');
+      });
+    });
+  </script>
 </body>
 
 </html>

@@ -39,7 +39,91 @@ html, body {
 .border-hijau {
     border-color: var(--warna-tanah) !important;
 }
+/* Navigasi Elemen */
+.nav-elemen {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  border-radius: 20px;
+  border: 1.5px solid var(--hijau-border);
+  background: var(--bg-card);
+  text-decoration: none;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s, box-shadow 0.3s;
+  height: 100%;
+}
 
+.nav-elemen:hover { transform: translateY(-6px); }
+
+.nav-elemen-air:hover {
+  border-color: var(--warna-air);
+  box-shadow: 0 20px 48px rgba(58, 159, 255, 0.12);
+}
+
+.nav-elemen-udara:hover {
+  border-color: var(--warna-udara);
+  box-shadow: 0 20px 48px rgba(77, 217, 240, 0.12);
+}
+
+.nav-elemen-tanah:hover {
+  border-color: var(--warna-tanah);
+  box-shadow: 0 20px 48px rgba(200, 135, 74, 0.12);
+}
+
+.nav-elemen-ikon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.nav-elemen-air .nav-elemen-ikon { background: rgba(58, 159, 255, 0.1); color: var(--warna-air); }
+.nav-elemen-udara .nav-elemen-ikon { background: rgba(77, 217, 240, 0.1); color: var(--warna-udara); }
+.nav-elemen-tanah .nav-elemen-ikon { background: rgba(200, 135, 74, 0.1); color: var(--warna-tanah); }
+
+.nav-elemen:hover .nav-elemen-ikon { transform: scale(1.1) rotate(-5deg); }
+
+.nav-elemen-info { flex: 1; }
+
+.nav-elemen-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teks-redup);
+  margin-bottom: 4px;
+}
+
+.nav-elemen-judul {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--teks-utama);
+  margin: 0 0 4px;
+}
+
+.nav-elemen-sub {
+  font-size: 0.82rem;
+  color: var(--teks-redup);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.nav-elemen-arrow {
+  color: var(--teks-redup);
+  font-size: 1rem;
+  transition: transform 0.3s, color 0.3s;
+  flex-shrink: 0;
+}
+
+.nav-elemen-air:hover .nav-elemen-arrow { color: var(--warna-air); transform: translateX(4px); }
+.nav-elemen-udara:hover .nav-elemen-arrow { color: var(--warna-udara); transform: translateX(4px); }
+.nav-elemen-tanah:hover .nav-elemen-arrow { color: var(--warna-tanah); transform: translateX(4px); }
 /*hero cenah*/
 .hero {
     text-align: center;
@@ -175,7 +259,6 @@ html, body {
     border-top: 1px solid #eeeeee !important;
 }
 
-
 /*card data*/
 .stat-card-v2 {
     background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.05) 100%);
@@ -257,9 +340,10 @@ html, body {
     border-left: 2px solid var(--warna-tanah);
     padding-left: 20px;
 }
+
 /* Kartu Dampak Modern */
 .dampak-card {
-    background: rgba(255, 255, 255, 0.05); /* Efek transparan */
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 30px 20px;
@@ -342,7 +426,6 @@ html, body {
 }
 
 /*tentang tanah*/
-/* Container Utama */
 .section-tentang {
     background-color: #1b120c;
 }
@@ -395,3 +478,174 @@ html, body {
     transform: rotate(-10deg);
 }
 
+
+/* ============================================
+   LIGHT THEME OVERRIDES
+   Selector sesuai HTML: data-theme="light"
+   ============================================ */
+
+[data-theme="light"] {
+
+    --teks-redup: rgba(0, 0, 0, 0.55);
+    --bg-gelap: #f5ede3;
+    --bg-card-dark: #ffffff;
+
+    /* ---- Hero ---- */
+    .hero-overlay {
+        background: linear-gradient(
+            180deg,
+            rgba(245, 237, 227, 0.25) 0%,
+            rgba(245, 237, 227, 0.75) 100%
+        );
+    }
+
+    .hero-content {
+        color: #1b120c;
+    }
+
+    .hero-content h1,
+    .hero-content p {
+        text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.4);
+    }
+
+    .hero-sub {
+        color: rgba(27, 18, 12, 0.65);
+    }
+
+    /* ---- Teks putih Bootstrap → gelap ---- */
+    .text-white,
+    .text-white-50 {
+        color: #1b120c !important;
+    }
+
+    .text-light {
+        color: rgba(27, 18, 12, 0.75) !important;
+    }
+
+    .opacity-75 {
+        opacity: 1 !important;
+        color: rgba(27, 18, 12, 0.65) !important;
+    }
+
+    .text-teks-redup {
+        color: rgba(27, 18, 12, 0.6) !important;
+    }
+
+    /* ---- Source note ---- */
+    .source-note-text {
+        color: rgba(0, 0, 0, 0.75);
+    }
+
+    /* ---- Stat card v2 ---- */
+    .stat-card-v2 {
+        background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.05) 100%);
+        border-color: rgba(200, 135, 74, 0.25);
+    }
+
+    .stat-card-v2:hover {
+        background: rgba(200, 135, 74, 0.10);
+    }
+
+    .stat-card-v2 h2,
+    .stat-card-v2 h3,
+    .stat-card-v2 p,
+    .stat-card-v2 span,
+    .stat-card-v2 small,
+    .stat-card-v2 * {
+        color: #1b120c;
+    }
+
+    /* Teks deskripsi di dalam card yang pakai warna putih transparan */
+    .stat-card-v2 p,
+    .stat-card-v2 .text-white,
+    .stat-card-v2 [class*="opacity"],
+    .stat-card-v2 [style*="color: rgba(255"],
+    .stat-card-v2 [style*="color:rgba(255"] {
+        color: rgba(27, 18, 12, 0.6) !important;
+    }
+
+    /* Teks "Lihat data selengkapnya" di portal box */
+    .portal-box,
+    .portal-box p,
+    .portal-box span,
+    .portal-box * {
+        color: rgba(27, 18, 12, 0.65) !important;
+    }
+
+    .stat-icon-small {
+        opacity: 1;
+    }
+
+    /* ---- Portal box ---- */
+    .portal-box {
+        background: rgba(0, 0, 0, 0.04);
+        border-color: rgba(0, 0, 0, 0.18);
+    }
+
+    .portal-box span {
+        color: rgba(27, 18, 12, 0.75) !important;
+    }
+
+    /* ---- section kecil (dampak & mulai kecil) ---- */
+    .section-kecil {
+        background-color: transparent;
+    }
+
+    /* ---- Dampak card ---- */
+    .dampak-card {
+        background: rgba(0, 0, 0, 0.03);
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .dampak-card:hover {
+        background: rgba(200, 135, 74, 0.10);
+        border-color: var(--warna-tanah);
+    }
+
+    /* ---- Source note ---- */
+    .source-note-text {
+        color: rgba(27, 18, 12, 0.75) !important;
+    }
+
+    /* ---- About card ---- */
+    .section-tentang {
+        background-color: #f5ede3;
+    }
+
+    .about-card {
+        background: rgba(0, 0, 0, 0.02);
+        border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .about-card:hover {
+        background: rgba(200, 135, 74, 0.08);
+        box-shadow: inset 0 0 15px rgba(200, 135, 74, 0.10), 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .about-card:active {
+        background: rgba(200, 135, 74, 0.14);
+    }
+
+    .about-card h4,
+    .about-card p {
+        color: #1b120c !important;
+    }
+
+    /* ---- Btn outline light → gelap ---- */
+    .btn-outline-light {
+        color: #1b120c;
+        border-color: rgba(27, 18, 12, 0.4);
+        opacity: 1;
+    }
+
+    .btn-outline-light:hover {
+        background-color: #1b120c;
+        color: #fff;
+    }
+
+    /* ---- Teks redup umum ---- */
+    small,
+    .text-muted {
+        color: rgba(27, 18, 12, 0.55) !important;
+    }
+}

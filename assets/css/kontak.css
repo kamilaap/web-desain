@@ -112,3 +112,21 @@
 .accordion-item {
     border-color: var(--hijau-border) !important;
 }
+
+/* ── LIGHT THEME FIXES ── */
+[data-theme="light"] .input-custom {
+    background-color: #eaf3ec !important;
+    color: #1a2e1d !important;
+}
+
+[data-theme="light"] .accordion-button {
+    color: #0b1c14 !important;
+}
+
+[data-theme="light"] .accordion-button::after {
+    filter: none;
+}
+
+[data-theme="light"] .accordion-button:not(.collapsed) {
+    color: #15803d !important;
+}
