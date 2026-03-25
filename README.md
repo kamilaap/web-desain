@@ -1,12 +1,12 @@
 # BUMI BERBICARA 🌱  
 
 ## Institusi  
-SMK Negeri 4  
+Politeknik Negeri Indramayu
 
 ## Anggota Tim  
 - Ketua: Kamila Putri Herlambang  
-- Anggota 1: (Isi nama anggota)  
-- Anggota 2: (Isi nama anggota)  
+- Anggota 1: Hasbi Ashshiddiq
+- Anggota 2: Muhammad Daffa Hilmi Yudhistiro 
 
 ## Deskripsi Karya  
 **Bumi Berbicara** adalah sebuah website edukatif yang mengangkat isu lingkungan dengan pendekatan visual dan interaktif. Website ini dibuat sebagai bentuk kepedulian terhadap kondisi bumi yang semakin terancam akibat aktivitas manusia.
