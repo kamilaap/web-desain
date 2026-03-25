@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bumi Berbicara</title>
   <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon" />
-  <script>(function(){var t=localStorage.getItem('tema');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <script>
+    (function () {
+      var t = localStorage.getItem('tema');
+      if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+    })();
+  </script>
 
   <!-- External libs -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -18,7 +24,9 @@
     /* ══════════════════════════════════════
        SMOOTH SCROLL & SECTION BASE
     ══════════════════════════════════════ */
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     section[id] {
       scroll-margin-top: 64px;
@@ -45,7 +53,9 @@
       width: 100%;
     }
 
-    .hero-content { flex: 1; }
+    .hero-content {
+      flex: 1;
+    }
 
     .teks-hijau-cerah {
       color: #4ade80;
@@ -102,17 +112,29 @@
 
     .hero-video {
       width: 100%;
-      max-width: 420px;
+      max-width: 460px;
       border-radius: 24px;
       border: 1.5px solid var(--hijau-border);
-      object-fit: cover;
-      aspect-ratio: 9/16;
+      object-fit: contain;
+      aspect-ratio: 1 / 1;
+      background: transparent;
     }
 
     @media (max-width: 768px) {
-      .hero-card { flex-direction: column; gap: 32px; }
-      .teks-hijau-cerah, .teks-biru-muda { font-size: 2.8rem; }
-      .hero-video { max-width: 100%; aspect-ratio: 16/9; }
+      .hero-card {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .teks-hijau-cerah,
+      .teks-biru-muda {
+        font-size: 2.8rem;
+      }
+
+      .hero-video {
+        max-width: 100%;
+        aspect-ratio: 1 / 1;
+      }
     }
 
     /* ══════════════════════════════════════
@@ -130,33 +152,42 @@
     ══════════════════════════════════════ */
     #tentang {
       padding: 100px 24px;
-      max-width: 1100px;
-      margin: 0 auto;
     }
 
     .tentang-container {
+      min-height: 100vh;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 10%;
       position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: radial-gradient(circle at 10% 10%, rgba(46, 107, 56, 0.15) 0%, transparent 50%);
     }
 
     .light-beam {
       position: absolute;
-      top: -80px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 200px;
-      background: linear-gradient(to bottom, transparent, var(--hijau-medium), transparent);
-      opacity: 0.4;
+      top: -100px;
+      left: -50px;
+      width: 400px;
+      height: 600px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+      transform: rotate(-15deg);
+      pointer-events: none;
     }
 
     .tentang-content {
-      display: flex;
-      flex-direction: column;
-      gap: 64px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      position: relative;
+      z-index: 2;
+      width: 100%;
     }
 
     .tentang-hero {
-      max-width: 700px;
+      max-width: 500px;
     }
 
     .headline {
@@ -167,80 +198,123 @@
       color: var(--teks-utama);
     }
 
-    .highlight-green { color: #4ade80; }
-    .highlight-blue  { color: var(--warna-udara); }
+    .highlight-green {
+      color: #2e6b38;
+    }
+
+    .highlight-blue {
+      color: var(--warna-air);
+      text-shadow: 0 0 20px rgba(58, 159, 255, 0.3);
+    }
 
     .deskripsi {
-      font-size: 1rem;
-      color: var(--teks-redup);
-      line-height: 1.8;
-      max-width: 560px;
+      max-width: 500px;
+      font-size: 1.1rem;
+      color: var(--teks-utama);
     }
 
     .brand-text {
-      color: #4ade80;
+      color: var(--warna-udara);
       font-weight: 700;
     }
 
     .quote-card {
-      border-left: 3px solid var(--hijau-medium);
-      padding: 16px 24px;
-      background: var(--bg-card);
+      padding: 20px;
+      border-left: 4px solid var(--hijau-medium);
+      background: rgba(46, 107, 56, 0.1);
       border-radius: 0 12px 12px 0;
       font-style: italic;
-      color: var(--teks-redup);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      max-width: 560px;
+      max-width: 450px;
+      color: var(--teks-utama);
     }
 
     /* Stats */
     .tentang-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-direction: column;
       gap: 24px;
     }
 
     .stat-card {
       background: var(--bg-card);
-      border: 1.5px solid var(--hijau-border);
-      border-radius: 20px;
+      border: 1px solid var(--hijau-border);
       padding: 28px;
+      border-radius: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      transition: transform 0.3s, border-color 0.3s;
+      transition: transform 0.3s ease, border 0.3s ease, background-color 0.3s;
+    }
+
+    :root:not([data-theme="light"]) .stat-card {
+      background: rgba(15, 39, 20, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .stat-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--hijau-medium);
+      transform: translateX(-10px);
+      border: 1px solid var(--hijau-medium);
     }
 
     .stat-info h2 {
-      font-size: 2.2rem;
-      font-weight: 800;
+      font-size: 2.8rem;
+      margin-bottom: 5px;
     }
 
     .stat-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
+      font-size: 2.5rem;
+      width: 70px;
+      height: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    .icon-air   { background: rgba(58, 159, 255, 0.15); color: var(--warna-air); }
-    .icon-udara { background: rgba(255, 77, 77, 0.15);  color: #ff4d4d; }
-    .icon-tanah { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+    [data-theme="light"] .highlight-green {
+      color: #1e5228;
+    }
 
-    @media (max-width: 900px) {
-      .tentang-stats { grid-template-columns: 1fr; }
-      .headline { font-size: 2.5rem; }
+    [data-theme="light"] .highlight-blue {
+      text-shadow: none;
+    }
+
+    [data-theme="light"] .quote-card {
+      background: rgba(46, 107, 56, 0.08);
+    }
+
+    [data-theme="light"] .stat-icon {
+      background: rgba(46, 107, 56, 0.08);
+    }
+
+    .icon-air {
+      color: var(--warna-air);
+    }
+
+    .icon-udara {
+      color: var(--teks-redup);
+    }
+
+    .icon-tanah {
+      color: var(--hijau-medium);
+    }
+
+    @media (max-width: 992px) {
+      .tentang-content {
+        grid-template-columns: 1fr;
+      }
+
+      .tentang-container {
+        padding: 40px 5%;
+        min-height: auto;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+      }
     }
 
     /* ══════════════════════════════════════
@@ -279,9 +353,17 @@
     }
 
     /* Elemen cards */
-    .halaman { padding: 0; }
-    .judul   { display: none; }
-    .subjudul { display: none; }
+    .halaman {
+      padding: 0;
+    }
+
+    .judul {
+      display: none;
+    }
+
+    .subjudul {
+      display: none;
+    }
 
     .card {
       display: block;
@@ -300,18 +382,34 @@
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
     }
 
-    .card.air:hover   { border-color: var(--warna-air) !important; }
-    .card.udara:hover { border-color: var(--warna-udara) !important; }
-    .card.tanah:hover { border-color: var(--warna-tanah) !important; }
+    .card.air:hover {
+      border-color: var(--warna-air) !important;
+    }
+
+    .card.udara:hover {
+      border-color: var(--warna-udara) !important;
+    }
+
+    .card.tanah:hover {
+      border-color: var(--warna-tanah) !important;
+    }
 
     .card .ikon {
       font-size: 2rem;
       margin-bottom: 16px;
     }
 
-    .card.air   .ikon { color: var(--warna-air); }
-    .card.udara .ikon { color: var(--warna-udara); }
-    .card.tanah .ikon { color: var(--warna-tanah); }
+    .card.air .ikon {
+      color: var(--warna-air);
+    }
+
+    .card.udara .ikon {
+      color: var(--warna-udara);
+    }
+
+    .card.tanah .ikon {
+      color: var(--warna-tanah);
+    }
 
     .card .nomor {
       font-size: 0.72rem;
@@ -357,9 +455,17 @@
       transition: width 1.2s ease;
     }
 
-    .card.air   .bar-isi { background: var(--warna-air); }
-    .card.udara .bar-isi { background: var(--warna-udara); }
-    .card.tanah .bar-isi { background: var(--warna-tanah); }
+    .card.air .bar-isi {
+      background: var(--warna-air);
+    }
+
+    .card.udara .bar-isi {
+      background: var(--warna-udara);
+    }
+
+    .card.tanah .bar-isi {
+      background: var(--warna-tanah);
+    }
 
     .card .tombol {
       font-size: 0.88rem;
@@ -368,9 +474,17 @@
       transition: color 0.2s;
     }
 
-    .card.air:hover   .tombol { color: var(--warna-air); }
-    .card.udara:hover .tombol { color: var(--warna-udara); }
-    .card.tanah:hover .tombol { color: var(--warna-tanah); }
+    .card.air:hover .tombol {
+      color: var(--warna-air);
+    }
+
+    .card.udara:hover .tombol {
+      color: var(--warna-udara);
+    }
+
+    .card.tanah:hover .tombol {
+      color: var(--warna-tanah);
+    }
 
     /* Fitur teaser */
     .fitur-teaser {
@@ -424,8 +538,13 @@
     }
 
     @media (max-width: 768px) {
-      .fitur-teaser { grid-template-columns: 1fr; }
-      .section-title { font-size: 1.8rem; }
+      .fitur-teaser {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
     }
 
     /* ══════════════════════════════════════
@@ -438,6 +557,32 @@
     .kontak-wrapper {
       max-width: 1100px;
       margin: 0 auto;
+    }
+
+    #kontak .row.g-5 {
+      align-items: stretch;
+    }
+
+    #kontak .col-lg-5,
+    #kontak .col-lg-7 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #kontak .col-lg-5>.card-kontak,
+    #kontak .col-lg-7>.row {
+      width: 100%;
+    }
+
+    #kontak .row.mb-5 {
+      align-items: stretch;
+      margin-bottom: 1.5rem !important;
+    }
+
+    .placeholder-img {
+      height: 100%;
+      min-height: 200px;
+      border-radius: 15px;
     }
 
     /* Override Bootstrap untuk dark/light theme */
@@ -465,9 +610,37 @@
     }
 
     .custom-input::placeholder,
-    .input-custom::placeholder { color: var(--teks-redup) !important; }
+    .input-custom::placeholder {
+      color: var(--teks-redup) !important;
+    }
 
-    .social-item span { color: var(--teks-redup); }
+    #kontak .col-lg-5 .card-kontak {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #kontak .col-lg-5 form {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    #kontak .col-lg-5 .mb-4 {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #kontak textarea.input-custom {
+      min-height: 210px;
+      height: 100%;
+      resize: vertical;
+    }
+
+    .social-item span {
+      color: var(--teks-redup);
+    }
 
     .icon-circle {
       width: 40px;
@@ -482,7 +655,9 @@
       flex-shrink: 0;
     }
 
-    .info-card { background-color: var(--bg-card) !important; }
+    .info-card {
+      background-color: var(--bg-card) !important;
+    }
 
     .info-icon {
       width: 44px;
@@ -539,17 +714,41 @@
       filter: invert(1) sepia(1) saturate(2) hue-rotate(90deg);
     }
 
-    [data-theme="light"] .accordion-button::after { filter: none; }
+    [data-theme="light"] .accordion-button::after {
+      filter: none;
+    }
 
-    .accordion-item { background: transparent !important; }
-    .accordion-body  { color: var(--teks-redup) !important; }
+    .accordion-item {
+      background: transparent !important;
+    }
+
+    .accordion-body {
+      color: var(--teks-redup) !important;
+    }
 
     [data-theme="light"] .accordion-button {
       color: var(--teks-utama) !important;
     }
 
-    [data-theme="light"] .text-light { color: var(--teks-utama) !important; }
-    [data-theme="light"] .text-white { color: var(--teks-utama) !important; }
+    [data-theme="light"] .text-light {
+      color: var(--teks-utama) !important;
+    }
+
+    [data-theme="light"] .text-white {
+      color: var(--teks-utama) !important;
+    }
+
+    @media (max-width: 991px) {
+
+      #kontak .col-lg-5,
+      #kontak .col-lg-7 {
+        display: block;
+      }
+
+      #kontak .row.mb-5 {
+        margin-bottom: 2rem !important;
+      }
+    }
 
     /* ══════════════════════════════════════
        SCROLL REVEAL ANIMATION
@@ -565,9 +764,17 @@
       transform: none;
     }
 
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
   </style>
 </head>
 
@@ -603,7 +810,8 @@
             <a href="#elemen" class="btn-hijau" style="text-decoration:none; display:inline-block;">
               Ayo Mulai
             </a>
-            <a href="#tentang" class="btn-hijau" style="text-decoration:none; display:inline-block; background: transparent; border: 1.5px solid var(--hijau-medium); color: var(--teks-utama);">
+            <a href="#tentang" class="btn-hijau"
+              style="text-decoration:none; display:inline-block; background: transparent; border: 1.5px solid var(--hijau-medium); color: var(--teks-utama);">
               Tentang Kami
             </a>
           </div>
@@ -644,7 +852,8 @@
             mulai dari hal kecil di sekitarmu.
           </p>
           <div class="quote-card mt-besar">
-            <p>"Satu orang yang peduli lebih berharga dari seribu orang yang tahu tapi diam. Bumi Berbicara adalah langkah pertamamu."</p>
+            <p>"Satu orang yang peduli lebih berharga dari seribu orang yang tahu tapi diam. Bumi Berbicara adalah
+              langkah pertamamu."</p>
           </div>
         </div>
 
@@ -720,7 +929,9 @@
                 <span>Kualitas Air Global</span>
                 <span>38%</span>
               </div>
-              <div class="bar-bg"><div class="bar-isi"></div></div>
+              <div class="bar-bg">
+                <div class="bar-isi"></div>
+              </div>
               <span class="tombol">Jelajahi Air →</span>
             </a>
           </div>
@@ -739,7 +950,9 @@
                 <span>Indeks Kualitas Udara</span>
                 <span>54%</span>
               </div>
-              <div class="bar-bg"><div class="bar-isi"></div></div>
+              <div class="bar-bg">
+                <div class="bar-isi"></div>
+              </div>
               <span class="tombol">Jelajahi Udara →</span>
             </a>
           </div>
@@ -758,7 +971,9 @@
                 <span>Kesuburan Tanah Global</span>
                 <span>29%</span>
               </div>
-              <div class="bar-bg"><div class="bar-isi"></div></div>
+              <div class="bar-bg">
+                <div class="bar-isi"></div>
+              </div>
               <span class="tombol">Jelajahi Tanah →</span>
             </a>
           </div>
@@ -822,7 +1037,8 @@
               </div>
               <div class="mb-4">
                 <label class="form-label fw-bold" style="color: #22c55e;">Pesan</label>
-                <textarea name="pesan" class="form-control input-custom" rows="4" placeholder="Tuliskan pesan.."></textarea>
+                <textarea name="pesan" class="form-control input-custom" rows="4"
+                  placeholder="Tuliskan pesan.."></textarea>
               </div>
               <div class="text-center">
                 <button type="submit" class="btn-hijau px-5 py-2 fw-bold">Kirim</button>
@@ -860,7 +1076,8 @@
               <div class="card-kontak info-card p-4 h-100">
                 <div class="info-icon mb-3"><i class="fa-solid fa-seedling"></i></div>
                 <h3 class="info-card-title">Kenapa Hubungi Kami?</h3>
-                <p class="teks-redup mb-4">Kami terbuka untuk percakapan yang membantu website ini terus tumbuh dan memberi dampak yang lebih baik.</p>
+                <p class="teks-redup mb-4">Kami terbuka untuk percakapan yang membantu website ini terus tumbuh dan
+                  memberi dampak yang lebih baik.</p>
                 <ul class="info-list mb-0">
                   <li>Tanyakan informasi tentang website atau fitur yang tersedia.</li>
                   <li>Kirim masukan untuk pengembangan konten dan pengalaman pengguna.</li>
@@ -886,65 +1103,76 @@
 
               <div class="accordion-item bg-transparent border-bottom border-secondary">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqTanah">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqTanah">
                     Bagaimana cara mencegah degradasi tanah di lingkungan rumah?
                   </button>
                 </h2>
                 <div id="faqTanah" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
                   <div class="accordion-body px-0 pb-3">
-                    Kamu bisa mulai dengan membuat kompos dari sisa dapur untuk menjaga nutrisi tanah alami, menghindari penggunaan pestisida kimia, dan menanam tanaman penutup tanah untuk mencegah erosi.
+                    Kamu bisa mulai dengan membuat kompos dari sisa dapur untuk menjaga nutrisi tanah alami, menghindari
+                    penggunaan pestisida kimia, dan menanam tanaman penutup tanah untuk mencegah erosi.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item bg-transparent border-bottom border-secondary">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqAir">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqAir">
                     Apa tindakan nyata untuk menjaga kualitas air tanah?
                   </button>
                 </h2>
                 <div id="faqAir" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
                   <div class="accordion-body px-0 pb-3">
-                    Membuat lubang biopori di halaman rumah sangat efektif untuk membantu penyerapan air hujan ke dalam tanah, serta memastikan tidak membuang limbah minyak atau bahan kimia ke saluran air.
+                    Membuat lubang biopori di halaman rumah sangat efektif untuk membantu penyerapan air hujan ke dalam
+                    tanah, serta memastikan tidak membuang limbah minyak atau bahan kimia ke saluran air.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item bg-transparent border-bottom border-secondary">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqUdara">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqUdara">
                     Bagaimana tanaman membantu memperbaiki kualitas udara?
                   </button>
                 </h2>
                 <div id="faqUdara" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
                   <div class="accordion-body px-0 pb-3">
-                    Tanaman menyerap karbon dioksida (CO2) dan melepaskan oksigen (O2). Beberapa tanaman juga mampu menyerap polutan berbahaya dari udara, sehingga lingkungan terasa lebih segar dan sehat.
+                    Tanaman menyerap karbon dioksida (CO2) dan melepaskan oksigen (O2). Beberapa tanaman juga mampu
+                    menyerap polutan berbahaya dari udara, sehingga lingkungan terasa lebih segar dan sehat.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item bg-transparent border-bottom border-secondary">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqKolaborasi">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqKolaborasi">
                     Apakah Bumi Berbicara terbuka untuk kolaborasi atau kampanye lingkungan?
                   </button>
                 </h2>
                 <div id="faqKolaborasi" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
                   <div class="accordion-body px-0 pb-3">
-                    Ya, kami terbuka untuk ide kolaborasi kecil seperti kampanye digital, edukasi lingkungan, atau kerja sama konten yang sejalan dengan tujuan menjaga bumi dan meningkatkan kesadaran publik.
+                    Ya, kami terbuka untuk ide kolaborasi kecil seperti kampanye digital, edukasi lingkungan, atau kerja
+                    sama konten yang sejalan dengan tujuan menjaga bumi dan meningkatkan kesadaran publik.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item bg-transparent border-bottom border-secondary">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#faqKontribusi">
+                  <button class="accordion-button collapsed bg-transparent shadow-none py-3 px-0" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#faqKontribusi">
                     Bagaimana cara ikut berkontribusi pada gerakan kecil yang ada di website ini?
                   </button>
                 </h2>
                 <div id="faqKontribusi" class="accordion-collapse collapse" data-bs-parent="#faqBumi">
                   <div class="accordion-body px-0 pb-3">
-                    Kamu bisa mulai dari langkah sederhana seperti membagikan informasi, mencoba tantangan ramah lingkungan, memberi masukan untuk pengembangan website, atau mengajak orang di sekitarmu ikut peduli pada isu lingkungan.
+                    Kamu bisa mulai dari langkah sederhana seperti membagikan informasi, mencoba tantangan ramah
+                    lingkungan, memberi masukan untuk pengembangan website, atau mengajak orang di sekitarmu ikut peduli
+                    pada isu lingkungan.
                   </div>
                 </div>
               </div>
@@ -968,10 +1196,10 @@
     // Patch setelah loadNavbar() agar link navigasi smooth scroll
     function patchNavbarAnchors() {
       const peta = {
-        'beranda.html': '#beranda',
+        'index.html': '#beranda',
         'tentang.html': '#tentang',
-        'elemen.html':  '#elemen',
-        'kontak.html':  '#kontak',
+        'elemen.html': '#elemen',
+        'kontak.html': '#kontak',
       };
 
       document.querySelectorAll('nav a').forEach(a => {
@@ -992,10 +1220,10 @@
       const navLinks = document.querySelectorAll('nav a.nav-link');
 
       const peta = {
-        '#beranda': 'beranda.html',
+        '#beranda': 'index.html',
         '#tentang': 'tentang.html',
-        '#elemen':  'elemen.html',
-        '#kontak':  'kontak.html',
+        '#elemen': 'elemen.html',
+        '#kontak': 'kontak.html',
       };
 
       const io = new IntersectionObserver((entries) => {
@@ -1010,7 +1238,9 @@
             });
           }
         });
-      }, { threshold: 0.4 });
+      }, {
+        threshold: 0.4
+      });
 
       sections.forEach(id => {
         const el = document.getElementById(id);
@@ -1058,7 +1288,9 @@
             io.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1 });
+      }, {
+        threshold: 0.1
+      });
 
       document.querySelectorAll('.reveal').forEach(el => io.observe(el));
     }
@@ -1073,7 +1305,9 @@
             io.disconnect();
           }
         });
-      }, { threshold: 0.3 });
+      }, {
+        threshold: 0.3
+      });
 
       const statsSection = document.querySelector('.tentang-stats');
       if (statsSection) io.observe(statsSection);
@@ -1098,4 +1332,5 @@
   </script>
 
 </body>
+
 </html>

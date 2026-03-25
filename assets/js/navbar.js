@@ -1,22 +1,47 @@
 // navbar.js
 // Cara pakai: taruh <div id="navbar"></div> di setiap halaman
 // Panggil loadNavbar() dan loadFooter() sebelum </body>
-function loadNavbar() {
-  const path = window.location.pathname;
-  const diSubfolder = path.includes("/pages/");
-  const prefix = diSubfolder ? "../" : "";
- const prefixFitur = diSubfolder ? "../pages/" : "pages/";
 
+function getPathConfig() {
+  const path = window.location.pathname;
+  const diHalamanElemen = path.includes("/pages/elemen/");
+  const diPages = path.includes("/pages/");
+
+  if (diHalamanElemen) {
+    return {
+      prefixRoot: "../../",
+      prefixPages: "../",
+      prefixAssets: "../../assets/",
+    };
+  }
+
+  if (diPages) {
+    return {
+      prefixRoot: "../",
+      prefixPages: "",
+      prefixAssets: "../assets/",
+    };
+  }
+
+  return {
+    prefixRoot: "",
+    prefixPages: "pages/",
+    prefixAssets: "assets/",
+  };
+}
+
+function loadNavbar() {
+  const { prefixRoot, prefixPages, prefixAssets } = getPathConfig();
   const halamanSekarang = window.location.pathname.split("/").pop() || "index.html";
   const fiturAktif = ["calculator.html", "ecochallenge.html"].includes(halamanSekarang) ? "active" : "";
 
-const menus = [
-  { label: "Beranda", href: prefix + "index.html" },
-  { label: "Tentang", href: prefix + "pages/tentang.html" },
-  { label: "Elemen", href: prefix + "pages/elemen.html" },
-];
+  const menus = [
+    { label: "Beranda", href: prefixRoot + "index.html" },
+    { label: "Tentang", href: prefixPages + "tentang.html" },
+    { label: "Elemen", href: prefixPages + "elemen.html" },
+  ];
 
-  const links = menus.map(menu => {
+  const links = menus.map((menu) => {
     const namaFile = menu.href.split("/").pop();
     const aktif = namaFile === halamanSekarang ? "active" : "";
     return `<a href="${menu.href}" class="nav-link ${aktif}">${menu.label}</a>`;
@@ -32,7 +57,7 @@ const menus = [
         </svg>
       </a>
       <div class="nav-dropdown-menu" id="dropdownMenu">
-        <a href="${prefixFitur}calculator.html" class="nav-dropdown-item ${halamanSekarang === 'calculator.html' ? 'active' : ''}">
+        <a href="${prefixPages}calculator.html" class="nav-dropdown-item ${halamanSekarang === "calculator.html" ? "active" : ""}">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -47,7 +72,7 @@ const menus = [
           </svg>
           Carbon Calculator
         </a>
-        <a href="${prefixFitur}ecochallenge.html" class="nav-dropdown-item ${halamanSekarang === 'ecochallenge.html' ? 'active' : ''}">
+        <a href="${prefixPages}ecochallenge.html" class="nav-dropdown-item ${halamanSekarang === "ecochallenge.html" ? "active" : ""}">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
             fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round">
@@ -86,14 +111,14 @@ const menus = [
 
   document.getElementById("navbar").innerHTML = `
     <nav>
-      <a href="${prefix}index.html" class="nav-brand">
-        <img src="/assets/img/logo.png" alt="Logo" class="nav-logo">
+      <a href="${prefixRoot}index.html" class="nav-brand">
+        <img src="${prefixAssets}img/logo.png" alt="Logo" class="nav-logo">
         <span class="nav-brand-nama">Bumi Berbicara</span>
       </a>
       <div class="nav-links" id="navMenu">
         ${links}
         ${dropdown}
-        <a href="${prefix}kontak.html" class="btn-hijau ${halamanSekarang === 'kontak.html' ? 'active' : ''}">Kontak</a>
+        <a href="${prefixPages}kontak.html" class="btn-hijau ${halamanSekarang === "kontak.html" ? "active" : ""}">Kontak</a>
       </div>
       <button class="nav-tema" id="temaToggle" title="Ganti tema">
         ${ikonTerang}
@@ -107,7 +132,6 @@ const menus = [
     </nav>
   `;
 
-  // ── Tema: init dari localStorage ──
   const temaTersimpan = localStorage.getItem("tema");
   if (temaTersimpan === "light") {
     document.documentElement.setAttribute("data-theme", "light");
@@ -125,7 +149,6 @@ const menus = [
     }
   });
 
-  // ── Hamburger ──
   const hamburger = document.getElementById("navHamburger");
   const menu = document.getElementById("navMenu");
   hamburger.addEventListener("click", function () {
@@ -133,7 +156,6 @@ const menus = [
     menu.classList.toggle("terbuka");
   });
 
-  // ── Dropdown Fitur ──
   const toggle = document.getElementById("dropdownToggle");
   const dropMenu = document.getElementById("dropdownMenu");
 
@@ -155,21 +177,15 @@ const menus = [
   });
 }
 
-// ── Footer ──
-// Cara pakai: taruh <div id="footer"></div> di setiap halaman
-// Panggil loadFooter() sebelum </body>
 function loadFooter() {
-  const path = window.location.pathname;
-  const diSubfolder = path.includes("/pages/");
-  const prefix = diSubfolder ? "../" : "";
-  const prefixFitur = diSubfolder ? "" : "pages/";
+  const { prefixRoot, prefixPages, prefixAssets } = getPathConfig();
 
   document.getElementById("footer").innerHTML = `
     <footer class="footer">
       <div class="footer-inner">
         <div class="footer-atas">
           <div class="footer-brand">
-            <img src="/assets/img/logo.png" alt="Logo" class="footer-logo">
+            <img src="${prefixAssets}img/logo.png" alt="Logo" class="footer-logo">
             <div class="footer-brand-text">
               <div class="footer-nama">Bumi Berbicara</div>
               <div class="footer-tagline">Sadar lingkungan, mulai dari kita.</div>
@@ -178,23 +194,23 @@ function loadFooter() {
           <div class="footer-nav">
             <div class="footer-nav-col">
               <div class="footer-nav-judul">Halaman</div>
-              <a href="${prefix}index.html" class="footer-nav-link">Beranda</a>
-              <a href="${prefix}tentang.html" class="footer-nav-link">Tentang</a>
-              <a href="${prefix}elemen.html" class="footer-nav-link">Elemen</a>
+              <a href="${prefixRoot}index.html" class="footer-nav-link">Beranda</a>
+              <a href="${prefixPages}tentang.html" class="footer-nav-link">Tentang</a>
+              <a href="${prefixPages}elemen.html" class="footer-nav-link">Elemen</a>
             </div>
             <div class="footer-nav-col">
               <div class="footer-nav-judul">Fitur</div>
-              <a href="${prefixFitur}calculator.html" class="footer-nav-link">Carbon Calculator</a>
-              <a href="${prefixFitur}ecochallenge.html" class="footer-nav-link">Eco Challenge</a>
+              <a href="${prefixPages}calculator.html" class="footer-nav-link">Carbon Calculator</a>
+              <a href="${prefixPages}ecochallenge.html" class="footer-nav-link">Eco Challenge</a>
             </div>
             <div class="footer-nav-col">
               <div class="footer-nav-judul">Lainnya</div>
-              <a href="${prefix}tim.html" class="footer-nav-link footer-tim">Tim Pengembang →</a>
+              <a href="${prefixRoot}tim.html" class="footer-nav-link footer-tim">Tim Pengembang →</a>
             </div>
           </div>
         </div>
         <div class="footer-bawah">
-          <div class="footer-copy">© 2026 Bumi Berbicara. Dibuat dengan ❤️ untuk bumi.</div>
+          <div class="footer-copy">© 2026 Bumi Berbicara. Dibuat dengan ❤ untuk bumi.</div>
         </div>
       </div>
     </footer>

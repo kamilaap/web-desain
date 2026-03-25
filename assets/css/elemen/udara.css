@@ -30,6 +30,15 @@
     border: none;
 }
 
+.hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 34%;
+    transform: scale(1.12);
+    display: block;
+}
+
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -49,11 +58,22 @@
 .hero-ikon {
     font-size: 2.4rem;
     color: var(--warna-udara);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    display: inline-block;
+    animation: floatUdara 3s ease-in-out infinite;
+}
+
+@keyframes floatUdara {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .hero-nomor {
-margin-top: 15px;
+    margin-top: 0;
     background: rgba(255, 255, 255, 0.1);
     display: inline-block;
     padding: 4px 12px;
@@ -75,6 +95,7 @@ margin-top: 10px;
 color: #e0e0e0;
     font-size: 1.1rem;
     max-width: 650px;
+    margin: 0 auto 28px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow halus agar teks kontras */
 }
 
@@ -573,6 +594,7 @@ text-align: center;
     margin-top: 30px;
     display: flex;
     justify-content: center;
+    width: 100%;
     position: relative;
     z-index: 5;
 }
@@ -589,7 +611,9 @@ text-align: center;
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
     color: white;
-    max-width: 800px;
+    width: min(100%, 800px);
+    box-sizing: border-box;
+    justify-content: space-between;
     position: relative;
 }
 
