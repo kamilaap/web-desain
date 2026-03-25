@@ -5,7 +5,7 @@ function loadNavbar() {
   const path = window.location.pathname;
   const diSubfolder = path.includes("/pages/");
   const prefix = diSubfolder ? "../" : "";
-  const prefixFitur = diSubfolder ? "" : "pages/";
+ const prefixFitur = diSubfolder ? "../pages/" : "pages/";
 
   const halamanSekarang = window.location.pathname.split("/").pop() || "index.html";
   const fiturAktif = ["calculator.html", "ecochallenge.html"].includes(halamanSekarang) ? "active" : "";
