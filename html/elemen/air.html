@@ -11,17 +11,18 @@
   <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/elemen/air.css">
-  <audio id="bgMusic" loop>
-    <source src="../../assets/audio/suara-air.mp3" type="audio/mpeg">
-    Browser Anda tidak mendukung elemen audio.
-</audio>
 
-<div id="music-control" class="music-btn">
-    <i id="music-icon" class="fas fa-volume-mute"></i>
 </div>
 </head>
 
 <body>
+  <audio id="bgMusic" loop>
+      <source src="../../assets/audio/suara-air.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="music-control" class="music-btn">
+      <i id="music-icon" class="fas fa-volume-mute"></i>
+  </div>
   <div id="navbar"></div>
   <div class="halaman">
 
@@ -366,6 +367,7 @@
 
   <div id="footer"></div>
   <script src="../../assets/js/navbar.js"></script>
+  <script src="../../assets/js/elemen/air.js"></script>
   <script>loadNavbar(); loadFooter();</script>
 
   <script>

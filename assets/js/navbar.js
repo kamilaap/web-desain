@@ -93,7 +93,7 @@ function loadNavbar() {
       <div class="nav-links" id="navMenu">
         ${links}
         ${dropdown}
-        <a href="${prefix}kontak.html" class="btn-hijau ${halamanSekarang === 'kontak.html' ? 'active' : ''}">Kontak</a>
+        <a href="${prefix}kontak.html" class="btn-hijau ${halamanSekarang === 'kontak.html' ? '' : ''}">Kontak</a>
       </div>
       <button class="nav-tema" id="temaToggle" title="Ganti tema">
         ${ikonTerang}

@@ -634,8 +634,26 @@
 @media (max-width: 480px) {
   .hero-judul { font-size: 2.6rem; }
   .kartu { padding: 20px 18px; }
-<<<<<<< HEAD
   .stat-angka { font-size: 2rem; }
+}
+
+
+.music-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(58, 159, 255, 0.8); /* Warna Biru Air */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
 }
 
 .music-btn {
@@ -644,7 +662,7 @@
     right: 30px;
     width: 50px;
     height: 50px;
-    background: rgba(46, 160, 67, 0.8); /* Hijau transparan */
+    background: rgba(46, 160, 67, 0.8);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -659,9 +677,4 @@
 .music-btn:hover {
     transform: scale(1.1);
     background: rgba(46, 160, 67, 1);
-=======
-  .stat-angka { font-size: 2.2rem; }
-  .kartu-dampak { flex-direction: column; gap: 8px; }
-  .dampak-nomor { font-size: 1.4rem; width: auto; }
->>>>>>> 9f3d4e55bc58b2621673a0b2ea520cb72aa8b43b
 }
