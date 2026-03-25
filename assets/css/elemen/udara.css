@@ -203,16 +203,6 @@
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* Delay Animasi */
 .stat-card:nth-child(1) { animation-delay: 0.2s; }
@@ -343,14 +333,17 @@
 }
 
 .solusi-card {
-    background: #ffffff; /* Warna putih sesuai gambar */
+background: #ffffff;
     border-radius: 30px;
     padding: 40px 30px;
     text-align: justify;
-    transition: all 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                box-shadow 0.3s ease, 
+                border 0.3s ease; /* Transisi lebih responsif */
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid transparent; /* Mencegah layout shifting */
 }
 
 /* Efek Glow Hijau untuk kartu yang aktif/highlight */
@@ -401,8 +394,21 @@ text-align: center;
 
 /* Hover Effect */
 .solusi-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+/* Mengangkat kartu sedikit lebih tinggi */
+    transform: translateY(-15px) scale(1.05); 
+    
+    /* Menambahkan efek glow hijau (diambil dari card-highlight) */
+    box-shadow: 0 15px 35px rgba(46, 160, 67, 0.4);
+    
+    /* Opsional: Jika ingin border ikut berubah warna */
+    border: 1px solid rgba(46, 160, 67, 0.2);
+    
+    cursor: pointer;
+}
+
+.solusi-card:hover .solusi-img-file {
+    transform: scale(1.1) rotate(5deg);
+    transition: transform 0.3s ease;
 }
 
 /* Penyesuaian Responsif */
@@ -410,4 +416,17 @@ text-align: center;
     .solusi-card {
         padding: 30px 20px;
     }
+}
+
+/* Hapus blok @keyframes fadeInUp dan .info-row, .stat-card { opacity: 0; ... } */
+
+/* Tambahkan ini untukA memperhalus transisi AOS */
+[data-aos] {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Tambahkan efek parallax sedikit pada hero-video */
+.hero-video {
+    /* ... properti lama ... */
+    transition: transform 0.5s ease-out;
 }
