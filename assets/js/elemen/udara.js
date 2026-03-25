@@ -53,3 +53,33 @@ const mainObserver = new IntersectionObserver((entries) => {
 // Daftarkan elemen untuk diamati
 document.querySelectorAll('.stat-card').forEach(card => mainObserver.observe(card));
 document.querySelectorAll('iframe, video').forEach(v => mainObserver.observe(v));
+
+const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('music-control');
+const musicIcon = document.getElementById('music-icon');
+
+// Fungsi untuk memutar musik
+function playMusic() {
+    music.play().then(() => {
+        musicIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
+        // Hapus event listener setelah musik berhasil diputar
+        document.removeEventListener('click', playMusic);
+    }).catch(error => {
+        console.log("Autoplay diblokir browser, menunggu interaksi.");
+    });
+}
+
+// Pemicu: Musik berputar saat klik pertama di halaman
+document.addEventListener('click', playMusic);
+
+// Toggle Manual (Klik pada ikon musik)
+musicBtn.addEventListener('click', function(e) {
+    e.stopPropagation(); // Mencegah bentrok dengan listener dokumen
+    if (music.paused) {
+        music.play();
+        musicIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
+    } else {
+        music.pause();
+        musicIcon.classList.replace('fa-volume-up', 'fa-volume-mute');
+    }
+});
