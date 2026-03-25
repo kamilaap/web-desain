@@ -176,13 +176,29 @@
                         </div>
                     </section>
 
+                    <div class="reset-modal-backdrop" id="resetModalBackdrop" hidden>
+                        <div class="reset-modal" role="dialog" aria-modal="true" aria-labelledby="resetModalTitle">
+                            <div class="reset-modal-icon">
+                                <i class="fa-solid fa-rotate-left"></i>
+                            </div>
+                            <h3 class="fw-bold mb-2" id="resetModalTitle">Reset Progres?</h3>
+                            <p class="reset-modal-text mb-4">
+                                Semua checklist akan dikembalikan ke awal. Kamu tetap bisa mulai lagi kapan saja.
+                            </p>
+                            <div class="reset-modal-actions">
+                                <button type="button" class="btn-reset-secondary" id="btnCancelReset">Batal</button>
+                                <button type="button" class="btn-reset-danger" id="btnConfirmReset">Ya, Reset</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
       <div id="footer"></div>
   <script src="../../assets/js/navbar.js"></script>
-  <script>loadNavbar("fitur"); loadFooter();</script>
+  <script>loadNavbar(); loadFooter();</script>
     <script src="../../assets/js/fitur/ecochallenge.js"></script>
 </body>
 
