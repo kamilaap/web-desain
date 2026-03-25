@@ -72,9 +72,9 @@ margin-top: 10px;
 }
 
 .hero-sub {
-color: #e0e0e0; /* Lebih terang dari var(--teks-redup) agar terbaca */
+color: #e0e0e0;
     font-size: 1.1rem;
-    max-width: 650px; /* Diperlebar sedikit agar tidak terlalu 'gepeng' */
+    max-width: 650px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow halus agar teks kontras */
 }
 
@@ -378,11 +378,11 @@ background: #ffffff;
     text-align: justify;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
                 box-shadow 0.3s ease, 
-                border 0.3s ease; /* Transisi lebih responsif */
+                border 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid transparent; /* Mencegah layout shifting */
+    border: 1px solid transparent;
 }
 
 [data-theme="light"] .solusi-card {
@@ -418,14 +418,12 @@ background: #ffffff;
 .solusi-card h3 {
 text-align: center;
     width: 100%;
-    margin-bottom: 20px; /* Kurangi sedikit margin agar tidak terlalu jauh */
+    margin-bottom: 20px; 
     color: #1a1a1a;
-    
-    /* Tambahkan ini */
     display: flex;
-    align-items: center;    /* Agar teks tetap di tengah secara vertikal */
+    align-items: center;
     justify-content: center;
-    min-height: 80px;       /* Tinggi minimal untuk menampung teks yang panjang */
+    min-height: 80px;
 }
 
 .solusi-card p {
@@ -437,13 +435,9 @@ text-align: center;
 .solusi-card:hover {
 /* Mengangkat kartu sedikit lebih tinggi */
     transform: translateY(-15px) scale(1.05); 
-    
-    /* Menambahkan efek glow hijau (diambil dari card-highlight) */
+
     box-shadow: 0 15px 35px rgba(46, 160, 67, 0.4);
-    
-    /* Opsional: Jika ingin border ikut berubah warna */
     border: 1px solid rgba(46, 160, 67, 0.2);
-    
     cursor: pointer;
 }
 
@@ -542,16 +536,12 @@ text-align: center;
     }
 }
 
-/* Hapus blok @keyframes fadeInUp dan .info-row, .stat-card { opacity: 0; ... } */
 
-/* Tambahkan ini untukA memperhalus transisi AOS */
 [data-aos] {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Tambahkan efek parallax sedikit pada hero-video */
 .hero-video {
-    /* ... properti lama ... */
     transition: transform 0.5s ease-out;
 }
 
@@ -561,7 +551,7 @@ text-align: center;
     right: 30px;
     width: 50px;
     height: 50px;
-    background: rgba(46, 160, 67, 0.8); /* Hijau transparan */
+    background: rgba(46, 160, 67, 0.8);
     color: white;
     border-radius: 50%;
     display: flex;
