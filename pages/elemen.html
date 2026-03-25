@@ -8,12 +8,13 @@
   <script>(function(){var t=localStorage.getItem('tema');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/css/elemen.css">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/elemen.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-
+ <!-- navbar -->
+    <div id="navbar"></div>
   <!-- konten -->
   <div class="halaman">
     <h2 class="judul">Tiga Elemen Bumi</h2>
@@ -88,9 +89,14 @@
       </div>
     </div>
   </div>
-
+<div id="footer"></div>
   <!-- js elemen — path dari root -->
-  <script src="../assets/js/elemen.js"></script>
+  <script src="assets/js/elemen.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script>
+  loadNavbar();
+  loadFooter();
+</script>
 </body>
 
 </html>
