@@ -142,6 +142,8 @@
     /* border-radius: 50%; */
 }
 
+
+
 /* Responsif untuk layar HP */
 @media (max-width: 768px) {
     .hero-video {

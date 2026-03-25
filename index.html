@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bumi Berbicara</title>
+  <script>(function(){var t=localStorage.getItem('tema');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ── Page sections ── */
+    .page-section {
+      min-height: 100vh;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .page-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Divider antar section */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--hijau-border), transparent);
+      margin: 0 2.5rem;
+    }
+
+    /* Loading skeleton */
+    .page-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      color: var(--teks-redup);
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+
+    .spinner {
+      width: 20px; height: 20px;
+      border: 2px solid var(--hijau-border);
+      border-top-color: var(--hijau-medium);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Scroll ke atas button */
+    #scrollTop {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--hijau-medium);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+
+    #scrollTop.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #scrollTop:hover {
+      background: #3a8548;
+      transform: translateY(-2px);
+    }
+
+    /* Nav link active state untuk SPA */
+    .nav-link.spa-active {
+      background-color: var(--hijau-medium);
+      color: white !important;
+    }
+
+    /* Progress bar di atas */
+    #readProgress {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(to right, var(--hijau-medium), var(--warna-udara));
+      z-index: 99;
+      transition: width 0.1s;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Progress bar -->
+  <div id="readProgress"></div>
+
+  <!-- Semua halaman dimuat di sini, bertumpuk ke bawah -->
+  <main id="spa-container">
+    <div class="page-loading">
+      <div class="spinner"></div>
+      <span>Memuat halaman...</span>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Scroll to top button -->
+  <button id="scrollTop" title="Kembali ke atas">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <script src="assets/js/navbar.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ── Daftar halaman & urutannya ──
+    const PAGES = [
+      { id: 'beranda',      file: 'pages/beranda.html',            label: 'Beranda' },
+      { id: 'tentang',      file: 'pages/tentang.html',            label: 'Tentang' },
+      { id: 'elemen',       file: 'pages/elemen.html',             label: 'Elemen' },
+      { id: 'calculator',   file: 'pages/fitur/calculator.html',   label: 'Calculator' },
+      { id: 'ecochallenge', file: 'pages/fitur/ecochallenge.html', label: 'Eco Challenge' },
+      { id: 'kontak',       file: 'pages/kontak.html',             label: 'Kontak' },
+    ];
+
+    const container = document.getElementById('spa-container');
+
+    // ── Load semua halaman sekaligus ──
+    async function loadAllPages() {
+      container.innerHTML = '';
+
+      for (const page of PAGES) {
+        // Buat section wrapper
+        const section = document.createElement('section');
+        section.className = 'page-section';
+        section.id = 'page-' + page.id;
+        section.innerHTML = `<div class="page-loading"><div class="spinner"></div><span>Memuat ${page.label}...</span></div>`;
+        container.appendChild(section);
+
+        // Divider antar section (kecuali yang terakhir)
+        if (page.id !== PAGES[PAGES.length - 1].id) {
+          const divider = document.createElement('div');
+          divider.className = 'section-divider';
+          container.appendChild(divider);
+        }
+
+        // Fetch konten
+        try {
+          const res  = await fetch(page.file);
+          const html = await res.text();
+          section.innerHTML = html;
+
+          // Jalankan script di dalam konten yang di-fetch
+          section.querySelectorAll('script').forEach(oldScript => {
+            const newScript = document.createElement('script');
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            oldScript.replaceWith(newScript);
+          });
+        } catch (e) {
+          section.innerHTML = `<div class="container mt-besar mb-besar"><p class="teks-redup">Gagal memuat halaman <strong>${page.label}</strong>.</p></div>`;
+        }
+      }
+
+      // Setelah semua dimuat, aktifkan IntersectionObserver
+      initObserver();
+      initNavHighlight();
+    }
+
+    // ── Fade-in saat section masuk viewport ──
+    function initObserver() {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.page-section').forEach(s => io.observe(s));
+    }
+
+    // ── Highlight nav link sesuai section yang sedang dilihat ──
+    function initNavHighlight() {
+      const sections = document.querySelectorAll('.page-section');
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const id = e.target.id.replace('page-', '');
+          document.querySelectorAll('.nav-link, .nav-dropdown-toggle, .btn-hijau').forEach(link => {
+            link.classList.remove('spa-active');
+          });
+          // Cari nav link yang matching
+          const match = document.querySelector(`[data-page="${id}"]`);
+          if (match) match.classList.add('spa-active');
+        });
+      }, { threshold: 0.4 });
+
+      sections.forEach(s => io.observe(s));
+    }
+
+    // ── Scroll smooth ke section ──
+    window.navigateTo = function(pageId) {
+      const target = document.getElementById('page-' + pageId);
+      if (!target) return;
+      const navH = document.querySelector('nav')?.offsetHeight || 64;
+      const top  = target.getBoundingClientRect().top + window.scrollY - navH - 12;
+      window.scrollTo({ top, behavior: 'smooth' });
+      history.pushState(null, '', '#' + pageId);
+    };
+
+    // ── Progress bar ──
+    window.addEventListener('scroll', () => {
+      const total  = document.body.scrollHeight - window.innerHeight;
+      const pct    = total > 0 ? (window.scrollY / total) * 100 : 0;
+      document.getElementById('readProgress').style.width = pct + '%';
+
+      // Scroll to top button
+      const btn = document.getElementById('scrollTop');
+      btn.classList.toggle('show', window.scrollY > 400);
+    });
+
+    document.getElementById('scrollTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ── Init ──
+    loadNavbar();
+    loadFooter();
+    loadAllPages();
+
+    // Jika ada hash di URL, scroll ke section setelah load
+    window.addEventListener('load', () => {
+      const hash = location.hash.replace('#', '');
+      if (hash) setTimeout(() => navigateTo(hash), 800);
+    });
+  </script>
+
+</body>
+</html>
