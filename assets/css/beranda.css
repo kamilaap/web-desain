@@ -39,12 +39,10 @@
     border: 1px solid var(--hijau-border);
     border-radius: 16px;
     transition: transform 0.3s;
-    
-    /* Tambahkan ini agar konten di tengah */
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
+    overflow: hidden;
     padding: 10px;
 }
 
@@ -56,13 +54,8 @@
 .element-box img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Gambar proporsional, tidak gepeng */
+    object-fit: contain;
     border-radius: 8px;
-    
-}
-.element-box:hover {
-    border-color: var(--hijau-medium);
-    transform: translateY(-5px);
 }
 
 /* Bagian Gambar */
@@ -73,7 +66,28 @@
     filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
 }
 
-/* Responsif untuk Kartu */
+/* ================================
+   VIDEO BUMI
+   ================================ */
+.hero-video {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    display: block;
+    mix-blend-mode: screen;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.4));
+    border-radius: 50%;
+}
+
+[data-theme="light"] .hero-video {
+    mix-blend-mode: darken; /* coba ini dulu */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.2));
+}
+/* ================================
+   RESPONSIF
+   ================================ */
+
+/* Tablet */
 @media (max-width: 992px) {
     .hero-card {
         flex-direction: column-reverse;
@@ -98,61 +112,34 @@
     }
 }
 
+/* HP Sedang */
+@media (max-width: 768px) {
+    .hero-video {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+}
+
+/* HP Kecil */
 @media (max-width: 480px) {
     .element-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         width: 100%;
     }
+
     .element-box {
-    /* Pastikan box-nya fleksibel untuk menampung gambar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Potong bagian gambar yang keluar box */
-    padding: 10px;    /* Memberi jarak antara gambar dan border box */
-}
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        padding: 10px;
+    }
 
-.element-box img {
-    /* Atur ukuran gambar di sini */
-    width: 100%;      /* Gambar akan selebar box-nya */
-    height: 100%;     /* Gambar akan setinggi box-nya */
-    
-    /* PENTING: object-fit agar gambar tidak penyet/gepeng */
-    object-fit: contain; 
-    
-    /* Jika gambarmu ingin memenuhi seluruh kotak (seperti cover buku):
-    object-fit: cover; 
-    */
-    
-    border-radius: 8px; /* Opsional: agar sudut gambar melengkung */
-}
-}
-
-.hero-video {
-    width: 100%;           /* Lebar mengikuti container .hero-image */
-    max-width: 350px;      /* Ukuran maksimal supaya tidak kegedean */
-    height: auto;          /* Tinggi otomatis sesuai rasio video */
-    display: block;        /* Menghilangkan gap bawah video */
-    width: 100%;
-    height: auto;
-    mix-blend-mode: screen; /* Menghilangkan warna hitam */
-    /* Efek bayangan halus di bawah video */
-    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.4));
-    border-radius: 50%;
-    /* Opsional: Jika videonya kotak tapi kamu mau bulat */
-    /* border-radius: 50%; */
-}
-
-
-
-/* Responsif untuk layar HP */
-@media (max-width: 768px) {
-    .hero-video {
-        max-width: 280px;  /* Mengecil di layar HP */
-        margin: 0 auto;
+    .element-box img {
         width: 100%;
-    height: auto;
-    mix-blend-mode: screen; /* Menghilangkan warna hitam */
+        height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
     }
 }
