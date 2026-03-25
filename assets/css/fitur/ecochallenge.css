@@ -12,13 +12,10 @@
 }
 
 /* JANGAN override body background/color di sini — biar global.css yang handle */
-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
 .main-wrapper {
     background-color: var(--bg-utama);
     min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     transition: background-color 0.3s;
 }
 

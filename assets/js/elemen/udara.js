@@ -64,34 +64,41 @@ const mainObserver = new IntersectionObserver((entries) => {
     return               { label: 'Berbahaya',            color: '#9B2C2C', bg: 'rgba(155,44,44,0.15)',   icon: 'fa-biohazard' };
   }
 
-  function renderWidget(aqi, cityName, iaqi, time, isDemo = false) {
+function renderWidget(aqi, cityName, iaqi, time, isDemo = false) {
     const level = getAQILevel(aqi);
+    
+    // Fallback jika data tidak ada
+    const pm25 = iaqi.pm25 ? `${iaqi.pm25.v} µg` : '--';
+    const temp = iaqi.t ? `${iaqi.t.v}°C` : '--';
+    const hum = iaqi.h ? `${iaqi.h.v}%` : '--';
+
     widget.innerHTML = `
       <div class="aqi-card" style="--aqi-color:${level.color}; --aqi-bg:${level.bg}">
         <div class="aqi-left">
-          <div class="aqi-label">Kualitas Udara · ${cityName}</div>
+          <div class="aqi-label">Kualitas Udara · <strong>${cityName}</strong></div>
           <div class="aqi-number">${aqi}</div>
           <div class="aqi-status">
-            <i class="fa-solid ${level.icon}"></i>
-            ${level.label}
+            <i class="fa-solid ${level.icon}"></i> ${level.label}
           </div>
         </div>
-        <div class="aqi-divider"></div>
+        
         <div class="aqi-right">
-          ${iaqi.pm25 ? `<div class="aqi-param"><span>PM2.5</span><strong>${iaqi.pm25.v} µg</strong></div>` : ''}
-          ${iaqi.pm10 ? `<div class="aqi-param"><span>PM10</span><strong>${iaqi.pm10.v} µg</strong></div>` : ''}
-          ${iaqi.t    ? `<div class="aqi-param"><span>Suhu</span><strong>${iaqi.t.v}°C</strong></div>` : ''}
-          ${iaqi.h    ? `<div class="aqi-param"><span>Kelembaban</span><strong>${iaqi.h.v}%</strong></div>` : ''}
+          <div class="aqi-param"><span>PM2.5</span><strong>${pm25}</strong></div>
+          <div class="aqi-param"><span>Suhu</span><strong>${temp}</strong></div>
+          <div class="aqi-param"><span>Kelembaban</span><strong>${hum}</strong></div>
         </div>
-        <div class="aqi-live-dot ${isDemo ? 'aqi-demo' : ''}">
-          ${isDemo
-            ? `<i class="fa-solid fa-circle-info" style="font-size:9px"></i> Demo`
-            : `<span class="live-pulse"></span>LIVE`
-          }
+
+        <div class="aqi-footer-info">
+          <div class="aqi-live-tag">
+             ${isDemo ? '<i class="fa-solid fa-circle-info"></i> DEMO' : '<span class="live-pulse"></span> LIVE'}
+          </div>
+          <div class="aqi-time-val">
+            Diperbarui: ${time}
+          </div>
         </div>
-        <div class="aqi-time">${isDemo ? 'Daftarkan token di aqicn.org untuk data real-time' : 'Diperbarui: ' + time}</div>
-      </div>`;
-  }
+      </div>
+    `;
+}
 
   async function fetchAQI(url) {
     const res  = await fetch(url);
@@ -151,3 +158,33 @@ const mainObserver = new IntersectionObserver((entries) => {
 // Daftarkan elemen untuk diamati
 document.querySelectorAll('.stat-card').forEach(card => mainObserver.observe(card));
 document.querySelectorAll('iframe, video').forEach(v => mainObserver.observe(v));
+
+const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('music-control');
+const musicIcon = document.getElementById('music-icon');
+
+// Fungsi untuk memutar musik
+function playMusic() {
+    music.play().then(() => {
+        musicIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
+        // Hapus event listener setelah musik berhasil diputar
+        document.removeEventListener('click', playMusic);
+    }).catch(error => {
+        console.log("Autoplay diblokir browser, menunggu interaksi.");
+    });
+}
+
+// Pemicu: Musik berputar saat klik pertama di halaman
+document.addEventListener('click', playMusic);
+
+// Toggle Manual (Klik pada ikon musik)
+musicBtn.addEventListener('click', function(e) {
+    e.stopPropagation(); // Mencegah bentrok dengan listener dokumen
+    if (music.paused) {
+        music.play();
+        musicIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
+    } else {
+        music.pause();
+        musicIcon.classList.replace('fa-volume-up', 'fa-volume-mute');
+    }
+});

@@ -9,13 +9,20 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link rel="shortcut icon" href="../../assets/img/logo.png" type="image/x-icon">
-  
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/elemen/udara.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
+  <audio id="bgMusic" loop>
+    <source src="../../assets/audio/suara-angin.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+  </audio>
+  <div id="music-control" class="music-btn">
+    <i id="music-icon" class="fas fa-volume-mute"></i>
+  </div>
+
   <div id="navbar"></div>
 
   <div class="halaman">
@@ -30,17 +37,17 @@
       <p class="hero-nomor">Elemen 02</p>
       <h1 class="hero-judul">Udara</h1>
       <p class="hero-sub">
-        Setiap tarikan napas membawa udara yang makin tercemar. 
+        Setiap tarikan napas membawa udara yang makin tercemar.
         Temukan bagaimana polusi mengubah langit dan kesehatan kita.
       </p>
       <div class="aqi-widget" id="aqiWidget">
-    <div class="aqi-loading">
-        <i class="fa-solid fa-spinner fa-spin"></i>
-        <span>Mendeteksi lokasi kamu...</span>
+        <div class="aqi-loading">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <span>Mendeteksi lokasi kamu...</span>
+        </div>
+      </div>
     </div>
-</div>
-    </div>
-    
+
     <div class="divider"></div>
 
     <section class="pengantar-section mt-besar">
@@ -51,30 +58,22 @@
         </p>
 
         <div class="stats-grid mb-besar">
-  <div class="stat-card" data-aos="zoom-in" data-aos-delay="100 ">
-    <h3 class="stat-number teks-hijau-cerah"><span class="counter" data-target="123000">0</span>+ JIWA</h3>
-    <p class="stat-label">Meninggal dunia setiap tahun di Indonesia akibat polusi udara</p>
-    <a href="https://www.viva.co.id/berita/nasional/1630850-guru-besar-ui-123-ribu-orang-lebih-meninggal-per-tahun-akibat-polusi-udara" target="_blank" class="link-sumber">
-      Sumber: viva.co.id
-    </a>
-  </div>
-
-  <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
-    <h3 class="stat-number teks-hijau-cerah">RP <span class="counter" data-target="373">0</span>,1 T</h3>
-    <p class="stat-label">Estimasi kerugian ekonomi atau sekitar 5,03% dari produk domestik bruto (PDB)</p>
-    <a href="https://journal.unnes.ac.id/nju/kemas/article/view/3677#:~:text=Hasil%20estimasi%20menunjukkan%20besarnya%20biaya%20ekonomi%20yang,Rp%20373%2C1%20triliun%20atau%20setara%20dengan%205%2C03%25" target="_blank" class="link-sumber">
-      Sumber: journal.unnes.ac.id
-    </a>
-  </div>
-
-  <div class="stat-card" data-aos="zoom-in" data-aos-delay="500">
-    <h3 class="stat-number teks-hijau-cerah"><span class="counter" data-target="15">0</span> BESAR</h3>
-    <p class="stat-label">Negara dengan tingkat polusi terburuk di dunia</p>
-    <a href="https://lestari.kompas.com/read/2025/03/14/101933586/indonesia-masuk-15-besar-negara-paling-berpolusi-menteri-lh-kami-sedang" target="_blank" class="link-sumber">
-      Sumber: kompas.com
-    </a>
-  </div>
-</div>
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+            <h3 class="stat-number teks-hijau-cerah"><span class="counter" data-target="123000">0</span>+ JIWA</h3>
+            <p class="stat-label">Meninggal dunia setiap tahun di Indonesia akibat polusi udara</p>
+            <a href="https://www.viva.co.id/berita/nasional/1630850-guru-besar-ui-123-ribu-orang-lebih-meninggal-per-tahun-akibat-polusi-udara" target="_blank" class="link-sumber">Sumber: viva.co.id</a>
+          </div>
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+            <h3 class="stat-number teks-hijau-cerah">RP <span class="counter" data-target="373">0</span>,1 T</h3>
+            <p class="stat-label">Estimasi kerugian ekonomi atau sekitar 5,03% dari produk domestik bruto (PDB)</p>
+            <a href="https://journal.unnes.ac.id/nju/kemas/article/view/3677" target="_blank" class="link-sumber">Sumber: journal.unnes.ac.id</a>
+          </div>
+          <div class="stat-card" data-aos="zoom-in" data-aos-delay="500">
+            <h3 class="stat-number teks-hijau-cerah"><span class="counter" data-target="15">0</span> BESAR</h3>
+            <p class="stat-label">Negara dengan tingkat polusi terburuk di dunia</p>
+            <a href="https://lestari.kompas.com/read/2025/03/14/101933586/indonesia-masuk-15-besar-negara-paling-berpolusi-menteri-lh-kami-sedang" target="_blank" class="link-sumber">Sumber: kompas.com</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -84,17 +83,15 @@
       <div class="info-row" data-aos="fade-right">
         <div class="info-img">
           <div class="video-clean-wrapper">
-            <iframe id="videoTransportasi" 
-              src="https://www.youtube.com/embed/BchDmzVKcaQ?autoplay=1&mute=1&loop=1&playlist=BchDmzVKcaQ&enablejsapi=1&rel=0&controls=0&modestbranding=1" 
+            <iframe id="videoTransportasi"
+              src="https://www.youtube.com/embed/BchDmzVKcaQ?autoplay=1&mute=1&loop=1&playlist=BchDmzVKcaQ&enablejsapi=1&rel=0&controls=0&modestbranding=1"
               frameborder="0" allow="autoplay; encrypted-media">
             </iframe>
           </div>
         </div>
         <div class="info-text">
           <h3 class="teks-hijau-cerah">Transportasi Bermotor</h3>
-          <p class="teks-redup">
-            Kendaraan berbahan bakar fosil menghasilkan emisi karbon monoksida (CO) dan partikel halus (PM2.5).
-          </p>
+          <p class="teks-redup">Kendaraan berbahan bakar fosil menghasilkan emisi karbon monoksida (CO) dan partikel halus (PM2.5).</p>
           <ul class="teks-redup">
             <li>Kemacetan meningkatkan waktu pembakaran bahan bakar</li>
             <li>Mesin tidak terawat memperburuk emisi</li>
@@ -107,9 +104,7 @@
       <div class="info-row" data-aos="fade-left">
         <div class="info-text">
           <h3 class="teks-hijau-cerah">Industri dan Pabrik</h3>
-          <p class="teks-redup">
-            Kegiatan industri melepaskan berbagai polutan berbahaya tergantung jenis produksinya.
-          </p>
+          <p class="teks-redup">Kegiatan industri melepaskan berbagai polutan berbahaya tergantung jenis produksinya.</p>
           <ul class="teks-redup">
             <li>Pelepasan Gas beracun (SO2, NOx)</li>
             <li>Kontaminasi logam berat ke udara</li>
@@ -119,8 +114,8 @@
         </div>
         <div class="info-img">
           <div class="video-clean-wrapper">
-            <iframe id="videoPabrik" 
-              src="https://www.youtube.com/embed/TDjh3hQcnZg?autoplay=1&mute=1&loop=1&playlist=TDjh3hQcnZg&enablejsapi=1&rel=0&controls=0" 
+            <iframe id="videoPabrik"
+              src="https://www.youtube.com/embed/TDjh3hQcnZg?autoplay=1&mute=1&loop=1&playlist=TDjh3hQcnZg&enablejsapi=1&rel=0&controls=0"
               frameborder="0" allow="autoplay; encrypted-media">
             </iframe>
           </div>
@@ -136,9 +131,7 @@
         </div>
         <div class="info-text">
           <h3 class="teks-hijau-cerah">Pembakaran Sampah Terbuka</h3>
-          <p class="teks-redup">
-            Membakar sampah melepaskan zat dioksin yang sangat beracun langsung ke atmosfer.
-          </p>
+          <p class="teks-redup">Membakar sampah melepaskan zat dioksin yang sangat beracun langsung ke atmosfer.</p>
           <ul class="teks-redup">
             <li>Paparan langsung partikel PM2.5 ke sistem pernapasan</li>
             <li>Pelepasan gas rumah kaca yang mempercepat pemanasan</li>
@@ -179,27 +172,22 @@
           </div>
         </div>
         <div class="dampak-card" data-aos="fade-up">
-            <div class="dampak-img-wrapper">
-                <img src="../../assets/img/dampak-ekonomi.jpg" alt="Dampak Ekonomi">
-                <div class="dampak-overlay">
-                    <h3>EKONOMI</h3>
-                </div>
-            </div>
-            <div class="dampak-konten">
-                <p>Meningkatnya biaya pengobatan negara dan penurunan produktivitas kerja akibat gangguan kesehatan.</p>
-            </div>
+          <div class="dampak-img-wrapper">
+            <img src="../../assets/img/dampak-ekonomi.jpg" alt="Dampak Ekonomi">
+            <div class="dampak-overlay"><h3>EKONOMI</h3></div>
+          </div>
+          <div class="dampak-konten">
+            <p>Meningkatnya biaya pengobatan negara dan penurunan produktivitas kerja akibat gangguan kesehatan.</p>
+          </div>
         </div>
-
         <div class="dampak-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="dampak-img-wrapper">
-                <img src="../../assets/img/dampak-sosial.jpg" alt="Dampak Sosial">
-                <div class="dampak-overlay">
-                    <h3>SOSIAL</h3>
-                </div>
-            </div>
-            <div class="dampak-konten">
-                <p>Menurunnya kualitas hidup dan terbatasnya aktivitas luar ruangan bagi anak-anak serta lansia.</p>
-            </div>
+          <div class="dampak-img-wrapper">
+            <img src="../../assets/img/dampak-sosial.jpg" alt="Dampak Sosial">
+            <div class="dampak-overlay"><h3>SOSIAL</h3></div>
+          </div>
+          <div class="dampak-konten">
+            <p>Menurunnya kualitas hidup dan terbatasnya aktivitas luar ruangan bagi anak-anak serta lansia.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -209,7 +197,6 @@
         <h2 class="teks-tengah mb-besar">Mari Kita Selamatkan Umat Manusia</h2>
         <p class="teks-redup">Perubahan kecil hari ini untuk langit biru di masa depan, mulailah dari dirimu, mulailah dari sekarang.</p>
       </div>
-      
       <div class="solusi-grid">
         <div class="solusi-card" data-aos="flip-left">
           <div class="solusi-icon-wrapper">
@@ -218,7 +205,6 @@
           <h3>Stop Asap Beracun</h3>
           <p>Hindari membakar sampah secara terbuka demi menjaga kualitas udara di lingkungan sekitar.</p>
         </div>
-
         <div class="solusi-card" data-aos="flip-left" data-aos-delay="100">
           <div class="solusi-icon-wrapper">
             <img src="../../assets/img/icon2.png" alt="Ikon Langkah hijau" class="solusi-img-file">
@@ -226,7 +212,6 @@
           <h3>Pilih Langkah Hijau</h3>
           <p>Gunakan transportasi umum atau bersepeda untuk mengurangi polusi emisi kendaraan pribadi.</p>
         </div>
-
         <div class="solusi-card" data-aos="flip-left" data-aos-delay="200">
           <div class="solusi-icon-wrapper">
             <img src="../../assets/img/icon3.png" alt="Ikon hemat energi" class="solusi-img-file">
@@ -234,7 +219,6 @@
           <h3>Hemat Energi</h3>
           <p>Kurangi penggunaan listrik berlebih untuk menekan emisi gas buang dari pembangkit listrik fosil.</p>
         </div>
-
         <div class="solusi-card" data-aos="flip-left" data-aos-delay="300">
           <div class="solusi-icon-wrapper">
             <img src="../../assets/img/icon4.png" alt="Ikon Paru-paru Alami" class="solusi-img-file">
@@ -244,14 +228,48 @@
         </div>
       </div>
     </section>
+
+    <!-- Navigasi Elemen -->
+    <div class="divider"></div>
+    <section class="sek muncul">
+      <div class="text-center mb-5">
+        <p class="sek-label" style="justify-content:center; display:inline-flex;">Jelajahi Lebih</p>
+        <h2 class="sek-judul">Elemen Lainnya</h2>
+        <p class="sek-sub">Bumi punya tiga elemen yang saling terhubung. Pelajari semuanya.</p>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-md-5">
+          <a href="air.html" class="nav-elemen nav-elemen-air">
+            <div class="nav-elemen-ikon"><i class="fa-solid fa-droplet"></i></div>
+            <div class="nav-elemen-info">
+              <span class="nav-elemen-label">Elemen 01</span>
+              <h3 class="nav-elemen-judul">Air</h3>
+              <p class="nav-elemen-sub">2.2 miliar orang tanpa akses air bersih</p>
+            </div>
+            <div class="nav-elemen-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+        </div>
+        <div class="col-md-5">
+          <a href="tanah.html" class="nav-elemen nav-elemen-tanah">
+            <div class="nav-elemen-ikon"><i class="fa-solid fa-mountain"></i></div>
+            <div class="nav-elemen-info">
+              <span class="nav-elemen-label">Elemen 03</span>
+              <h3 class="nav-elemen-judul">Tanah</h3>
+              <p class="nav-elemen-sub">33% tanah dunia sudah terdegradasi parah</p>
+            </div>
+            <div class="nav-elemen-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+          </a>
+        </div>
+      </div>
+    </section>
   </div>
 
   <div id="footer"></div>
 
   <script src="../../assets/js/navbar.js"></script>
-  <script> 
-    document.addEventListener("DOMContentLoaded", function() {
-      loadNavbar(); 
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      loadNavbar();
       loadFooter();
     });
   </script>

@@ -53,22 +53,16 @@
 }
 
 .hero-nomor {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--warna-udara);
-    margin-bottom: 12px;
+margin-top: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
 }
 
 .hero-judul {
-    font-size: clamp(2.8rem, 7vw, 5rem);
-    font-weight: 700;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #ffffff 40%, var(--warna-udara));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+margin-top: 10px;
 }
 
 [data-theme="light"] .hero-judul {
@@ -78,11 +72,10 @@
 }
 
 .hero-sub {
-    color: var(--teks-redup);
-    font-size: 0.95rem;
-    line-height: 1.8;
-    max-width: 480px;
-    margin: 0 auto;
+color: #e0e0e0;
+    font-size: 1.1rem;
+    max-width: 650px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Shadow halus agar teks kontras */
 }
 
 /* --- Statistik Section --- */
@@ -385,11 +378,11 @@ background: #ffffff;
     text-align: justify;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
                 box-shadow 0.3s ease, 
-                border 0.3s ease; /* Transisi lebih responsif */
+                border 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid transparent; /* Mencegah layout shifting */
+    border: 1px solid transparent;
 }
 
 [data-theme="light"] .solusi-card {
@@ -425,14 +418,12 @@ background: #ffffff;
 .solusi-card h3 {
 text-align: center;
     width: 100%;
-    margin-bottom: 20px; /* Kurangi sedikit margin agar tidak terlalu jauh */
+    margin-bottom: 20px; 
     color: #1a1a1a;
-    
-    /* Tambahkan ini */
     display: flex;
-    align-items: center;    /* Agar teks tetap di tengah secara vertikal */
+    align-items: center;
     justify-content: center;
-    min-height: 80px;       /* Tinggi minimal untuk menampung teks yang panjang */
+    min-height: 80px;
 }
 
 .solusi-card p {
@@ -444,13 +435,9 @@ text-align: center;
 .solusi-card:hover {
 /* Mengangkat kartu sedikit lebih tinggi */
     transform: translateY(-15px) scale(1.05); 
-    
-    /* Menambahkan efek glow hijau (diambil dari card-highlight) */
+
     box-shadow: 0 15px 35px rgba(46, 160, 67, 0.4);
-    
-    /* Opsional: Jika ingin border ikut berubah warna */
     border: 1px solid rgba(46, 160, 67, 0.2);
-    
     cursor: pointer;
 }
 
@@ -549,16 +536,159 @@ text-align: center;
     }
 }
 
-/* Hapus blok @keyframes fadeInUp dan .info-row, .stat-card { opacity: 0; ... } */
 
-/* Tambahkan ini untukA memperhalus transisi AOS */
 [data-aos] {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Tambahkan efek parallax sedikit pada hero-video */
 .hero-video {
-    /* ... properti lama ... */
     transition: transform 0.5s ease-out;
 }
 
+.music-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: rgba(46, 160, 67, 0.8);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    background: rgba(46, 160, 67, 1);
+}
+
+/* Container Widget AQI */
+.aqi-widget {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+}
+
+.aqi-card {
+    background: var(--aqi-bg);
+    border: 1px solid var(--aqi-color);
+    border-radius: 24px;
+    padding: 25px 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    color: white;
+    max-width: 800px;
+    position: relative;
+}
+
+.aqi-left {
+    text-align: left;
+    min-width: 180px;
+}
+
+.aqi-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.aqi-number {
+    font-size: 4rem;
+    font-weight: 850;
+    line-height: 1;
+    color: var(--aqi-color);
+    margin: 5px 0;
+}
+
+.aqi-status {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.aqi-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 40px;
+    text-align: left;
+    border-left: 1px solid rgba(255,255,255,0.15);
+    padding-left: 40px;
+}
+
+.aqi-param span {
+    font-size: 0.75rem;
+    display: block;
+    opacity: 0.7;
+    margin-bottom: 2px;
+}
+
+.aqi-param strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.aqi-footer-info {
+    position: absolute;
+    right: 30px;
+    bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.live-pulse {
+    width: 8px;
+    height: 8px;
+    background: #ff4d4d;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    box-shadow: 0 0 8px #ff4d4d;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .aqi-card {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        text-align: center;
+    }
+    .aqi-left { text-align: center; min-width: unset; }
+    .aqi-right {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        padding-left: 0;
+        padding-top: 20px;
+        gap: 15px 30px;
+    }
+    .aqi-footer-info {
+        position: static;
+        margin-top: 15px;
+        justify-content: center;
+    }
+}

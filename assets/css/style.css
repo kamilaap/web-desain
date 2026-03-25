@@ -250,9 +250,11 @@ nav .btn-hijau {
   font-size: 0.95rem;
   color: var(--teks-utama);
   padding: 7px 14px;
-  line-height: 1.2;
+  line-height: 1;
   appearance: none;
   -webkit-appearance: none;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .dropdown-chevron {
