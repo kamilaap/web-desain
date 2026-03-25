@@ -429,4 +429,7 @@ text-align: center;
 .hero-video {
     /* ... properti lama ... */
     transition: transform 0.5s ease-out;
+    width: 100%;
+    height: auto;
+    mix-blend-mode: screen; /* Menghilangkan warna hitam */
 }
