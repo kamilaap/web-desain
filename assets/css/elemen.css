@@ -1,244 +1,215 @@
-.halaman {
-  padding: 48px 0;
-  max-width: 1200px;
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 64px;
+}
+
+#elemen {
+  padding: 100px 24px;
+  background: var(--bg-card);
+}
+
+.elemen-wrapper {
+  max-width: 1100px;
   margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
 }
 
-.judul {
-  font-size: 2rem;
+.section-label {
+  font-size: 0.75rem;
   font-weight: 700;
-  margin-bottom: 8px;
-  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--hijau-medium);
+  margin-bottom: 12px;
 }
 
-.subjudul {
-  color: var(--teks-redup);
-  margin-bottom: 40px;
-  text-align: center;
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
 }
+
+.section-sub {
+  color: var(--teks-redup);
+  font-size: 1rem;
+  margin-bottom: 48px;
+}
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--hijau-border), transparent);
+  margin: 0 auto;
+}
+
+/* ── Elemen Cards ── */
+.halaman { padding: 0; }
+.judul   { display: none; }
+.subjudul { display: none; }
 
 .card {
-  background-color: var(--bg-card);
-  border-radius: 20px;
-  padding: 32px 28px;
-  border: 1.5px solid var(--hijau-border);
-  text-decoration: none;
   display: block;
+  background: var(--bg-utama);
+  border: 1.5px solid var(--hijau-border) !important;
+  border-radius: 20px !important;
+  padding: 28px;
+  text-decoration: none;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
   color: var(--teks-utama);
   height: 100%;
-
-  opacity: 0;
-  transform: translateY(30px);
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, opacity 0.5s;
-}
-
-.card.muncul {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-  color: var(--teks-utama);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
-.card.air:hover {
-  border-color: var(--warna-air);
+.card.air:hover   { border-color: var(--warna-air) !important; }
+.card.udara:hover { border-color: var(--warna-udara) !important; }
+.card.tanah:hover { border-color: var(--warna-tanah) !important; }
+
+.card .ikon {
+  font-size: 2rem;
+  margin-bottom: 16px;
 }
 
-.card.udara:hover {
-  border-color: var(--warna-udara);
-}
+.card.air .ikon   { color: var(--warna-air); }
+.card.udara .ikon { color: var(--warna-udara); }
+.card.tanah .ikon { color: var(--warna-tanah); }
 
-.card.tanah:hover {
-  border-color: var(--warna-tanah);
-}
-
-
-.ikon {
-  font-size: 1.6rem;
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  transition: transform 0.3s;
-}
-
-.air .ikon i {
-  color: var(--warna-air);
-}
-
-.udara .ikon i {
-  color: var(--warna-udara);
-}
-
-.tanah .ikon i {
-  color: var(--warna-tanah);
-}
-
-.card:hover .ikon {
-  transform: rotate(-10deg) scale(1.15);
-}
-
-.air .ikon {
-  background-color: rgba(58, 159, 255, 0.15);
-}
-
-.udara .ikon {
-  background-color: rgba(77, 217, 240, 0.15);
-}
-
-.tanah .ikon {
-  background-color: rgba(200, 135, 74, 0.15);
-}
-
-
-.nomor {
+.card .nomor {
   font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--teks-redup);
   margin-bottom: 6px;
 }
 
-.air .nomor {
-  color: var(--warna-air);
-}
-
-.udara .nomor {
-  color: var(--warna-udara);
-}
-
-.tanah .nomor {
-  color: var(--warna-tanah);
-}
-
-
-.nama {
-  font-size: 1.6rem;
+.card .nama {
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-
-.deskripsi {
+.card .deskripsi {
+  font-size: 0.88rem;
   color: var(--teks-redup);
-  font-size: 0.9rem;
   line-height: 1.7;
   margin-bottom: 20px;
 }
 
-
 .bar-label {
   display: flex;
   justify-content: space-between;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--teks-redup);
   margin-bottom: 6px;
 }
 
 .bar-bg {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-radius: 100px;
-  height: 5px;
-  margin-bottom: 24px;
+  background: var(--hijau-border);
+  border-radius: 99px;
+  height: 6px;
+  margin-bottom: 20px;
   overflow: hidden;
 }
 
 .bar-isi {
   height: 100%;
-  border-radius: 100px;
+  border-radius: 99px;
   width: 0;
   transition: width 1.2s ease;
 }
 
-.air .bar-isi {
-  background-color: var(--warna-air);
+.card.air .bar-isi   { background: var(--warna-air); }
+.card.udara .bar-isi { background: var(--warna-udara); }
+.card.tanah .bar-isi { background: var(--warna-tanah); }
+
+.card .tombol {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--teks-redup);
+  transition: color 0.2s;
 }
 
-.udara .bar-isi {
-  background-color: var(--warna-udara);
+.card.air:hover .tombol   { color: var(--warna-air); }
+.card.udara:hover .tombol { color: var(--warna-udara); }
+.card.tanah:hover .tombol { color: var(--warna-tanah); }
+
+/* ── Fitur Teaser ── */
+.fitur-teaser {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
-.tanah .bar-isi {
-  background-color: var(--warna-tanah);
+.fitur-card {
+  background: var(--bg-utama);
+  border: 1.5px solid var(--hijau-border);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  text-decoration: none;
+  color: var(--teks-utama);
+  transition: transform 0.3s, border-color 0.3s;
 }
 
-
-.tombol {
-  display: inline-block;
-  padding: 8px 20px;
-  border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  border: 1.5px solid;
-  transition: background-color 0.2s, transform 0.2s;
+.fitur-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--hijau-medium);
+  color: var(--teks-utama);
 }
 
-.card:hover .tombol {
-  transform: translateX(4px);
+.fitur-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(46, 107, 56, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #4ade80;
+  flex-shrink: 0;
 }
 
-.air .tombol {
-  color: var(--warna-air);
-  border-color: var(--warna-air);
+.fitur-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 4px;
 }
 
-.udara .tombol {
-  color: var(--warna-udara);
-  border-color: var(--warna-udara);
+.fitur-desc {
+  font-size: 0.83rem;
+  color: var(--teks-redup);
 }
 
-.tanah .tombol {
-  color: var(--warna-tanah);
-  border-color: var(--warna-tanah);
+/* ── Scroll Reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.air:hover .tombol {
-  background-color: rgba(58, 159, 255, 0.15);
+.reveal.visible {
+  opacity: 1;
+  transform: none;
 }
 
-.udara:hover .tombol {
-  background-color: rgba(77, 217, 240, 0.15);
-}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
 
-.tanah:hover .tombol {
-  background-color: rgba(200, 135, 74, 0.15);
-}
-
-
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .halaman {
-    padding: 32px 16px;
-  }
-
-  .judul {
-    font-size: 1.5rem;
-  }
-
-  .card {
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .halaman {
-    padding: 32px 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .card {
-    padding: 24px 20px;
-  }
-
-  .nama {
-    font-size: 1.3rem;
-  }
+  .fitur-teaser    { grid-template-columns: 1fr; }
+  .section-title   { font-size: 1.8rem; }
 }
