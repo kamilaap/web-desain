@@ -347,7 +347,7 @@ color: #e0e0e0;
     line-height: 1.6;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 100%) {
     .dampak-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -357,7 +357,7 @@ color: #e0e0e0;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 100%) {
     .dampak-grid {
         grid-template-columns: 1fr;
     }
@@ -530,7 +530,7 @@ text-align: center;
 .nav-elemen-air:hover .nav-elemen-arrow { color: var(--warna-air); transform: translateX(4px); }
 .nav-elemen-udara:hover .nav-elemen-arrow { color: var(--warna-udara); transform: translateX(4px); }
 .nav-elemen-tanah:hover .nav-elemen-arrow { color: var(--warna-tanah); transform: translateX(4px); }
-@media (max-width: 480px) {
+@media (max-width: 100%) {
     .solusi-card {
         padding: 30px 20px;
     }
@@ -694,7 +694,7 @@ text-align: center;
     border-left-color: rgba(0, 0, 0, 0.12);
 }
 /* Responsive Mobile */
-@media (max-width: 768px) {
+@media (max-width: 100%) {
     .aqi-card {
         flex-direction: column;
         gap: 20px;
