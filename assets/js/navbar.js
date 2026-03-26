@@ -120,14 +120,16 @@ function loadNavbar() {
         ${dropdown}
         <a href="${prefixPages}kontak.html" class="btn-hijau ${halamanSekarang === "kontak.html" ? "active" : ""}">Kontak</a>
       </div>
-      <button class="nav-tema" id="temaToggle" title="Ganti tema">
-        ${ikonTerang}
-        ${ikonGelap}
-      </button>
-      <div class="nav-hamburger" id="navHamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="nav-kanan">
+        <button class="nav-tema" id="temaToggle" title="Ganti tema">
+          ${ikonTerang}
+          ${ikonGelap}
+        </button>
+        <div class="nav-hamburger" id="navHamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
     </nav>
   `;
