@@ -9,7 +9,7 @@ html, body {
 .halaman {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 48px 24px 80px;
+    padding: 96px 24px 80px;
 }
 
 /* --- Hero Section --- */
@@ -48,7 +48,10 @@ html, body {
     background: linear-gradient(to bottom, rgba(240, 247, 241, 0.5) 0%, rgba(240, 247, 241, 0.75) 100%);
 }
 
-.hero-ikon, .hero-nomor, .hero-judul, .hero-sub {
+.hero-ikon,
+.hero-nomor,
+.hero-judul,
+.hero-sub {
     position: relative;
     z-index: 2;
 }
