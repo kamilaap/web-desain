@@ -1,20 +1,18 @@
-// --- INISIALISASI AOS ---
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     AOS.init({
-        duration: 1000, // Durasi animasi (ms)
-        once: true,     // Animasi hanya berjalan sekali saat scroll ke bawah
-        offset: 100     // Jarak elemen dari layar sebelum animasi dimulai
+        duration: 1000,
+        once: true,
+        offset: 100
     });
 });
 
-// --- FUNGSI COUNTER (Modifikasi agar lebih smooth) ---
 const counters = document.querySelectorAll('.counter');
 const speed = 100;
 
 const startCounter = (counter) => {
     const target = +counter.getAttribute('data-target');
     const updateCount = () => {
-        const count = +counter.innerText.replace(/\D/g, ''); 
+        const count = +counter.innerText.replace(/\D/g, '');
         const inc = Math.max(1, Math.ceil(target / speed));
 
         if (count < target) {
@@ -27,17 +25,13 @@ const startCounter = (counter) => {
     updateCount();
 };
 
-// --- INTERSECTION OBSERVER ---
 const mainObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        // Jalankan counter hanya saat kartu statistik terlihat
         if (entry.target.classList.contains('stat-card') && entry.isIntersecting) {
             const counterElement = entry.target.querySelector('.counter');
             if (counterElement) startCounter(counterElement);
-            mainObserver.unobserve(entry.target); 
+            mainObserver.unobserve(entry.target);
         }
-
-        // Kontrol Video
         if (entry.target.tagName === 'IFRAME' || entry.target.tagName === 'VIDEO') {
             if (entry.isIntersecting) {
                 if (entry.target.tagName === 'VIDEO') entry.target.play();
@@ -50,15 +44,14 @@ const mainObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
-// aqi - Bumi Berbicara Update
 (async function loadAQI() {
     const widget = document.getElementById('aqiWidget');
     if (!widget) return;
 
-    const token = '0a4f3249e7117b0f9d70ff128d25d1500bab05d8'; 
+    const token = '0a4f3249e7117b0f9d70ff128d25d1500bab05d8';
 
     function getAQILevel(aqi) {
-        if (aqi <= 50)  return { label: 'Baik', color: '#4DD96F', bg: 'rgba(77,217,111,0.12)', icon: 'fa-face-smile' };
+        if (aqi <= 50) return { label: 'Baik', color: '#4DD96F', bg: 'rgba(77,217,111,0.12)', icon: 'fa-face-smile' };
         if (aqi <= 100) return { label: 'Sedang', color: '#F5C842', bg: 'rgba(245,200,66,0.12)', icon: 'fa-face-meh' };
         if (aqi <= 150) return { label: 'Tidak Sehat', color: '#FF8C42', bg: 'rgba(255,140,66,0.12)', icon: 'fa-face-frown' };
         if (aqi <= 200) return { label: 'Sangat Tidak Sehat', color: '#E24B4A', bg: 'rgba(226,75,74,0.12)', icon: 'fa-skull-crossbones' };
@@ -67,8 +60,6 @@ const mainObserver = new IntersectionObserver((entries) => {
 
     function renderWidget(aqi, cityName, iaqi, time, isDemo = false) {
         const level = getAQILevel(aqi);
-        
-        // Ekstraksi parameter dengan fallback aman
         const pm25 = iaqi.pm25 ? `${iaqi.pm25.v}` : '--';
         const pm10 = iaqi.pm10 ? `${iaqi.pm10.v}` : '--';
         const temp = iaqi.t ? `${iaqi.t.v}°C` : '--';
@@ -122,15 +113,13 @@ const mainObserver = new IntersectionObserver((entries) => {
                             `https://api.waqi.info/feed/geo:${coords.latitude};${coords.longitude}/?token=${token}`
                         );
                         resolve(data);
-                    } catch(e) { reject(e); }
+                    } catch (e) { reject(e); }
                 },
-                (err) => reject(err), 
+                (err) => reject(err),
                 { enableHighAccuracy: true, timeout: 7000 }
             );
         });
     }
-
-    // Initial Loading State
     widget.innerHTML = `
         <div class="aqi-loading">
             <i class="fa-solid fa-location-dot fa-bounce"></i>
@@ -154,9 +143,8 @@ const mainObserver = new IntersectionObserver((entries) => {
         const time = data.time?.s?.slice(0, 16).replace(' ', ' pukul ') || '—';
         renderWidget(data.aqi, cityName, iaqi, time);
 
-    } catch(e) {
+    } catch (e) {
         console.error("Critical Error:", e);
-        // Emergency Fallback agar widget tidak kosong
         renderWidget(156, 'Jakarta', {
             pm25: { v: 58 }, pm10: { v: 72 },
             t: { v: 31 }, h: { v: 78 }
@@ -164,7 +152,6 @@ const mainObserver = new IntersectionObserver((entries) => {
     }
 })();
 
-// Daftarkan elemen untuk diamati
 document.querySelectorAll('.stat-card').forEach(card => mainObserver.observe(card));
 document.querySelectorAll('iframe, video').forEach(v => mainObserver.observe(v));
 
@@ -172,11 +159,9 @@ const music = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('music-control');
 const musicIcon = document.getElementById('music-icon');
 
-// Fungsi untuk memutar musik
 function playMusic() {
     music.play().then(() => {
         musicIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
-        // Hapus event listener setelah musik berhasil diputar
         document.removeEventListener('click', playMusic);
     }).catch(error => {
         console.log("Autoplay diblokir browser, menunggu interaksi.");
@@ -185,8 +170,8 @@ function playMusic() {
 
 document.addEventListener('click', playMusic);
 
-musicBtn.addEventListener('click', function(e) {
-    e.stopPropagation(); // Mencegah bentrok dengan listener dokumen
+musicBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
     if (music.paused) {
         music.play();
         musicIcon.classList.replace('fa-volume-mute', 'fa-volume-up');

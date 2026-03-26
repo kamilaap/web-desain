@@ -1,5 +1,3 @@
-
-
 html {
   scroll-behavior: smooth;
 }
@@ -48,9 +46,17 @@ section[id] {
 }
 
 /* ── Elemen Cards ── */
-.halaman { padding: 0; }
-.judul   { display: none; }
-.subjudul { display: none; }
+.halaman {
+  padding: 0;
+}
+
+.judul {
+  display: none;
+}
+
+.subjudul {
+  display: none;
+}
 
 .card {
   display: block;
@@ -69,18 +75,34 @@ section[id] {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
-.card.air:hover   { border-color: var(--warna-air) !important; }
-.card.udara:hover { border-color: var(--warna-udara) !important; }
-.card.tanah:hover { border-color: var(--warna-tanah) !important; }
+.card.air:hover {
+  border-color: var(--warna-air) !important;
+}
+
+.card.udara:hover {
+  border-color: var(--warna-udara) !important;
+}
+
+.card.tanah:hover {
+  border-color: var(--warna-tanah) !important;
+}
 
 .card .ikon {
   font-size: 2rem;
   margin-bottom: 16px;
 }
 
-.card.air .ikon   { color: var(--warna-air); }
-.card.udara .ikon { color: var(--warna-udara); }
-.card.tanah .ikon { color: var(--warna-tanah); }
+.card.air .ikon {
+  color: var(--warna-air);
+}
+
+.card.udara .ikon {
+  color: var(--warna-udara);
+}
+
+.card.tanah .ikon {
+  color: var(--warna-tanah);
+}
 
 .card .nomor {
   font-size: 0.72rem;
@@ -126,9 +148,17 @@ section[id] {
   transition: width 1.2s ease;
 }
 
-.card.air .bar-isi   { background: var(--warna-air); }
-.card.udara .bar-isi { background: var(--warna-udara); }
-.card.tanah .bar-isi { background: var(--warna-tanah); }
+.card.air .bar-isi {
+  background: var(--warna-air);
+}
+
+.card.udara .bar-isi {
+  background: var(--warna-udara);
+}
+
+.card.tanah .bar-isi {
+  background: var(--warna-tanah);
+}
 
 .card .tombol {
   font-size: 0.88rem;
@@ -137,11 +167,18 @@ section[id] {
   transition: color 0.2s;
 }
 
-.card.air:hover .tombol   { color: var(--warna-air); }
-.card.udara:hover .tombol { color: var(--warna-udara); }
-.card.tanah:hover .tombol { color: var(--warna-tanah); }
+.card.air:hover .tombol {
+  color: var(--warna-air);
+}
 
-/* ── Fitur Teaser ── */
+.card.udara:hover .tombol {
+  color: var(--warna-udara);
+}
+
+.card.tanah:hover .tombol {
+  color: var(--warna-tanah);
+}
+
 .fitur-teaser {
   margin-top: 48px;
   display: grid;
@@ -192,7 +229,6 @@ section[id] {
   color: var(--teks-redup);
 }
 
-/* ── Scroll Reveal ── */
 .reveal {
   opacity: 0;
   transform: translateY(32px);
@@ -204,12 +240,24 @@ section[id] {
   transform: none;
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-1 {
+  transition-delay: 0.1s;
+}
 
-/* ── Responsive ── */
+.reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.3s;
+}
+
 @media (max-width: 768px) {
-  .fitur-teaser    { grid-template-columns: 1fr; }
-  .section-title   { font-size: 1.8rem; }
+  .fitur-teaser {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
 }

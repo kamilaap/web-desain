@@ -1,7 +1,3 @@
-// navbar.js
-// Cara pakai: taruh <div id="navbar"></div> di setiap halaman
-// Panggil loadNavbar() dan loadFooter() sebelum </body>
-
 function getPathConfig() {
   const path = window.location.pathname;
   const diHalamanElemen = path.includes("/pages/elemen/");

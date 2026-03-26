@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const counters = document.querySelectorAll('.counter');
-    const speed = 200; // Semakin besar angka, semakin lambat jalannya
+    const speed = 200;
 
     const startCounter = (entries, observer) => {
         entries.forEach(entry => {
@@ -8,8 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const counter = entry.target;
                 const target = +counter.getAttribute('data-target');
                 const count = +counter.innerText;
-
-                // Logika perhitungan angka
                 const animate = () => {
                     const value = +counter.getAttribute('data-target');
                     const data = +counter.innerText;
@@ -24,21 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 animate();
-                // Berhenti mengamati setelah animasi selesai sekali
                 observer.unobserve(counter);
             }
         });
     };
 
     const counterObserver = new IntersectionObserver(startCounter, {
-        threshold: 0.5 // Animasi mulai saat 50% elemen terlihat
+        threshold: 0.5
     });
 
     counters.forEach(counter => counterObserver.observe(counter));
 });
 
-
-// 2. Logika Musik yang Diperbaiki
 const music = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('music-control');
 const musicIcon = document.getElementById('music-icon');
@@ -46,9 +41,7 @@ const musicIcon = document.getElementById('music-icon');
 if (music && musicBtn) {
     music.volume = 0.4;
 
-    // Fungsi klik pertama kali
     function handleFirstClick(e) {
-        // Jika yang diklik adalah tombolnya, jangan jalankan fungsi ini (biarkan fungsi toggle)
         if (musicBtn.contains(e.target)) return;
 
         music.play().then(() => {
@@ -58,11 +51,8 @@ if (music && musicBtn) {
     }
 
     document.addEventListener('click', handleFirstClick);
-
-    // Toggle Manual
-    musicBtn.addEventListener('click', function(e) {
-        e.stopPropagation(); 
-        // Hapus auto-play listener jika user klik tombol manual duluan
+    musicBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
         document.removeEventListener('click', handleFirstClick);
 
         if (music.paused) {

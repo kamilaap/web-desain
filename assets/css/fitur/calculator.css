@@ -1,6 +1,3 @@
-/* carbon.css — Carbon Calculator styles */
-/* Bergantung pada global.css untuk variabel warna dan base styles */
-
 /* ── Layout Utama ── */
 .cc-halaman {
   max-width: 1000px;
@@ -223,9 +220,19 @@
   transition: background-color 0.4s;
 }
 
-.cc-lingkaran.tinggi  { background-color: #7a2020; border-color: #a03030; }
-.cc-lingkaran.sedang  { background-color: #7a5a10; border-color: #a07820; }
-.cc-lingkaran.rendah  { background-color: var(--hijau-medium); }
+.cc-lingkaran.tinggi {
+  background-color: #7a2020;
+  border-color: #a03030;
+}
+
+.cc-lingkaran.sedang {
+  background-color: #7a5a10;
+  border-color: #a07820;
+}
+
+.cc-lingkaran.rendah {
+  background-color: var(--hijau-medium);
+}
 
 .cc-angka-besar {
   font-size: 2rem;
@@ -252,8 +259,13 @@
   transition: background-color 0.3s;
 }
 
-.cc-badge.tinggi { background-color: #a03030; }
-.cc-badge.sedang { background-color: #a07820; }
+.cc-badge.tinggi {
+  background-color: #a03030;
+}
+
+.cc-badge.sedang {
+  background-color: #a07820;
+}
 
 /* Setara dengan */
 .cc-setara {

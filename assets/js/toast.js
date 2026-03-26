@@ -14,44 +14,44 @@ const faktaBumi = [
 ];
 
 const POSISI = [
-  { bottom: '24px', right: '24px', top: 'auto', left: 'auto', masuk: 'translateY(20px)'  },
-  { bottom: '24px', left: '24px',  top: 'auto', right: 'auto', masuk: 'translateY(20px)' },
-  { top: '80px',    right: '24px', bottom: 'auto', left: 'auto', masuk: 'translateY(-20px)' },
-  { top: '80px',    left: '24px',  bottom: 'auto', right: 'auto', masuk: 'translateY(-20px)' },
+  { bottom: '24px', right: '24px', top: 'auto', left: 'auto', masuk: 'translateY(20px)' },
+  { bottom: '24px', left: '24px', top: 'auto', right: 'auto', masuk: 'translateY(20px)' },
+  { top: '80px', right: '24px', bottom: 'auto', left: 'auto', masuk: 'translateY(-20px)' },
+  { top: '80px', left: '24px', bottom: 'auto', right: 'auto', masuk: 'translateY(-20px)' },
 ];
 
 const TOAST_DURASI = 7000;
 
-let toastIdx   = 0;
-let posisiIdx  = 0;
+let toastIdx = 0;
+let posisiIdx = 0;
 let toastTimer = null;
 
 function terapkanPosisi(toast, p) {
-  toast.style.top    = p.top;
+  toast.style.top = p.top;
   toast.style.bottom = p.bottom;
-  toast.style.left   = p.left;
-  toast.style.right  = p.right;
+  toast.style.left = p.left;
+  toast.style.right = p.right;
 }
 
 function isiKonten(i) {
-  const teks    = document.getElementById('toastTeks');
+  const teks = document.getElementById('toastTeks');
   const counter = document.getElementById('toastCounter');
-  const bar     = document.getElementById('toastBar');
+  const bar = document.getElementById('toastBar');
   if (!teks) return;
 
   teks.style.transition = 'opacity 0.3s';
-  teks.style.opacity    = '0';
+  teks.style.opacity = '0';
 
   setTimeout(() => {
-    teks.textContent    = faktaBumi[i];
+    teks.textContent = faktaBumi[i];
     counter.textContent = (i + 1) + ' / ' + faktaBumi.length;
-    teks.style.opacity  = '1';
+    teks.style.opacity = '1';
 
     bar.style.transition = 'none';
-    bar.style.width      = '0%';
+    bar.style.width = '0%';
     setTimeout(() => {
       bar.style.transition = 'width ' + TOAST_DURASI + 'ms linear';
-      bar.style.width      = '100%';
+      bar.style.width = '100%';
     }, 50);
   }, 200);
 }
@@ -63,14 +63,14 @@ function pindahDanIsi(i) {
   const posiBaru = POSISI[posisiIdx];
 
   toast.style.transition = 'opacity 0.3s, transform 0.3s';
-  toast.style.opacity    = '0';
-  toast.style.transform  = posiBaru.masuk;
+  toast.style.opacity = '0';
+  toast.style.transform = posiBaru.masuk;
 
   setTimeout(() => {
     terapkanPosisi(toast, posiBaru);
 
     setTimeout(() => {
-      toast.style.opacity   = '1';
+      toast.style.opacity = '1';
       toast.style.transform = 'translateY(0)';
       isiKonten(i);
     }, 50);
@@ -82,19 +82,19 @@ function mulaiToast() {
   if (!toast) return;
 
   terapkanPosisi(toast, POSISI[0]);
-  toast.style.opacity   = '0';
+  toast.style.opacity = '0';
   toast.style.transform = 'translateY(20px)';
   toast.classList.add('muncul');
 
   setTimeout(() => {
     toast.style.transition = 'opacity 0.4s, transform 0.4s';
-    toast.style.opacity    = '1';
-    toast.style.transform  = 'translateY(0)';
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
     isiKonten(0);
   }, 50);
 
   toastTimer = setInterval(() => {
-    toastIdx  = (toastIdx + 1) % faktaBumi.length;
+    toastIdx = (toastIdx + 1) % faktaBumi.length;
     posisiIdx = (posisiIdx + 1) % POSISI.length;
     pindahDanIsi(toastIdx);
   }, TOAST_DURASI);
@@ -106,8 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
     tutupBtn.addEventListener('click', () => {
       const toast = document.getElementById('toastFakta');
       toast.style.transition = 'opacity 0.3s, transform 0.3s';
-      toast.style.opacity    = '0';
-      toast.style.transform  = 'translateY(10px)';
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(10px)';
       clearInterval(toastTimer);
       setTimeout(() => toast.classList.add('sembunyi'), 350);
     });

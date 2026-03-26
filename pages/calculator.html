@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carbon Calculator</title>
-  <script>(function(){var t=localStorage.getItem('tema');if(t==='light')document.documentElement.setAttribute('data-theme','light');})();</script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <script>(function () { var t = localStorage.getItem('tema'); if (t === 'light') document.documentElement.setAttribute('data-theme', 'light'); })();</script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <link rel="stylesheet" href="../../assets/css/fitur/calculator.css">
 </head>
+
 <body>
 
   <div id="navbar"></div>
@@ -19,7 +21,8 @@
     <!-- Header -->
     <div class="cc-header">
       <h1 class="cc-judul">Carbon<br>Calculator</h1>
-      <p class="cc-subjudul">Masukkan aktivitas harianmu di tiap kategori.<br>Hasil akan dihitung otomatis secara real-time.</p>
+      <p class="cc-subjudul">Masukkan aktivitas harianmu di tiap kategori.<br>Hasil akan dihitung otomatis secara
+        real-time.</p>
     </div>
 
     <!-- Tab -->
@@ -40,10 +43,7 @@
       </div>
     </div>
 
-    <!-- Main Grid -->
     <div class="cc-main">
-
-      <!-- Panel Kiri: Input -->
       <div class="cc-panel-kiri">
 
         <!-- TRANSPORTASI -->
@@ -181,10 +181,7 @@
 
       </div>
     </div>
-
-    <!-- Bawah: Rincian + Tips -->
     <div class="cc-bawah">
-
       <!-- Rincian -->
       <div class="cc-card-rincian">
         <div class="cc-rincian-judul">Rincian Per Kategori</div>
@@ -193,28 +190,36 @@
           <div class="cc-rincian-item">
             <i class="fa-solid fa-car"></i>
             <span>Transportasi</span>
-            <div class="cc-bar-bg"><div class="cc-bar-isi" id="bar-transportasi" style="width:0%; background: var(--warna-tanah)"></div></div>
+            <div class="cc-bar-bg">
+              <div class="cc-bar-isi" id="bar-transportasi" style="width:0%; background: var(--warna-tanah)"></div>
+            </div>
             <span class="cc-rincian-angka" id="label-transportasi">0 kg</span>
           </div>
 
           <div class="cc-rincian-item">
             <i class="fa-solid fa-bolt"></i>
             <span>Energi</span>
-            <div class="cc-bar-bg"><div class="cc-bar-isi" id="bar-energi" style="width:0%; background: var(--warna-air)"></div></div>
+            <div class="cc-bar-bg">
+              <div class="cc-bar-isi" id="bar-energi" style="width:0%; background: var(--warna-air)"></div>
+            </div>
             <span class="cc-rincian-angka" id="label-energi">0 kg</span>
           </div>
 
           <div class="cc-rincian-item">
             <i class="fa-solid fa-utensils"></i>
             <span>Makanan</span>
-            <div class="cc-bar-bg"><div class="cc-bar-isi" id="bar-makanan" style="width:0%; background: var(--hijau-medium)"></div></div>
+            <div class="cc-bar-bg">
+              <div class="cc-bar-isi" id="bar-makanan" style="width:0%; background: var(--hijau-medium)"></div>
+            </div>
             <span class="cc-rincian-angka" id="label-makanan">0 kg</span>
           </div>
 
           <div class="cc-rincian-item">
             <i class="fa-solid fa-trash"></i>
             <span>Sampah</span>
-            <div class="cc-bar-bg"><div class="cc-bar-isi" id="bar-sampah" style="width:0%; background: var(--teks-redup)"></div></div>
+            <div class="cc-bar-bg">
+              <div class="cc-bar-isi" id="bar-sampah" style="width:0%; background: var(--teks-redup)"></div>
+            </div>
             <span class="cc-rincian-angka" id="label-sampah">0 kg</span>
           </div>
 
@@ -229,7 +234,8 @@
             <strong>Jalan kaki atau sepeda</strong> untuk jarak di bawah 2 km — lebih sehat, nol emisi.
           </div>
           <div class="cc-tips-item">
-            <strong>Matikan lampu dan elektronik</strong> saat tidak digunakan. AC dan kulkas adalah penyumbang terbesar.
+            <strong>Matikan lampu dan elektronik</strong> saat tidak digunakan. AC dan kulkas adalah penyumbang
+            terbesar.
           </div>
           <div class="cc-tips-item">
             <strong>Tanam pohon di sekitar rumah</strong> — satu pohon dewasa menyerap 20-30 kg CO₂ per tahun.
@@ -245,4 +251,5 @@
   <script>loadNavbar(); loadFooter();</script>
   <script src="../../assets/js/fitur/calculator.js"></script>
 </body>
+
 </html>

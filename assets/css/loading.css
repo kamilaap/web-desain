@@ -1,0 +1,166 @@
+/* ===========================
+   LOADING SCREEN
+   assets/css/loading.css
+=========================== */
+
+#loadingScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #030d06;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loadingScreen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Loader content layout */
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+/* Earth orb */
+.loader-earth {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.earth-core {
+  position: relative;
+  z-index: 2;
+  width: 52px;
+  height: 52px;
+  background: radial-gradient(circle at 35% 35%, #4ade80, #166534);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.5), 0 0 60px rgba(74, 222, 128, 0.15);
+}
+
+.earth-core i {
+  color: #fff;
+  font-size: 1.3rem;
+  animation: leafPulse 2s ease-in-out infinite;
+}
+
+@keyframes leafPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Spinning rings */
+.earth-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  animation: spin linear infinite;
+}
+
+.ring-1 {
+  width: 72px;
+  height: 72px;
+  border-top-color: #4ade80;
+  border-right-color: rgba(74, 222, 128, 0.2);
+  animation-duration: 2s;
+}
+
+.ring-2 {
+  width: 90px;
+  height: 90px;
+  border-top-color: rgba(74, 222, 128, 0.5);
+  border-left-color: rgba(74, 222, 128, 0.15);
+  animation-duration: 3s;
+  animation-direction: reverse;
+}
+
+.ring-3 {
+  width: 108px;
+  height: 108px;
+  border-bottom-color: rgba(74, 222, 128, 0.3);
+  border-right-color: rgba(74, 222, 128, 0.1);
+  animation-duration: 4.5s;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Text area */
+.loader-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-width: 240px;
+}
+
+.loader-brand {
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 6px;
+  color: #4ade80;
+  text-transform: uppercase;
+  animation: fadeFlicker 3s ease-in-out infinite;
+}
+
+@keyframes fadeFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Progress bar */
+.loader-bar-wrap {
+  width: 220px;
+  height: 3px;
+  background: rgba(74, 222, 128, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #166534, #4ade80, #86efac);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+  position: relative;
+}
+
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #4ade80;
+}
+
+/* Hint text */
+.loader-hint {
+  font-size: 0.75rem;
+  color: rgba(74, 222, 128, 0.5);
+  letter-spacing: 1px;
+  min-height: 1.2em;
+  transition: opacity 0.3s ease;
+}

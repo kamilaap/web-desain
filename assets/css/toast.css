@@ -64,7 +64,9 @@
   transition: color 0.2s;
 }
 
-.toast-tutup:hover { color: var(--teks-utama); }
+.toast-tutup:hover {
+  color: var(--teks-utama);
+}
 
 .toast-teks {
   font-size: 0.88rem;

@@ -26,4 +26,4 @@ Manfaat yang diharapkan:
 Subtema yang diangkat dalam website ini adalah **eksplorasi tiga elemen fundamental bumi** serta berbagai krisis yang mengancam keseimbangannya, dengan harapan pengguna dapat memahami pentingnya menjaga kelestarian lingkungan sebelum terlambat.
 
 ## Link Website  
-https://link-Website-hasil-deploy  
+https://bumiberbicara.my.id/
