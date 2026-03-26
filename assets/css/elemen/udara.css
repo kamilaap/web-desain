@@ -541,9 +541,6 @@ text-align: center;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-.hero-video {
-    transition: transform 0.5s ease-out;
-}
 
 .music-btn {
     position: fixed;
