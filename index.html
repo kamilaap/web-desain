@@ -19,582 +19,19 @@
 
   <!-- Project CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/beranda.css">
-  <link rel="stylesheet" href="assets/css/tentang.css">
-
-  <style>
-    /* ══════════════════════════════════════
-       SMOOTH SCROLL & SECTION BASE
-    ══════════════════════════════════════ */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    section[id] {
-      scroll-margin-top: 64px;
-    }
-
-    /* ══════════════════════════════════════
-       SECTION HERO (BERANDA)
-    ══════════════════════════════════════ */
-    .hero-section {
-      min-height: calc(100vh - 64px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      max-width: 1100px;
-      width: 100%;
-    }
-
-    .hero-content {
-      flex: 1;
-    }
-
-    .teks-hijau-cerah {
-      color: #4ade80;
-      line-height: 1;
-      font-size: 4rem;
-      font-weight: 900;
-      letter-spacing: -2px;
-    }
-
-    .teks-biru-muda {
-      color: var(--warna-udara);
-      line-height: 1;
-      font-size: 4rem;
-      font-weight: 900;
-      letter-spacing: -2px;
-    }
-
-    .element-grid {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-
-    .hero-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-video {
-      width: 100%;
-      max-width: 460px;
-      border-radius: 24px;
-      border: 1.5px solid var(--hijau-border);
-      object-fit: contain;
-      aspect-ratio: 1 / 1;
-      background: transparent;
-    }
-
-    @media (max-width: 768px) {
-      .hero-card {
-        flex-direction: column;
-        gap: 32px;
-      }
-
-      .teks-hijau-cerah,
-      .teks-biru-muda {
-        font-size: 2.8rem;
-      }
-
-      .hero-video {
-        max-width: 100%;
-        aspect-ratio: 1 / 1;
-      }
-    }
-
-    /* ══════════════════════════════════════
-       SECTION DIVIDER
-    ══════════════════════════════════════ */
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--hijau-border), transparent);
-      margin: 0 auto;
-    }
-
-    /* ══════════════════════════════════════
-       SECTION ELEMEN
-    ══════════════════════════════════════ */
-    #elemen {
-      padding: 100px 24px;
-      background: var(--bg-card);
-    }
-
-    .elemen-wrapper {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--hijau-medium);
-      margin-bottom: 12px;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-
-    .section-sub {
-      color: var(--teks-redup);
-      font-size: 1rem;
-      margin-bottom: 48px;
-    }
-
-    /* Elemen cards */
-    .halaman {
-      padding: 0;
-    }
-
-    .judul {
-      display: none;
-    }
-
-    .subjudul {
-      display: none;
-    }
-
-    .card {
-      display: block;
-      background: var(--bg-utama);
-      border: 1.5px solid var(--hijau-border) !important;
-      border-radius: 20px !important;
-      padding: 28px;
-      text-decoration: none;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      color: var(--teks-utama);
-      height: 100%;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .card.air:hover {
-      border-color: var(--warna-air) !important;
-    }
-
-    .card.udara:hover {
-      border-color: var(--warna-udara) !important;
-    }
-
-    .card.tanah:hover {
-      border-color: var(--warna-tanah) !important;
-    }
-
-    .card .ikon {
-      font-size: 2rem;
-      margin-bottom: 16px;
-    }
-
-    .card.air .ikon {
-      color: var(--warna-air);
-    }
-
-    .card.udara .ikon {
-      color: var(--warna-udara);
-    }
-
-    .card.tanah .ikon {
-      color: var(--warna-tanah);
-    }
-
-    .card .nomor {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--teks-redup);
-      margin-bottom: 6px;
-    }
-
-    .card .nama {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .card .deskripsi {
-      font-size: 0.88rem;
-      color: var(--teks-redup);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .bar-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.78rem;
-      color: var(--teks-redup);
-      margin-bottom: 6px;
-    }
-
-    .bar-bg {
-      background: var(--hijau-border);
-      border-radius: 99px;
-      height: 6px;
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
-
-    .bar-isi {
-      height: 100%;
-      border-radius: 99px;
-      width: 0;
-      transition: width 1.2s ease;
-    }
-
-    .card.air .bar-isi {
-      background: var(--warna-air);
-    }
-
-    .card.udara .bar-isi {
-      background: var(--warna-udara);
-    }
-
-    .card.tanah .bar-isi {
-      background: var(--warna-tanah);
-    }
-
-    .card .tombol {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: var(--teks-redup);
-      transition: color 0.2s;
-    }
-
-    .card.air:hover .tombol {
-      color: var(--warna-air);
-    }
-
-    .card.udara:hover .tombol {
-      color: var(--warna-udara);
-    }
-
-    .card.tanah:hover .tombol {
-      color: var(--warna-tanah);
-    }
-
-    /* Fitur teaser */
-    .fitur-teaser {
-      margin-top: 48px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .fitur-card {
-      background: var(--bg-utama);
-      border: 1.5px solid var(--hijau-border);
-      border-radius: 16px;
-      padding: 24px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      text-decoration: none;
-      color: var(--teks-utama);
-      transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .fitur-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--hijau-medium);
-      color: var(--teks-utama);
-    }
-
-    .fitur-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: rgba(46, 107, 56, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      color: #4ade80;
-      flex-shrink: 0;
-    }
-
-    .fitur-title {
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-
-    .fitur-desc {
-      font-size: 0.83rem;
-      color: var(--teks-redup);
-    }
-
-    @media (max-width: 768px) {
-      .fitur-teaser {
-        grid-template-columns: 1fr;
-      }
-
-      .section-title {
-        font-size: 1.8rem;
-      }
-    }
-
-    /* ══════════════════════════════════════
-       SECTION KONTAK
-    ══════════════════════════════════════ */
-    #kontak {
-      padding: 100px 24px;
-    }
-
-    .kontak-wrapper {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    #kontak .row.g-5 {
-      align-items: stretch;
-    }
-
-    #kontak .col-lg-5,
-    #kontak .col-lg-7 {
-      display: flex;
-      flex-direction: column;
-    }
-
-    #kontak .col-lg-5>.card-kontak,
-    #kontak .col-lg-7>.row {
-      width: 100%;
-    }
-
-    #kontak .row.mb-5 {
-      align-items: stretch;
-      margin-bottom: 1.5rem !important;
-    }
-
-    .placeholder-img {
-      height: 100%;
-      min-height: 200px;
-      border-radius: 15px;
-    }
-
-    /* Override Bootstrap untuk dark/light theme */
-    .card-kontak {
-      background-color: var(--bg-card);
-      border: 1.5px solid var(--hijau-border);
-      border-radius: 16px;
-      transition: background-color 0.3s;
-    }
-
-    .custom-input,
-    .input-custom {
-      background-color: var(--bg-utama) !important;
-      border: 1.5px solid var(--hijau-border) !important;
-      color: var(--teks-utama) !important;
-      border-radius: 10px !important;
-      transition: border-color 0.2s;
-    }
-
-    .custom-input:focus,
-    .input-custom:focus {
-      border-color: var(--hijau-medium) !important;
-      box-shadow: none !important;
-      background-color: var(--bg-utama) !important;
-    }
-
-    .custom-input::placeholder,
-    .input-custom::placeholder {
-      color: var(--teks-redup) !important;
-    }
-
-    #kontak .col-lg-5 .card-kontak {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #kontak .col-lg-5 form {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    #kontak .col-lg-5 .mb-4 {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    #kontak textarea.input-custom {
-      min-height: 210px;
-      height: 100%;
-      resize: vertical;
-    }
-
-    .social-item span {
-      color: var(--teks-redup);
-    }
-
-    .icon-circle {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(46, 107, 56, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #4ade80;
-      margin-right: 12px;
-      flex-shrink: 0;
-    }
-
-    .info-card {
-      background-color: var(--bg-card) !important;
-    }
-
-    .info-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(46, 107, 56, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      color: #4ade80;
-    }
-
-    .info-card-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--teks-utama);
-      margin-bottom: 8px;
-    }
-
-    .info-list {
-      padding-left: 16px;
-      color: var(--teks-redup);
-      font-size: 0.85rem;
-      line-height: 1.8;
-    }
-
-    .response-badge {
-      display: inline-block;
-      background: rgba(46, 107, 56, 0.2);
-      color: #4ade80;
-      border-radius: 99px;
-      padding: 6px 16px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      border: 1px solid rgba(46, 107, 56, 0.4);
-    }
-
-    /* FAQ Bootstrap override */
-    .faq-container {
-      border: 1.5px solid var(--hijau-border);
-      border-radius: 16px;
-      padding: 28px;
-      background: var(--bg-card);
-    }
-
-    .accordion-button {
-      color: var(--teks-utama) !important;
-      background: transparent !important;
-      font-size: 0.95rem;
-    }
-
-    .accordion-button::after {
-      filter: invert(1) sepia(1) saturate(2) hue-rotate(90deg);
-    }
-
-    [data-theme="light"] .accordion-button::after {
-      filter: none;
-    }
-
-    .accordion-item {
-      background: transparent !important;
-    }
-
-    .accordion-body {
-      color: var(--teks-redup) !important;
-    }
-
-    [data-theme="light"] .accordion-button {
-      color: var(--teks-utama) !important;
-    }
-
-    [data-theme="light"] .text-light {
-      color: var(--teks-utama) !important;
-    }
-
-    [data-theme="light"] .text-white {
-      color: var(--teks-utama) !important;
-    }
-
-    @media (max-width: 991px) {
-
-      #kontak .col-lg-5,
-      #kontak .col-lg-7 {
-        display: block;
-      }
-
-      #kontak .row.mb-5 {
-        margin-bottom: 2rem !important;
-      }
-    }
-
-    /* ══════════════════════════════════════
-       SCROLL REVEAL ANIMATION
-    ══════════════════════════════════════ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    .reveal-delay-1 {
-      transition-delay: 0.1s;
-    }
-
-    .reveal-delay-2 {
-      transition-delay: 0.2s;
-    }
-
-    .reveal-delay-3 {
-      transition-delay: 0.3s;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/beranda.css" />
+  <link rel="stylesheet" href="assets/css/tentang.css" />
+  <link rel="stylesheet" href="assets/css/elemen.css" />
+  <link rel="stylesheet" href="assets/css/kontak.css" />
+  <link rel="stylesheet" href="assets/css/toast.css" />
 </head>
 
 <body>
 
-  <!-- ── NAVBAR ── -->
+  <!-- NAVBAR -->
   <div id="navbar"></div>
 
-  <!-- ══════════════════════════════════════
-       SECTION 1: BERANDA (HERO)
-  ══════════════════════════════════════ -->
+  <!-- SECTION 1: BERANDA (HERO) -->
   <section id="beranda">
     <div class="hero-section">
       <div class="hero-card">
@@ -604,21 +41,17 @@
           <p class="teks-redup mt-kecil" style="max-width: 480px;">
             Eksplorasi tiga elemen fundamental bumi dan krisis yang mengancam keseimbangannya — sebelum terlambat.
           </p>
-
           <div class="element-grid mt-sedang">
-                    <div class="element-box">
-                        <img src="../assets/img/elemen-air.png" alt="Elemen Air">
-            
-                    </div>
-                    <div class="element-box">
-                        <img src="../assets/img/elemen-tanah.png" alt="Elemen Tanah">
-
-                    </div>
-                    <div class="element-box">
-                        <img src="../assets/img/elemen-udara.png" alt="Elemen Udara">
-
-                    </div>
-                </div>
+            <div class="element-box">
+              <img src="assets/img/elemen-air.png" alt="Elemen Air">
+            </div>
+            <div class="element-box">
+              <img src="assets/img/elemen-tanah.png" alt="Elemen Tanah">
+            </div>
+            <div class="element-box">
+              <img src="assets/img/elemen-udara.png" alt="Elemen Udara">
+            </div>
+          </div>
           <div style="display:flex; gap: 12px; flex-wrap: wrap;" class="mt-sedang">
             <a href="#elemen" class="btn-hijau" style="text-decoration:none; display:inline-block;">
               Ayo Mulai
@@ -630,7 +63,7 @@
           </div>
         </div>
         <div class="hero-image reveal reveal-delay-2">
-          <iframe autoplay muted loop playsinline class="hero-video">
+          <video autoplay muted loop playsinline class="hero-video" preload="auto">
             <source src="assets/video/video-bumi.mp4" type="video/mp4">
           </iframe>
         </div>
@@ -640,9 +73,7 @@
 
   <div class="section-divider"></div>
 
-  <!-- ══════════════════════════════════════
-       SECTION 2: TENTANG
-  ══════════════════════════════════════ -->
+  <!-- SECTION 2: TENTANG -->
   <section id="tentang">
     <div class="tentang-container">
       <div class="light-beam"></div>
@@ -714,9 +145,7 @@
 
   <div class="section-divider"></div>
 
-  <!-- ══════════════════════════════════════
-       SECTION 3: ELEMEN
-  ══════════════════════════════════════ -->
+  <!-- SECTION 3: ELEMEN -->
   <section id="elemen">
     <div class="elemen-wrapper">
       <div class="reveal">
@@ -819,9 +248,7 @@
 
   <div class="section-divider"></div>
 
-  <!-- ══════════════════════════════════════
-       SECTION 4: KONTAK
-  ══════════════════════════════════════ -->
+  <!-- SECTION 4: KONTAK -->
   <section id="kontak">
     <div class="kontak-wrapper">
 
@@ -997,152 +424,29 @@
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
+  <!-- TOAST FAKTA -->
+  <div class="toast-fakta" id="toastFakta">
+    <div class="toast-header-fakta">
+      <span class="toast-label">Tahukah kamu?</span>
+      <div class="toast-meta">
+        <span class="toast-counter" id="toastCounter">1 / 8</span>
+        <button class="toast-tutup" id="toastTutup" title="Tutup">×</button>
+      </div>
+    </div>
+    <p class="toast-teks" id="toastTeks"></p>
+    <div class="toast-bar-bg">
+      <div class="toast-bar-isi" id="toastBar"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
   <div id="footer"></div>
 
   <!-- Scripts -->
   <script src="assets/js/navbar.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    // ── Override navbar: link ke anchor bukan file terpisah ──
-    // Patch setelah loadNavbar() agar link navigasi smooth scroll
-    function patchNavbarAnchors() {
-      const peta = {
-        'index.html': '#beranda',
-        'tentang.html': '#tentang',
-        'elemen.html': '#elemen',
-        'kontak.html': '#kontak',
-      };
-
-      document.querySelectorAll('nav a').forEach(a => {
-        const href = a.getAttribute('href') || '';
-        const namaFile = href.split('/').pop();
-        if (peta[namaFile]) {
-          a.setAttribute('href', peta[namaFile]);
-          a.classList.remove('active');
-        }
-      });
-
-      // Tandai active berdasarkan scroll
-      highlightNavOnScroll();
-    }
-
-    function highlightNavOnScroll() {
-      const sections = ['beranda', 'tentang', 'elemen', 'kontak'];
-      const navLinks = document.querySelectorAll('nav a.nav-link');
-
-      const peta = {
-        '#beranda': 'index.html',
-        '#tentang': 'tentang.html',
-        '#elemen': 'elemen.html',
-        '#kontak': 'kontak.html',
-      };
-
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            navLinks.forEach(a => {
-              a.classList.remove('active');
-              if (a.getAttribute('href') === '#' + id) {
-                a.classList.add('active');
-              }
-            });
-          }
-        });
-      }, {
-        threshold: 0.4
-      });
-
-      sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) io.observe(el);
-      });
-    }
-
-    // ── Counter animasi ──
-    function animateCounters() {
-      document.querySelectorAll('.counter').forEach(el => {
-        const target = parseFloat(el.dataset.target);
-        const isDecimal = target % 1 !== 0;
-        let start = 0;
-        const duration = 1800;
-        const startTime = performance.now();
-
-        function update(now) {
-          const elapsed = now - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = start + (target - start) * eased;
-          el.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
-          if (progress < 1) requestAnimationFrame(update);
-        }
-
-        requestAnimationFrame(update);
-      });
-    }
-
-    // ── Progress bar animasi ──
-    function animateBars() {
-      document.querySelectorAll('.card[data-progress]').forEach(card => {
-        const val = card.dataset.progress;
-        const bar = card.querySelector('.bar-isi');
-        if (bar) bar.style.width = val + '%';
-      });
-    }
-
-    // ── Scroll reveal ──
-    function setupReveal() {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            io.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-
-      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    }
-
-    // ── Counter observer ──
-    function setupCounterObserver() {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            animateCounters();
-            animateBars();
-            io.disconnect();
-          }
-        });
-      }, {
-        threshold: 0.3
-      });
-
-      const statsSection = document.querySelector('.tentang-stats');
-      if (statsSection) io.observe(statsSection);
-    }
-
-    // ── Init ──
-    document.addEventListener('DOMContentLoaded', function () {
-      loadNavbar();
-      loadFooter();
-      patchNavbarAnchors();
-      setupReveal();
-      setupCounterObserver();
-
-      // Trigger reveal untuk elemen yang sudah kelihatan saat load
-      setTimeout(() => {
-        document.querySelectorAll('.reveal').forEach(el => {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight) el.classList.add('visible');
-        });
-      }, 100);
-    });
-  </script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/toast.js"></script>
 
 </body>
 
