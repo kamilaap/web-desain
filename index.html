@@ -632,8 +632,7 @@
           </div>
         </div>
         <div class="hero-image reveal reveal-delay-2">
-         <video autoplay muted loop playsinline class="hero-video" poster="assets/img/bumi.jpg"
-  preload="none" id="heroVideo">
+        <video autoplay muted loop playsinline class="hero-video" preload="auto">
   <source src="assets/video/video-bumi.mp4" type="video/mp4">
 </video>
         </div>
@@ -1128,24 +1127,6 @@
       const statsSection = document.querySelector('.tentang-stats');
       if (statsSection) io.observe(statsSection);
     }
- const video = document.getElementById('heroVideo');
-  if (video) {
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-      // Paksa load dan play
-      video.setAttribute('preload', 'auto');
-      video.load();
-      video.play().catch(() => {
-        // Kalau tetap gagal, tampilkan poster image saja
-        video.style.display = 'none';
-        const img = document.createElement('img');
-        img.src = 'assets/img/bumi.jpg'; 
-        img.className = 'hero-video';
-        img.alt = 'Bumi Berbicara';
-        video.parentNode.insertBefore(img, video);
-      });
-    }
-  }
     // ── Init ──
     document.addEventListener('DOMContentLoaded', function () {
       loadNavbar();
