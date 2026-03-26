@@ -19,6 +19,8 @@
 
   <!-- Project CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/beranda.css">
+  <link rel="stylesheet" href="assets/css/tentang.css">
 
   <style>
     /* ══════════════════════════════════════
@@ -79,29 +81,6 @@
       flex-wrap: wrap;
     }
 
-    .element-box {
-      width: 80px;
-      height: 80px;
-      border-radius: 16px;
-      border: 1.5px solid var(--hijau-border);
-      overflow: hidden;
-      background: var(--bg-card);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .element-box:hover {
-      transform: translateY(-4px);
-      border-color: var(--hijau-medium);
-    }
-
-    .element-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
 
     .hero-image {
       flex: 1;
@@ -145,176 +124,6 @@
       height: 1px;
       background: linear-gradient(to right, transparent, var(--hijau-border), transparent);
       margin: 0 auto;
-    }
-
-    /* ══════════════════════════════════════
-       SECTION TENTANG
-    ══════════════════════════════════════ */
-    #tentang {
-      padding: 100px 24px;
-    }
-
-    .tentang-container {
-      min-height: 100vh;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 10%;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      background: radial-gradient(circle at 10% 10%, rgba(46, 107, 56, 0.15) 0%, transparent 50%);
-    }
-
-    .light-beam {
-      position: absolute;
-      top: -100px;
-      left: -50px;
-      width: 400px;
-      height: 600px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
-      transform: rotate(-15deg);
-      pointer-events: none;
-    }
-
-    .tentang-content {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 60px;
-      position: relative;
-      z-index: 2;
-      width: 100%;
-    }
-
-    .tentang-hero {
-      max-width: 500px;
-    }
-
-    .headline {
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
-      color: var(--teks-utama);
-    }
-
-    .highlight-green {
-      color: #2e6b38;
-    }
-
-    .highlight-blue {
-      color: var(--warna-air);
-      text-shadow: 0 0 20px rgba(58, 159, 255, 0.3);
-    }
-
-    .deskripsi {
-      max-width: 500px;
-      font-size: 1.1rem;
-      color: var(--teks-utama);
-    }
-
-    .brand-text {
-      color: var(--warna-udara);
-      font-weight: 700;
-    }
-
-    .quote-card {
-      padding: 20px;
-      border-left: 4px solid var(--hijau-medium);
-      background: rgba(46, 107, 56, 0.1);
-      border-radius: 0 12px 12px 0;
-      font-style: italic;
-      max-width: 450px;
-      color: var(--teks-utama);
-    }
-
-    /* Stats */
-    .tentang-stats {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .stat-card {
-      background: var(--bg-card);
-      border: 1px solid var(--hijau-border);
-      padding: 28px;
-      border-radius: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: transform 0.3s ease, border 0.3s ease, background-color 0.3s;
-    }
-
-    :root:not([data-theme="light"]) .stat-card {
-      background: rgba(15, 39, 20, 0.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .stat-card:hover {
-      transform: translateX(-10px);
-      border: 1px solid var(--hijau-medium);
-    }
-
-    .stat-info h2 {
-      font-size: 2.8rem;
-      margin-bottom: 5px;
-    }
-
-    .stat-icon {
-      font-size: 2.5rem;
-      width: 70px;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    [data-theme="light"] .highlight-green {
-      color: #1e5228;
-    }
-
-    [data-theme="light"] .highlight-blue {
-      text-shadow: none;
-    }
-
-    [data-theme="light"] .quote-card {
-      background: rgba(46, 107, 56, 0.08);
-    }
-
-    [data-theme="light"] .stat-icon {
-      background: rgba(46, 107, 56, 0.08);
-    }
-
-    .icon-air {
-      color: var(--warna-air);
-    }
-
-    .icon-udara {
-      color: var(--teks-redup);
-    }
-
-    .icon-tanah {
-      color: var(--hijau-medium);
-    }
-
-    @media (max-width: 992px) {
-      .tentang-content {
-        grid-template-columns: 1fr;
-      }
-
-      .tentang-container {
-        padding: 40px 5%;
-        min-height: auto;
-      }
-
-      .stat-card:hover {
-        transform: translateY(-5px);
-      }
     }
 
     /* ══════════════════════════════════════
@@ -795,17 +604,21 @@
           <p class="teks-redup mt-kecil" style="max-width: 480px;">
             Eksplorasi tiga elemen fundamental bumi dan krisis yang mengancam keseimbangannya — sebelum terlambat.
           </p>
+
           <div class="element-grid mt-sedang">
-            <div class="element-box">
-              <img src="assets/img/elemen-air.png" alt="Elemen Air">
-            </div>
-            <div class="element-box">
-              <img src="assets/img/elemen-tanah.png" alt="Elemen Tanah">
-            </div>
-            <div class="element-box">
-              <img src="assets/img/elemen-udara.png" alt="Elemen Udara">
-            </div>
-          </div>
+                    <div class="element-box">
+                        <img src="../assets/img/elemen-air.png" alt="Elemen Air">
+            
+                    </div>
+                    <div class="element-box">
+                        <img src="../assets/img/elemen-tanah.png" alt="Elemen Tanah">
+
+                    </div>
+                    <div class="element-box">
+                        <img src="../assets/img/elemen-udara.png" alt="Elemen Udara">
+
+                    </div>
+                </div>
           <div style="display:flex; gap: 12px; flex-wrap: wrap;" class="mt-sedang">
             <a href="#elemen" class="btn-hijau" style="text-decoration:none; display:inline-block;">
               Ayo Mulai

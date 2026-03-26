@@ -32,8 +32,11 @@
 
 /* Typography Khusus */
 .headline {
-    line-height: 1.1;
-    letter-spacing: -1px;
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--teks-utama);
 }
 
 .highlight-green { 

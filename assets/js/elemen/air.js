@@ -1,5 +1,3 @@
-
-// 2. Logika Musik yang Diperbaiki
 const music = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('music-control');
 const musicIcon = document.getElementById('music-icon');
@@ -9,7 +7,6 @@ if (music && musicBtn) {
 
     // Fungsi klik pertama kali
     function handleFirstClick(e) {
-        // Jika yang diklik adalah tombolnya, jangan jalankan fungsi ini (biarkan fungsi toggle)
         if (musicBtn.contains(e.target)) return;
 
         music.play().then(() => {
